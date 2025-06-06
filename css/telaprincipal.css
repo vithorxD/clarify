@@ -1,14 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+}
 .navbar{
     background-color: #47638D;
     display: flex;
     padding: 20px;
     font-family: sans-serif;
     color: white;
+    height: 40px;
+    width: auto;
+    padding-inline: 16px;
 }
 .navbaritems{
     display: flex;
 }
 .navlink{
+    display: flex;
     padding-right: 8px;
     margin: auto;
 }
@@ -20,6 +28,8 @@
     padding: 10px;
     border-radius: 25px;
 }
-.titulo{
-    
+.logo{
+    height: 90px;
+    width: 90px;    
+    align-items: center;
 }
