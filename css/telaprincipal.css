@@ -1,0 +1,25 @@
+.navbar{
+    background-color: #47638D;
+    display: flex;
+    padding: 20px;
+    font-family: sans-serif;
+    color: white;
+}
+.navbaritems{
+    display: flex;
+}
+.navlink{
+    padding-right: 8px;
+    margin: auto;
+}
+.navbaritems--right{
+    margin-left: auto;
+}
+.butao{
+    background-color: #688bc0;
+    padding: 10px;
+    border-radius: 25px;
+}
+.titulo{
+    
+}
