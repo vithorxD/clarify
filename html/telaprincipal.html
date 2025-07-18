@@ -3,44 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clarify</title>
     <link rel="stylesheet" href="/css/telaprincipal.css">
+    <title>Clarify</title>
 </head>
-<body>
-    <div class="navbar">
-        <nav class="navbaritems">
-            <div class="navlink">
-                <img class="logo" src="/images/clarifyv1.png">
-            </div>
-            <div class="navlink">
-                Perguntas 
-            </div>
-            <div class="navlink">
-                Sobre nós 
-            </div>
-        </nav>
-        <nav class="navbaritems navbaritems--right">
-            <div class="navlink">
-                <div class="butao">
-                    Registre-se como aluno 
-                </div>
-            </div>
-            <div class="navlink">
-                <div class="butao">
-                    Registre-se como professor 
-                </div>
-            </div>
-            <div class="navlink">
-                <div class="butao">
-                    Login
-                </div>
-            </div>
-        </nav>
+<body style="background-color: #E8E8E8;">
+    <nav class="navbar">
+        <img src="/images/clarifyv1.png" alt="logo">
+        <div class="navbar-links">
+        </div>
+        <button class="cadastro"><a href="/html/cadastro.html">Primeira vez?</br>Cadastre-se aqui!</a></button>
+        <button class="login"><a href="/html/login.html">Já visitou o site?</br>Faça login aqui!</a></button>
+    </nav>
+    <nav class="navbar2">
+        <div class="navbar-links2">
+            <ul>
+                <li class="right"><a href="#">Inicio</a></li>
+                <div class="barra"></div>
+                <li><a href="#">Perguntas</a></li>
+                <div class="barra"></div>
+                <li><a href="#">Contato</a></li>
+                <div class="barra"></div>
+                <li><a href="#">Perfil</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="introducao">
+        <h1>Sane suas dúvidas!</h1>
+        <p>Um site onde professores e alunos se ajudam para clarear seus estudos.</p>
+        <p>Mande sua pergunta como aluno, ou ajude como professor! De graça!</p>
+        <h5>“A sabedoria é a própria recompensa.”</h5>
     </div>
-    <div class="titulo">
-        <h1>Sane suas duvidas!</h1>
-        <p class="paragrafo">Um site onde professores e alunos se ajudam para clarear seus estudos.<br>
-        Mande sua pergunta como aluno, ou ajude como professor! De graça!</p>
+    <form>
+    <input type="text" class="pesquisa" name="pesquisa" placeholder="Faça sua pergunta aqui!">
+    </form>
+    <div class="linha"></div>
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">Usuário foda</h3>
+            <p class="card-text">Assinale a alternativa que apresenta a resposta correta.</br>Questão 13</br>Escolha uma opção:</br>a.1</br>b.9</br>c.0</br>d.2</br>e.+∞</p>
+            <button class="responder"><a href="#">Responder</a></button>
+        </div>
     </div>
 </body>
 </html>
