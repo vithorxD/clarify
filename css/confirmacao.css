@@ -47,35 +47,26 @@ input {
     background-color: #e8e8e8;
     padding-left: 10px;
 }
-
-input:hover, input:active, input:focus {
-  outline: 0;
+input[type="file"] {
+    display: none;
 }
 
-button {
-    padding: 10px;
-    align-self: center;
-    width: 160px;
-    border-radius: 30px;
+label {
+    padding: 20px 10px;
+    width: 200px;
     background-color: #E68793;
-    border: none;
-    color: white;
-    cursor: pointer;
+    color: #FFF;
     text-transform: uppercase;
-    box-shadow: 5px 5px #c97781;
+    text-align: center;
+    display: block;
+    cursor: pointer;
+    border-radius: 25px;
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+    color: #404040;
 }
 
-button:hover {
-    background-color: #c97781;
-    box-shadow: 5px 5px #ba737c;
-}
-
-button:active {
-  background-color: #c97781;
-  box-shadow: 5px 5px #ba737c;
-  transform: translateY(2px);
-}
-a {
-    text-decoration: none;
-    color: white;
+.texto {
+    text-align: center;
 }
