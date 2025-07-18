@@ -70,3 +70,31 @@ label {
 .texto {
     text-align: center;
 }
+
+button {
+    padding: 10px;
+    align-self: center;
+    width: 160px;
+    border-radius: 30px;
+    background-color: #E68793;
+    border: none;
+    color: white;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 5px 5px #c97781;
+}
+
+button:hover {
+    background-color: #c97781;
+    box-shadow: 5px 5px #ba737c;
+}
+
+button:active {
+  background-color: #c97781;
+  box-shadow: 5px 5px #ba737c;
+  transform: translateY(2px);
+}
+a {
+    text-decoration: none;
+    color: white;
+}
