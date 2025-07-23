@@ -14,8 +14,8 @@ body {
     display: flex;
     position: relative;
     align-items: center;
-    background-color: #99C0DA;
-    border-bottom-color: #7BA2BC;
+    background-color: #738BAF;
+    border-bottom-color: #5C78A3;
     border-bottom-style: solid;
     border-bottom-width: 5px;
 }
@@ -93,6 +93,25 @@ body {
     background-color: #FF7283;
 }
 
+.pesquisa{
+    width: 250px;
+    padding: 12px 20px;
+    display: inline-block;
+    margin-top: 5px;
+    margin-bottom: 3px;
+    margin-left: 482%;
+    margin-right: 15px;
+    border-radius: 25px;
+    box-sizing: border-box;
+    background-color: #BDE6FF;
+    color: #373737;
+    border: none;
+}
+
+.pesquisa, input:hover, input:active, input:focus {
+  outline: 0;
+}
+
 .introducao{
     margin-top: 25px;
     margin-left: 15px;
@@ -114,20 +133,33 @@ body {
     color: #373737;
 }
 
-.pesquisa{
-    width: 600px;
-    padding: 15px 20px;
-    margin: 15px 0;
-    margin-left: 15px;
+.criar{
     display: inline-block;
-    border-radius: 25px;
-    box-sizing: border-box;
-    background-color: #D9D9D9;
-    border: none;
+    margin-top: 10px;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    padding: 15px 183px;
+    font-size: 20px;
+    cursor: pointer;
+    text-align: right;
+    text-decoration: none;
+    color: #6C6C6C;
+    background-color: #E6DBDD;
+    border: 2px solid #FFA1AC;
+    border-radius: 50px;
 }
 
-.pesquisa, input:hover, input:active, input:focus {
-  outline: 0;
+.criar a{
+    color: #FFA1AC;
+    font-weight: bold;
+}
+
+.criar:hover{
+    background-color: #e2ccd0;
+}
+
+.criar:active{
+    transform: translateY(2px);
 }
 
 .barra{
@@ -205,7 +237,7 @@ a{
 
 .card {
     position: relative;
-    margin-top: 30px;
+    margin-top: 25px;
     margin-left: 15px;
     background-color: #B9D5E8;
     transition: 0.3s;
