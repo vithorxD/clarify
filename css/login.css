@@ -15,7 +15,7 @@ body {
 
 form {
     padding: 50px;
-    background-color: #FFA1AC;
+    background-color: #699EC3;
     border-radius: 30px;
     display: flex;
     flex-direction: column;
@@ -57,22 +57,22 @@ button {
     align-self: center;
     width: 160px;
     border-radius: 30px;
-    background-color: #E68793;
+    background-color: #4989B6;
     border: none;
     color: white;
     cursor: pointer;
     text-transform: uppercase;
-    box-shadow: 5px 5px #c97781;
+    box-shadow: 5px 5px #3e7aa5;
 }
 
 button:hover {
-    background-color: #c97781;
-    box-shadow: 5px 5px #ba737c;
+    background-color: #3C7096;
+    box-shadow: 5px 5px #2F5775;
 }
 
 button:active {
-  background-color: #c97781;
-  box-shadow: 5px 5px #ba737c;
+  background-color: #3C7096;
+  box-shadow: 5px 5px #2F5775;
   transform: translateY(2px);
 }
 

@@ -14,8 +14,8 @@ body {
     display: flex;
     position: relative;
     align-items: center;
-    background-color: #738BAF;
-    border-bottom-color: #5C78A3;
+    background-color: #3C7096;
+    border-bottom-color: #2F5775;
     border-bottom-style: solid;
     border-bottom-width: 5px;
 }
@@ -60,8 +60,8 @@ body {
     display: flex;
     position: relative;
     align-items: center;
-    background-color: #FFA1AC;
-    border-bottom-color: #FF7283;
+    background-color: #699EC3;
+    border-bottom-color: #4989B6;
     border-bottom-style: solid;
     border-bottom-width: 5px;
 }
@@ -90,20 +90,26 @@ body {
 }
 
 .navbar-links2 li:hover {
-    background-color: #FF7283;
+    background-color: #4989B6;
+}
+
+.form{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: 5px;
 }
 
 .pesquisa{
     width: 250px;
     padding: 12px 20px;
-    display: inline-block;
     margin-top: 5px;
     margin-bottom: 3px;
-    margin-left: 482%;
-    margin-right: 15px;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: 5px;
     border-radius: 25px;
     box-sizing: border-box;
-    background-color: #BDE6FF;
+    background-color: #CCDEEB;
     color: #373737;
     border: none;
 }
@@ -144,18 +150,19 @@ body {
     text-align: right;
     text-decoration: none;
     color: #6C6C6C;
-    background-color: #E6DBDD;
-    border: 2px solid #FFA1AC;
+    background-color: #CCDEEB;
+    border: 2px solid #8AB3D0;
     border-radius: 50px;
 }
 
 .criar a{
-    color: #FFA1AC;
+    color: #8AB3D0;
     font-weight: bold;
+    text-decoration: none;
 }
 
 .criar:hover{
-    background-color: #e2ccd0;
+    background-color: #B6D0E2;
 }
 
 .criar:active{
@@ -174,59 +181,59 @@ body {
     display: inline-block;
     margin-left: auto;
     margin-right: 15px;
-    padding: 8px 10px;
+    padding: 8px 80px;
     font-size: 10px;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
     outline: none;
     color: #fff;
-    background-color: #D47B86;
+    background-color: #B6D0E2;
     border: none;
     border-radius: 15px;
-    box-shadow: 5px 5px #C55B68;
+    box-shadow: 5px 5px #8AB3D0;
 }
 
 .cadastro:hover {
-    background-color: #C55B68;
-    box-shadow: 5px 5px #a04a54;
+    background-color: #8AB3D0;
+    box-shadow: 5px 5px #699EC3;
 }
 
 .cadastro:active {
-  background-color: #C55B68;
-  box-shadow: 5px 5px #a04a54;
+  background-color: #8AB3D0;
+  box-shadow: 5px 5px #699EC3;
   transform: translateY(2px);
 }
 
 .login{
     display: inline-block;
     margin-right: 15px;
-    padding: 8px 10px;
+    padding: 8px 80px;
     font-size: 10px;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
     outline: none;
     color: #fff;
-    background-color: #F08D99;
+    background-color: #8AB3D0;
     border: none;
     border-radius: 15px;
-    box-shadow: 5px 5px #D47B86;
+    box-shadow: 5px 5px #699EC3;
 }
 
 .login:hover {
-    background-color: #ac646c;
-    box-shadow: 5px 5px #a04a54;
+    background-color: #699EC3;
+    box-shadow: 5px 5px #4989B6;
 }
 
 .login:active {
-  background-color: #ac646c;
-  box-shadow: 5px 5px #a04a54;
+  background-color: #699EC3;
+  box-shadow: 5px 5px #4989B6;
   transform: translateY(2px);
 }
 
 .linha{
-    border: 3px solid #FFA1AC;
+    border: 3px solid #8AB3D0;
     margin-top: 15px;
     margin-bottom: 15px;
 }
@@ -239,7 +246,7 @@ a{
     position: relative;
     margin-top: 25px;
     margin-left: 15px;
-    background-color: #B9D5E8;
+    background-color: #B6D0E2;
     transition: 0.3s;
     width: 500px;
     border-radius: 15px;
