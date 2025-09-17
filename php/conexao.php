@@ -1,5 +1,4 @@
 <?php
-{
     $host = "localhost";
     $dbname = "clarify";
     $username = "root";
@@ -8,9 +7,9 @@
 
     $mysqli = new mysqli($host, $username, $password, $dbname);
 
-    if ($mysqli->connect_error) {
-        die("Falha na conexão: " . $mysqli->connect_error);
+    if ($mysqli->connect_errno) {
+        echo "Falha ao conectar ao MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+    } else {
+        echo "Conexão bem-sucedida ao banco de dados.";
     }
-
-}
 ?>
