@@ -1,9 +1,11 @@
 <?php
-    session_start();
-    require("php/conexao.php");
 
-    $conn = new Database();
-    $link = $conn->getConnection();
+include('/xampp/htdocs/clarify/php/conexao.php');
+
+if(!isset($_SESSION)){
+    session_start();
+}
+
 ?>
 
 <!DOCTYPE html>

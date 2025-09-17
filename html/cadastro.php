@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,17 +12,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body style="background-color: #4989B6;">
-<<<<<<< HEAD
     <form method="post" action="/php/cadastro.php" class="container" style="max-width: 500px; width: 100%;">
         <div class="row mb-4 justify-content-center">
             <div class="col-12 text-center titulo">
                 <h1>Faça seu cadastro</h1>
             </div>
-=======
-    <form method="post" action="/php/cadastro.php" style="flex-wrap: wrap;">
-        <div class="titulo">
-            <h1>Faça seu cadastro</h1>
->>>>>>> 50db4df84b8e438f8d43d20dff48a6b722d03031
         </div>
         <div class="row mb-3">
             <div class="col-12 campo-input">
@@ -58,14 +55,6 @@
                 </p>
             </div>
         </div>
-<<<<<<< HEAD
-=======
-        <a href="/html/telaprincipal.html" style="text-decoration: none; color: white;"><button>CONFIRMAR</button></a>
-        <p>
-            É professor(a)?
-            <a href="/html/cadastroprof.html" style="text-decoration: none; color:#EDF3F8;">Clique aqui!</a>
-        </p>
->>>>>>> 50db4df84b8e438f8d43d20dff48a6b722d03031
     </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
