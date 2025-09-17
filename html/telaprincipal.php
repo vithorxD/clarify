@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    require("php/conexao.php");
+
+    $conn = new Database();
+    $link = $conn->getConnection();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,8 +21,8 @@
         <img src="/images/clarifyv1.png" alt="logo">
         <div class="navbar-links">
         </div>
-        <button class="cadastro"><a href="/html/cadastro.html" style="text-decoration: none; color:#213F54;">Primeira vez?</br>Cadastre-se aqui!</a></button>
-        <button class="login"><a href="/html/login.html" style="text-decoration: none; color:#213F54;">Já visitou o site?</br>Faça login aqui!</a></button>
+        <a href="/html/login.html" style="text-decoration: none;"><button class="login" >Login</button></a>
+        <a href="/html/cadastro.html" style="text-decoration: none;"><button class="cadastro" >Cadastro</button></a>
     </nav>
     <nav class="navbar2">
         <div class="navbar-links2">
@@ -27,11 +35,11 @@
                 <div class="barra"></div>
                 <li><a href="/html/contato.html">Contato</a></li>
                 <div class="barra"></div>
-                <li><a href="#">Perfil</a></li>
+                <li><a href="/html/perfil.html">Perfil</a></li>
             </ul>
         </div>
         <div class="form">
-            <input type="email" class="pesquisa" placeholder="🔍 ︎PESQUISAR">
+            <input type="email" class="pesquisa" placeholder="🔍 PESQUISAR">
         </div>
     </nav>
     <div class="introducao">
@@ -43,9 +51,9 @@
     <div class="linha"></div>
     <div class="card">
         <div class="card-body" style="background-color: #B6D0E2; text-decoration: none;">
-            <h3 class="card-title">Usuário foda</h3>
+            <h3 class="card-title">Usuario inteligente</h3>
             <p class="card-text">Assinale a alternativa que apresenta a resposta correta.</br>Questão 13</br>Escolha uma opção:</br>a.1</br>b.9</br>c.0</br>d.2</br>e.+∞</p>
-            <button class="responder"><a href="#" style="text-decoration: none; color:#213F54;">Responder</a></button>
+            <a href="#" style="text-decoration: none; color:#213F54;"></a><button class="responder">Responder</button></a>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>

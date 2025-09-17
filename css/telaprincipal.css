@@ -121,14 +121,17 @@ body {
 .introducao{
     margin-top: 25px;
     margin-left: 15px;
+    flex-wrap: wrap;
 
 }
 
 .introducao h1{
     margin-bottom: 10px;
+    flex-wrap: wrap;
 }
 
 .introducao p{
+    flex-wrap: wrap;
     color: #373737;
 }
 
@@ -137,6 +140,7 @@ body {
     margin-left: 350px;
     font-style: italic;
     color: #373737;
+    flex-wrap: wrap;
 }
 
 .criar{
@@ -178,8 +182,8 @@ body {
 }
 
 .cadastro{
-    display: inline-block;
-    margin-left: auto;
+    margin-left: -200px;
+    display: flex;
     margin-right: 15px;
     padding: 8px 80px;
     font-size: 10px;
@@ -206,8 +210,8 @@ body {
 }
 
 .login{
-    display: inline-block;
-    margin-right: 15px;
+    margin-right: 5px;
+    display: flex;
     padding: 8px 80px;
     font-size: 10px;
     cursor: pointer;
