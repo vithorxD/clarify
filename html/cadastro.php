@@ -1,4 +1,20 @@
+<?php
 
+if(isset($_POST['submit'])){
+
+    include('/xampp/htdocs/clarify/php/conexao.php');
+
+    $id = $_POST['id'];
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+    $confirmar_senha = $_POST['senha'];
+
+    $result = mysqli_query($mysqli, "INSERT INTO teste(id,email,senha,nome) VALUES('$id','$email','$senha','$nome')");
+
+}
+
+?>
 
 
 <!DOCTYPE html>
@@ -12,7 +28,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body style="background-color: #4989B6;">
-    <form method="post" action="/php/cadastro.php" class="container" style="max-width: 500px; width: 100%;">
+    <form method="POST" action="/php/cadastro.php" class="container" style="max-width: 500px; width: 100%;">
         <div class="row mb-4 justify-content-center">
             <div class="col-12 text-center titulo">
                 <h1>Faça seu cadastro</h1>
@@ -44,7 +60,7 @@
         </div>
         <div class="row mb-3 justify-content-center">
             <div class="col-12 text-center">
-                <button type="submit">CONFIRMAR</button>
+                <button type="submit" name="submit" id="submit">CONFIRMAR</button>
             </div>
         </div>
         <div class="row mb-2 justify-content-center">
