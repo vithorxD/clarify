@@ -9,11 +9,11 @@ if(!isset($_SESSION)){
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/telaprincipal.css">
+    <link rel="stylesheet" href="../css/telaprincipal.css">
     <title>Clarify</title>
     <link rel="shortcut icon" type="imagex/png" href="/images/clarifyv1.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -23,13 +23,13 @@ if(!isset($_SESSION)){
         <img src="/images/clarifyv1.png" alt="logo">
         <div class="navbar-links">
         </div>
-        <a href="/html/login.html" style="text-decoration: none;"><button class="login" >Login</button></a>
-        <a href="/html/cadastro.html" style="text-decoration: none;"><button class="cadastro" >Cadastro</button></a>
+        <a href="../html/login.php" style="text-decoration: none;"><button class="login" >Login</button></a>
+        <a href="../html/cadastro.php" style="text-decoration: none;"><button class="cadastro" >Cadastro</button></a>
     </nav>
     <nav class="navbar2">
         <div class="navbar-links2">
             <ul>
-                <li class="right"><a href="/html/telaprincipal.html">Inicio</a></li>
+                <li class="right"><a href="../html/telaprincipal.php">Inicio</a></li>
                 <div class="barra"></div>
                 <li><a href="/html/perguntas.html">Perguntas</a></li>
                 <div class="barra"></div>
