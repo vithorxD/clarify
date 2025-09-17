@@ -37,6 +37,7 @@ h1 {
     flex-direction: column;
     gap: 5px;
     align-self: center;
+    flex-wrap: wrap;
 }
 
 input {
@@ -64,6 +65,7 @@ label {
 
 .texto {
     text-align: center;
+    flex-wrap: wrap;
 }
 
 button {
