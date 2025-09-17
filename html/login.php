@@ -13,7 +13,7 @@ if(isset($_POST['email']) || isset($_POST['senha'])) {
         $email = $mysqli->real_escape_string($_POST['email']);
         $senha = $mysqli->real_escape_string($_POST['senha']);
 
-        $sql_code = "SELECT * FROM login WHERE email = '$email' AND senha = '$senha'";
+        $sql_code = "SELECT * FROM teste WHERE email = '$email' AND senha = '$senha'";
         $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
 
         $quantidade = $sql_query->num_rows;
@@ -63,7 +63,7 @@ if(isset($_POST['email']) || isset($_POST['senha'])) {
             <label for="password">Sua senha:</label>
             <input type="password" name="password" id="password" />
         </div>
-        <a href="/html/telaprincipal.html" style="text-decoration: none; color: white;"><button>ENTRAR</button></a>
+        <a href="/html/telaprincipal.php" style="text-decoration: none; color: white;"><button>ENTRAR</button></a>
     </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
