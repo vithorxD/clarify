@@ -1,10 +1,12 @@
 <?php
-
-include('/xampp/htdocs/clarify/php/conexao.php');
-
-if(!isset($_SESSION)){
-    session_start();
-}
+    session_start( );
+    if((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true))
+    {
+        unset($_SESSION['email']);
+        unset($_SESSION['senha']);
+        header('Location: ../html/login.php');
+    }
+    $logado = $_SESSION['email'];
 
 ?>
 

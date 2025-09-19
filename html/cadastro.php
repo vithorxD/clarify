@@ -1,19 +1,24 @@
 <?php
 
 if(isset($_POST['submit'])){
+    
+    //print_r('Nome: ' . $_POST['name']);
+    //print_r('<br>');
+    //print_r('Email: ' . $_POST['email']);
+    //print_r('<br>');
+    //print_r('Senha: ' . $_POST['senha']);
 
-    include('/xampp/htdocs/clarify/php/conexao.php');
+    include_once('../php/conexao.php');
 
-    $id = $_POST['id'];
-    $nome = $_POST['nome'];
+    $nome = $_POST['name'];
     $email = $_POST['email'];
     $senha = $_POST['senha'];
-    $confirmar_senha = $_POST['senha'];
 
-    $result = mysqli_query($mysqli, "INSERT INTO teste(id,email,senha,nome) VALUES('$id','$email','$senha','$nome')");
+    $result = mysqli_query($mysqli, "INSERT INTO teste(nome,email,senha) VALUES ('$nome','$email','$senha')");
+
+    header('Location: ../html/login.php');
 
 }
-
 ?>
 
 
@@ -28,7 +33,7 @@ if(isset($_POST['submit'])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body style="background-color: #4989B6;">
-    <form method="POST" action="/php/cadastro.php" class="container" style="max-width: 500px; width: 100%;">
+    <form method="POST" action="cadastro.php" class="container" style="max-width: 500px; width: 100%;">
         <div class="row mb-4 justify-content-center">
             <div class="col-12 text-center titulo">
                 <h1>Faça seu cadastro</h1>
@@ -52,15 +57,9 @@ if(isset($_POST['submit'])){
                 <input type="password" id="senha" name="senha" required>
             </div>
         </div>
-        <div class="row mb-3">
-            <div class="col-12 campo-input">
-                <label for="confirmar_senha">Confirme sua senha:</label>
-                <input type="password" name="confirmar_senha" id="confirmar_senha" required>
-            </div>
-        </div>
         <div class="row mb-3 justify-content-center">
             <div class="col-12 text-center">
-                <button type="submit" name="submit" id="submit">CONFIRMAR</button>
+                <input type="submit" name="submit" value="CADASTRAR" class="button">
             </div>
         </div>
         <div class="row mb-2 justify-content-center">

@@ -1,44 +1,5 @@
 <?php
 
-include('/xampp/htdocs/clarify/php/conexao.php');
-
-if(isset($_POST['email']) || isset($_POST['senha'])) {
-
-    if(strlen($_POST['email']) == 0) {
-        echo "Preencha seu email";
-    } else if(strlen($_POST['senha']) == 0) {
-        echo "Preencha sua senha";
-    } else {
-
-        $email = $mysqli->real_escape_string($_POST['email']);
-        $senha = $mysqli->real_escape_string($_POST['senha']);
-
-        $sql_code = "SELECT * FROM teste WHERE email = '$email' AND senha = '$senha'";
-        $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
-
-        $quantidade = $sql_query->num_rows;
-
-        if($quantidade == 1) {
-
-            $usuario = $sql_query->fetch_assoc();
-
-            if(!isset($_SESSION)) {
-                session_start();
-            }
-
-            $_SESSION['id'] = $usuario['id'];
-            $_SESSION['nome'] = $usuario['nome'];
-            $_SESSION['email'] = $usuario['email'];
-
-            header("Location: clarify/html/telaprincipal.php");
-
-        } else {
-            echo "Falha ao logar! E-mail ou senha incorretos";
-        }
-
-    }
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +13,7 @@ if(isset($_POST['email']) || isset($_POST['senha'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body style="background-color: #4989B6;">
-    <form method="POST" action="/php/conexao.php" style="flex-wrap: wrap;">
+    <form method="POST" action="../php/teste.php" style="flex-wrap: wrap;">
         <div class="titulo">
             <h1>Faça seu login</h1>
         </div>
@@ -64,7 +25,7 @@ if(isset($_POST['email']) || isset($_POST['senha'])) {
             <label for="senha">Sua senha:</label>
             <input type="password" name="senha" id="senha" />
         </div>
-        <button type="submit">ENTRAR</button>
+        <input class="button" type="submit" name="submit" value="ENTRAR">
     </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>

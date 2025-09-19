@@ -51,25 +51,24 @@ input:hover, input:active, input:focus {
   outline: 0;
 }
 
-button {
+.button {
     padding: 10px;
     align-self: center;
     width: 160px;
     border-radius: 30px;
-    background-color: #4989B6;
+    color: #4989B6;
     border: none;
-    color: white;
     cursor: pointer;
     text-transform: uppercase;
     box-shadow: 5px 5px #3e7aa5;
 }
 
-button:hover {
+.button:hover {
     background-color: #3C7096;
     box-shadow: 5px 5px #2F5775;
 }
 
-button:active {
+.button:active {
   background-color: #3C7096;
   box-shadow: 5px 5px #2F5775;
   transform: translateY(2px);
