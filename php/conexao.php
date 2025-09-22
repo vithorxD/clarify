@@ -1,16 +1,15 @@
 <?php
     $host = "localhost";
-    $dbname = "clarify";
     $username = "root";
     $password = ""; 
 
-    $mysqli = new mysqli($host, $username, $password, $dbname);
+    $mysqli = new mysqli($host, $username, $password);
 
     if ($mysqli->connect_errno) {
         echo "Falha ao conectar ao MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     }
 
-    $sql = "CREATE TABLE IF NOT EXISTS clarify";
+    $sql = "CREATE DATABASE IF NOT EXISTS clarify";
     $mysqli->query($sql);
 
     if (!$mysqli->select_db("clarify")){
