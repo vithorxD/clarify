@@ -22,24 +22,24 @@
 </head>
 <body style="background-color: #EDF3F8;">
     <nav class="navbar">
-        <img src="/images/clarifyv1.png" alt="logo">
+        <img src="../images/clarifyv1.png" alt="logo">
         <div class="navbar-links">
         </div>
-        <a href="../html/login.php" style="text-decoration: none;"><button class="login" >Login</button></a>
-        <a href="../html/cadastro.php" style="text-decoration: none;"><button class="cadastro" >Cadastro</button></a>
+        <a href="../html/login.php" style="text-decoration: none;"><button class="login">Login</button></a>
+        <a href="../html/cadastro.php" style="text-decoration: none;"><button class="cadastro">Cadastro</button></a>
     </nav>
     <nav class="navbar2">
         <div class="navbar-links2">
             <ul>
                 <li class="right"><a href="../html/telaprincipal.php">Inicio</a></li>
                 <div class="barra"></div>
-                <li><a href="/html/perguntas.html">Perguntas</a></li>
+                <li><a href="../html/perguntas.html">Perguntas</a></li>
                 <div class="barra"></div>
-                <li><a href="/html/perguntas.html">Atividades</a></li>
+                <li><a href="../html/perguntas.html">Atividades</a></li>
                 <div class="barra"></div>
-                <li><a href="/html/contato.html">Contato</a></li>
+                <li><a href="../html/contato.html">Contato</a></li>
                 <div class="barra"></div>
-                <li><a href="/html/perfil.html">Perfil</a></li>
+                <li><a href="../html/perfil.html">Perfil</a></li>
             </ul>
         </div>
         <div class="form">

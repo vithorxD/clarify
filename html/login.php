@@ -26,6 +26,10 @@
             <input type="password" name="senha" id="senha" />
         </div>
         <input class="button" type="submit" name="submit" value="ENTRAR">
+        <p>
+            Não tem uma conta? 
+            <a href="../html/cadastro.php" style="text-decoration: none; color:#EDF3F8;">Faça seu cadastro</a>
+        </p>
     </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
