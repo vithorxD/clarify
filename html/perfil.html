@@ -6,13 +6,15 @@
     <link rel="stylesheet" href="../css/perfil.css">
     <title>Clarify</title>
 </head>
-<body>
+<body style="background-color: #EDF3F8;">
     <nav class="navbar">
         <img src="../images/clarifyv1.png" alt="logo">
         <div class="navbar-links">
         </div>
-        <a href="../html/login.php" style="text-decoration: none;"><button class="login" >Login</button></a>
-        <a href="../html/cadastro.php" style="text-decoration: none;"><button class="cadastro" >Cadastro</button></a>
+        <div class="entrar">
+            <a href="../html/login.php" style="text-decoration: none;"><button class="login" >Login</button></a>
+            <a href="../html/cadastro.php" style="text-decoration: none;"><button class="cadastro" >Cadastro</button></a>
+        </div>
     </nav>
     <nav class="navbar2">
         <div class="navbar-links2">
@@ -48,6 +50,13 @@
         <div class="campo-input">
             <input type="password" class="form-control" placeholder="Senha" aria-label="Disabled input example" disabled>
         </div>
+        <div class="editar">
+            <a href="#"><button>Editar</button></a>
+        </div>
     </form>
+    <div class="sair" style="align-items: center;">
+        <a href="../html/login.php" style="text-decoration: none;"><button class="logout">Log out</button></a>
+        <button class="deletar">Deletar conta</button>
+    </div>
 </body>
 </html>

@@ -96,11 +96,8 @@ body {
 .pesquisa{
     width: 250px;
     padding: 12px 20px;
-    margin-top: 5px;
-    margin-bottom: 3px;
-    display: inline-block;
-    margin-left: auto;
-    margin-right: 5px;
+    display: flex;
+    justify-content: right;
     border-radius: 25px;
     box-sizing: border-box;
     background-color: #CCDEEB;
@@ -120,14 +117,17 @@ body {
     margin-bottom: 10px;
 }
 
+.entrar{
+    display: flex;
+    justify-content: right;
+}
+
 .login{
     display: flex;
-    margin-right: auto;
-    margin-left: auto;
+    justify-content: center;
     padding: 8px 50px;
     font-size: 15px;
     cursor: pointer;
-    text-align: center;
     text-decoration: none;
     outline: none;
     color: #fff;
@@ -135,16 +135,16 @@ body {
     border: none;
     border-radius: 15px;
     box-shadow: 5px 5px #699EC3;
+    gap: 10px;
+    margin-right: 10px;
 }
 
 .cadastro{
     display: flex;
-    margin-right: 15px;
-    margin-left: 10px;
+    justify-content: center;
     padding: 8px 50px;
     font-size: 15px;
     cursor: pointer;
-    text-align: center;
     text-decoration: none;
     outline: none;
     color: #fff;
@@ -155,14 +155,67 @@ body {
 }
 
 form{
-    margin-top: 15px;
+    align-items: center;
+    align-content: center;
     margin-left: 15px;
     margin-right: 15px;
-    padding: 30px;
-    background-color: #699EC3;
+    margin-top: 15px;
+    padding: 30px 30px;
+    background-color: #CCDEEB;
     border-radius: 30px;
     display: flex;
     flex-direction: column;
     gap: 25px;
-    box-shadow: 5px 5px 5px ;
+}
+
+h1{
+    font-size: 50px;
+}
+
+.campo-input{
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    background-color: #e8e8e8;
+    padding-left: 10px;
+}
+
+.campo-input[disabled]{
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    background-color: #e8e8e8;
+    padding-left: 10px;
+}
+
+button{
+    padding: 10px;
+    align-self: center;
+    width: 160px;
+    border-radius: 30px;
+    background-color: #8AB3D0;
+    border: none;
+    color: white;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 5px 5px #699EC3;
+}
+
+button:hover {
+    background-color: #699EC3;
+    box-shadow: 5px 5px #4989B6;
+}
+
+button:active {
+  background-color: #699EC3;
+  box-shadow: 5px 5px #4989B6;
+  transform: translateY(2px);
+}
+
+.sair{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    gap: 15px
 }
