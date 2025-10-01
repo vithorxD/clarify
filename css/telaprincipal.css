@@ -183,6 +183,7 @@ body {
 
 .cadastro{
     display: flex;
+    justify-content: right;
     padding: 8px 80px;
     font-size: 10px;
     cursor: pointer;
@@ -209,6 +210,7 @@ body {
 
 .login{
     display: flex;
+    justify-content: right;
     padding: 8px 80px;
     font-size: 10px;
     cursor: pointer;
