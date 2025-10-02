@@ -1,5 +1,22 @@
 <?php
 
+include 'conexao.php';
+session_start();
+
+if(isset($_POST['submit'])){
+    $email = mysqli_real_escape_string($mysqli, $_POST['email']);
+    $senha = mysqli_real_escape_string($mysqli, md5($POST['senha']));
+
+    $select = mysqli_query($mysqli, "SELECT * FROM `cadastro` WHERE IdEmail = '$email' AND senha = '$senha'") or die('Erro na consulta');
+
+    if(mysqli_num_rows($select) > 0){
+        $row = mysqli_fetch_assoc($select);
+        $_SESSION[user_id] = row['id'];
+        header('Location: ../html/login.php');
+    }else{
+        $message[] = 'Email ou senha incorreto(s). Tente novamente.'
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -26,6 +43,13 @@
             <input type="password" name="senha" id="senha" />
         </div>
         <input class="button" type="submit" name="submit" value="ENTRAR">
+        <?php
+                    if(isset($msg)){
+                        foreach($msg as $msg){
+                            echo '<div class="mensagem">' .$msg. </div>;
+                        }
+                    }
+                ?>
         <p>
             Não tem uma conta? 
             <a href="../html/cadastro.php" style="text-decoration: none; color:#EDF3F8;">Faça seu cadastro</a>
