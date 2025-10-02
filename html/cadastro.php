@@ -14,7 +14,23 @@ if(isset($_POST['submit'])){
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
-    $result = mysqli_query($mysqli, "INSERT INTO teste(nome,email,senha) VALUES ('$nome','$email','$senha')");
+    $select = mysqli_query($mysqli, "SELECT * FROM `cadastro` WHERE IdEmail = '$email' AND senha = '$senha'") or die('Erro na consulta');
+
+    if(mysqli_num_rows($select) > 0){
+        $message[] = 'O usuário já existe.';
+    }else{
+        if($senha != $csenha){
+            $message[] = 'Senhas não coincide.';
+        }else{
+            $insert = mysqli_query($mysqli, "INSERT INTO teste(nome,email,senha) VALUES ('$nome','$email','$senha')") or die('Erro na consulta');
+            if($insert){
+                $message[] = 'Cadastro concluído!'
+                header('Location: ../html/login.php');
+            }else{
+                $message[] = "Cadastro falhou.";
+            }
+        }
+    }
 
     header('Location: ../html/login.php');
 
@@ -60,6 +76,13 @@ if(isset($_POST['submit'])){
         <div class="row mb-3 justify-content-center">
             <div class="col-12 text-center">
                 <input type="submit" name="submit" value="CADASTRAR" class="button">
+                <?php
+                    if(isset($message)){
+                        foreach($message as $message){
+                            echo '<div class="mensagem">' .$message. </div>;
+                        }
+                    }
+                ?>
             </div>
         </div>
         <div class="row mb-2 justify-content-center">
