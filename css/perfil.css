@@ -180,7 +180,7 @@ h1{
     padding-left: 10px;
 }
 
-.campo-input[disabled]{
+.campo-input:disabled{
     border: none;
     border-radius: 10px;
     padding: 10px 20px;

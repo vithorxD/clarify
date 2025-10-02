@@ -31,6 +31,7 @@
     $mysqli->query("CREATE TABLE IF NOT EXISTS cadastro(
         idCadastro int NOT NULL AUTO_INCREMENT PRIMARY KEY,
         senha VARCHAR(100) NOT NULL,
+        csenha VARCHAR(100) NOT NULL,
         usuario VARCHAR(100) NOT NULL,
         idEmail INT NOT NULL,
         nome VARCHAR(100) NOT NULL,
