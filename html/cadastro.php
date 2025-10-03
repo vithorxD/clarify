@@ -21,7 +21,7 @@ if(isset($_POST['submit'])){
         $message[] = 'O usuário já existe.';
     }else{
         if($senha != $csenha){
-            $message[] = 'Senhas não coincide.';
+            $message[] = 'Senhas não coincidem.';
         }else{
             $insert = mysqli_query($mysqli, "INSERT INTO cadastro(nome,email,senha) VALUES ('$nome','$email','$senha')") or die('Erro na consulta');
             if($insert){
@@ -64,31 +64,30 @@ if(isset($_POST['submit'])){
         <div class="row mb-3">
             <div class="col-12 campo-input">
                 <label for="name">Nome:</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" placeholder="Insira seu nome" name="name" required>
             </div>
         </div>
         <div class="row mb-3">
             <div class="col-12 campo-input">
                 <label for="email">Seu email:</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" placeholder="Insira seu email" name="email" required>
             </div>
         </div>
         <div class="row mb-3">
             <div class="col-12 campo-input">
                 <label for="senha">Crie uma senha:</label>
-                <input type="password" id="senha" name="senha" required>
+                <input type="password" id="senha" placeholder="Insira sua senha" name="senha" required>
             </div>
         </div>
         <div class="row mb-3">
             <div class="col-12 campo-input">
                 <label for="csenha">Confirme sua senha:</label>
-                <input type="password" id="senha" name="csenha" required>
+                <input type="password" id="senha" placeholder="Confirme sua senha" name="csenha" required>
             </div>
         </div>
         <div class="row mb-3 justify-content-center">
             <div class="col-12 text-center">
                 <input type="submit" name="submit" value="CADASTRAR" class="button">
-
             </div>
         </div>
         <div class="row mb-2 justify-content-center">
