@@ -10,11 +10,12 @@ if(isset($_POST['submit'])){
 
     include_once('../php/conexao.php');
 
-    $nome = $_POST['name'];
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
+    $nome = mysqli_real_escape_string($mysqli, $_POST['name']);
+    $email = mysqli_real_escape_string($mysqli, $_POST['email']);
+    $senha = mysqli_real_escape_string($mysqli, md5($_POST['senha']));
+    $csenha = mysqli_real_escape_string($mysqli, md5($_POST['csenha']));
 
-    $select = mysqli_query($mysqli, "SELECT * FROM `cadastro` WHERE IdEmail = '$email' AND senha = '$senha'") or die('Erro na consulta');
+    $select = mysqli_query($mysqli, "SELECT * FROM `cadastro` WHERE email = '$email' AND senha = '$senha'") or die('Erro na consulta');
 
     if(mysqli_num_rows($select) > 0){
         $message[] = 'O usuário já existe.';
@@ -22,17 +23,15 @@ if(isset($_POST['submit'])){
         if($senha != $csenha){
             $message[] = 'Senhas não coincide.';
         }else{
-            $insert = mysqli_query($mysqli, "INSERT INTO teste(nome,email,senha) VALUES ('$nome','$email','$senha')") or die('Erro na consulta');
+            $insert = mysqli_query($mysqli, "INSERT INTO cadastro(nome,email,senha) VALUES ('$nome','$email','$senha')") or die('Erro na consulta');
             if($insert){
-                $message[] = 'Cadastro concluído!'
+                $message[] = 'Cadastro concluído!';
                 header('Location: ../html/login.php');
             }else{
-                $message[] = "Cadastro falhou.";
+                $message[] = 'Cadastro falhou.';
             }
         }
     }
-
-    header('Location: ../html/login.php');
 
 }
 ?>
@@ -54,7 +53,14 @@ if(isset($_POST['submit'])){
             <div class="col-12 text-center titulo">
                 <h1>Faça seu cadastro</h1>
             </div>
-        </div>
+        </div>                
+        <?php
+            if(isset($message)){
+                foreach($message as $message){
+                    echo '<div class="mensagem">'.$message.'</div>';
+                }
+            } 
+        ?>
         <div class="row mb-3">
             <div class="col-12 campo-input">
                 <label for="name">Nome:</label>
@@ -73,23 +79,23 @@ if(isset($_POST['submit'])){
                 <input type="password" id="senha" name="senha" required>
             </div>
         </div>
+        <div class="row mb-3">
+            <div class="col-12 campo-input">
+                <label for="csenha">Confirme sua senha:</label>
+                <input type="password" id="senha" name="csenha" required>
+            </div>
+        </div>
         <div class="row mb-3 justify-content-center">
             <div class="col-12 text-center">
                 <input type="submit" name="submit" value="CADASTRAR" class="button">
-                <?php
-                    if(isset($message)){
-                        foreach($message as $message){
-                            echo '<div class="mensagem">' .$message. </div>;
-                        }
-                    }
-                ?>
+
             </div>
         </div>
         <div class="row mb-2 justify-content-center">
             <div class="col-12 text-center">
                 <p>
                     É professor(a)?
-                    <a href="/html/cadastroprof.html" style="text-decoration: none; color:#EDF3F8;">Clique aqui!</a>
+                    <a href="../html/cadastroprof.php" style="text-decoration: none; color:#EDF3F8;">Clique aqui!</a>
                 </p>
             </div>
         </div>

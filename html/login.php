@@ -1,20 +1,20 @@
 <?php
 
-include 'conexao.php';
+include ('../php/conexao.php');
 session_start();
 
 if(isset($_POST['submit'])){
     $email = mysqli_real_escape_string($mysqli, $_POST['email']);
     $senha = mysqli_real_escape_string($mysqli, md5($POST['senha']));
 
-    $select = mysqli_query($mysqli, "SELECT * FROM `cadastro` WHERE IdEmail = '$email' AND senha = '$senha'") or die('Erro na consulta');
+    $select = mysqli_query($mysqli, "SELECT * FROM `cadastro` WHERE email = '$email' AND senha = '$senha'") or die('Erro na consulta');
 
     if(mysqli_num_rows($select) > 0){
         $row = mysqli_fetch_assoc($select);
-        $_SESSION[user_id] = row['id'];
-        header('Location: ../html/login.php');
+        $_SESSION['idCadastro'] = $row['id'];
+        header('Location: ../html/telaprincipal.php');
     }else{
-        $message[] = 'Email ou senha incorreto(s). Tente novamente.'
+        $message[] = 'Email ou senha incorreto(s). Tente novamente.';
     }
 }
 ?>
@@ -30,7 +30,7 @@ if(isset($_POST['submit'])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body style="background-color: #4989B6;">
-    <form method="POST" action="../php/teste.php" style="flex-wrap: wrap;">
+    <form method="POST" action="../html/telaprincipal.php" style="flex-wrap: wrap;">
         <div class="titulo">
             <h1>Faça seu login</h1>
         </div>
@@ -44,15 +44,15 @@ if(isset($_POST['submit'])){
         </div>
         <input class="button" type="submit" name="submit" value="ENTRAR">
         <?php
-                    if(isset($msg)){
-                        foreach($msg as $msg){
-                            echo '<div class="mensagem">' .$msg. </div>;
+                    if(isset($message)){
+                        foreach($message as $message){
+                            echo '<div class="mensagem">' .$message. '</div>';
                         }
                     }
-                ?>
+        ?>
         <p>
             Não tem uma conta? 
-            <a href="../html/cadastro.php" style="text-decoration: none; color:#EDF3F8;">Faça seu cadastro</a>
+            <a href="../html/cadastro.php" style="text-decoration: none; color:#EDF3F8;">Faça seu cadastro!</a>
         </p>
     </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>

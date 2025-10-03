@@ -78,3 +78,14 @@ input:hover, input:active, input:focus {
 p {
     align-self: center;
 }
+
+.mensagem {
+    margin: 5px 0;
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    background-color: red;
+    color: white;
+    font-size: 20px;
+}

@@ -33,9 +33,8 @@
         senha VARCHAR(100) NOT NULL,
         csenha VARCHAR(100) NOT NULL,
         usuario VARCHAR(100) NOT NULL,
-        idEmail INT NOT NULL,
-        nome VARCHAR(100) NOT NULL,
-        FOREIGN KEY (idEmail) REFERENCES email(idEmail)
+        email INT NOT NULL,
+        nome VARCHAR(100) NOT NULL
     )");
 
     $mysqli->query("CREATE TABLE IF NOT EXISTS aluno(
