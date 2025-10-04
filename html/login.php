@@ -1,4 +1,5 @@
-<?php
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            +<?php
 
 include ('../php/conexao.php');
 session_start();
@@ -51,7 +52,7 @@ $select = mysqli_query($mysqli, "SELECT * FROM `cadastro` WHERE email = '$email'
         </div>
         <input class="button" type="submit" name="submit" value="ENTRAR">
         
-        <p>
+        <p style="align-self: center;">
             Não tem uma conta? 
             <a href="../html/cadastro.php" style="text-decoration: none; color:#EDF3F8;">Faça seu cadastro!</a>
         </p>
