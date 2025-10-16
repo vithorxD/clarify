@@ -97,8 +97,7 @@ body {
     width: 250px;
     padding: 12px 20px;
     display: flex;
-    align-items: right;
-    margin-right: 15px;
+    justify-content: right;
     border-radius: 25px;
     box-sizing: border-box;
     background-color: #CCDEEB;
@@ -121,7 +120,6 @@ body {
 .entrar{
     display: flex;
     align-items: right;
-    margin-right: 15px;
 }
 
 .login{
@@ -141,17 +139,6 @@ body {
     margin-right: 10px;
 }
 
-.login:hover {
-    background-color: #699EC3;
-    box-shadow: 5px 5px #4989B6;
-}
-
-.login:active {
-  background-color: #699EC3;
-  box-shadow: 5px 5px #4989B6;
-  transform: translateY(2px);
-}
-
 .cadastro{
     display: flex;
     justify-content: center;
@@ -167,107 +154,68 @@ body {
     box-shadow: 5px 5px #8AB3D0;
 }
 
-.cadastro:hover {
+form{
+    align-items: center;
+    align-content: center;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 15px;
+    padding: 30px 30px;
+    background-color: #CCDEEB;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+h1{
+    font-size: 50px;
+}
+
+.campo-input{
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    background-color: #e8e8e8;
+    padding-left: 10px;
+}
+
+.campo-input:disabled{
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    background-color: #e8e8e8;
+    padding-left: 10px;
+}
+
+button{
+    padding: 10px;
+    align-self: center;
+    width: 160px;
+    border-radius: 30px;
     background-color: #8AB3D0;
+    border: none;
+    color: white;
+    cursor: pointer;
+    text-transform: uppercase;
     box-shadow: 5px 5px #699EC3;
 }
 
-.cadastro:active {
-  background-color: #8AB3D0;
-  box-shadow: 5px 5px #699EC3;
+button:hover {
+    background-color: #699EC3;
+    box-shadow: 5px 5px #4989B6;
+}
+
+button:active {
+  background-color: #699EC3;
+  box-shadow: 5px 5px #4989B6;
   transform: translateY(2px);
 }
 
-.introducao{
-    margin-top: 25px;
-    margin-left: 15px;
-    flex-wrap: wrap;
-    margin-bottom: 50px;
-}
-
-.introducao h1{
-    margin-bottom: 10px;
-    flex-wrap: wrap;
-    font-size: 80px;
-}
-
-.introducao p{
-    flex-wrap: wrap;
-    color: #373737;
-    font-size: 30px;
-}
-
-.introducao h5{
-    margin-top: 10px;
-    margin-left: 350px;
-    font-style: italic;
-    color: #373737;
-    flex-wrap: wrap;
-    font-size: 30px;
-}
-
-.criar{
-    display: inline-block;
-    margin-top: 10px;
-    margin-right: 15px;
-    margin-bottom: 10px;
-    padding: 15px 18px;
-    font-size: 30px;
-    cursor: pointer;
-    text-align: right;
-    text-decoration: none;
-    color: #6C6C6C;
-    background-color: #CCDEEB;
-    border: 2px solid #8AB3D0;
-    border-radius: 50px;
-}
-
-.criar a{
-    color: #8AB3D0;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.criar:hover{
-    background-color: #B6D0E2;
-}
-
-.criar:active{
-    transform: translateY(2px);
-}
-
-.visita{
-    display: inline-block;
-    margin-top: 10px;
-    margin-right: 15px;
-    margin-bottom: 10px;
-    padding: 15px 18px;
-    font-size: 30px;
-    cursor: pointer;
-    text-align: right;
-    text-decoration: none;
-    color: #6C6C6C;
-    background-color: #CCDEEB;
-    border: 2px solid #8AB3D0;
-    border-radius: 50px;
-}
-
-.visita a{
-    color: #8AB3D0;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.visita:hover{
-    background-color: #B6D0E2;
-}
-
-.visita:active{
-    transform: translateY(2px);
-}
-
-.contato{
+.sair{
+    margin-top: 20px;
     display: flex;
-    align-items: right;
-    margin-right: 15px;
+    justify-content: center;
+    margin-left: auto;
+    gap: 15px
 }

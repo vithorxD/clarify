@@ -45,7 +45,7 @@
             <h1 class="scroll1">Sane suas dúvidas!</h1>
             <p>Um site onde professores e alunos se ajudam para clarear seus estudos.</br>Mande sua pergunta como aluno, ou ajude como professor! De graça!</p>
             <h5>"A sabedoria é a própria recomepensa."</h5>
-            <button class="criar"><a href="#">Faça a sua pergunta aqui!</a></button>
+            <button class="criar"><a href="../html/criar.php">Faça a sua pergunta aqui!</a></button>
             <button class="visita"><a href="#">Visite exercícios enviados por professores!</a></button>
         </div>
         <div class="contato">
