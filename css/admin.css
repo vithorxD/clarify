@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    text-align: center;
+}
+
+.controle{
+    margin-top: 20px;
+    justify-content: center;
+    margin-left: auto;
+}
+
+h3{
+    text-align: center;
+}
+
+.table-responsive-xxl{
+    align-items: center;
+    align-content: center;
+    margin-left: 50px;
+    margin-right: 50px;
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+}
+
+.table{
+    border-radius: 30px;
+    border-color: #699EC3;
+}
+
+tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+tr:hover{
+    background-color: #699EC3;
+}
