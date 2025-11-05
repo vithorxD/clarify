@@ -98,6 +98,7 @@ body {
     padding: 12px 20px;
     display: flex;
     align-items: right;
+    justify-content: right;
     margin-right: 15px;
     border-radius: 25px;
     box-sizing: border-box;
@@ -267,7 +268,29 @@ body {
 }
 
 .contato{
-    display: flex;
-    align-items: right;
-    margin-right: 15px;
+    margin-top: 25px;
+    margin-left: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+
+.contato h1{
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    font-size: 80px;
+}
+
+.contato p{
+    flex-wrap: wrap;
+    color: #373737;
+    font-size: 30px;
+}
+
+.contato h5{
+    margin-top: 10px;
+    margin-left: 350px;
+    font-style: italic;
+    color: #373737;
+    flex-wrap: wrap;
+    font-size: 30px;
 }
