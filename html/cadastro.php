@@ -1,38 +1,48 @@
 <?php
 
+include ('/xampp/htdocs/clarify/php/conexao.php');
+
 if(isset($_POST['submit'])){
-    
-    //print_r('Nome: ' . $_POST['name']);
-    //print_r('<br>');
-    //print_r('Email: ' . $_POST['email']);
-    //print_r('<br>');
-    //print_r('Senha: ' . $_POST['senha']);
 
-    include_once('../php/conexao.php');
-
-    $nome = mysqli_real_escape_string($mysqli, $_POST['name']);
+    $nome = mysqli_real_escape_string($mysqli, $_POST['nome']);
     $email = mysqli_real_escape_string($mysqli, $_POST['email']);
     $senha = mysqli_real_escape_string($mysqli, md5($_POST['senha']));
+    //csenha é só pra comparacao rpzd nao precisa estar no banco viu :p
     $csenha = mysqli_real_escape_string($mysqli, md5($_POST['csenha']));
+    $serie = mysqli_real_escape_string($mysqli, ($_POST['serie']));
 
-    $select = mysqli_query($mysqli, "SELECT * FROM `cadastro` WHERE email = '$email' AND senha = '$senha'") or die('Erro na consulta');
+    // ve se as senha tao iguais isso é obvio gente vamos nos antenar
+    if ($senha != $csenha) {
+        $message[] = 'Senhas não coincidem.';
+    } else {
+        // ve se o email ja existe pq só pode existir um email por cadastro DURRRR
+        $select = mysqli_query($mysqli, "SELECT * FROM `usuario` WHERE email = '$email'") or die('Erro na consulta de email');
 
-    if(mysqli_num_rows($select) > 0){
-        $message[] = 'O usuário já existe.';
-    }else{
-        if($senha != $csenha){
-            $message[] = 'Senhas não coincidem.';
-        }else{
-            $insert = mysqli_query($mysqli, "INSERT INTO cadastro(nome,email,senha) VALUES ('$nome','$email','$senha')") or die('Erro na consulta');
-            if($insert){
-                $message[] = 'Cadastro concluído!';
-                header('Location: ../html/login.php');
-            }else{
-                $message[] = 'Cadastro falhou.';
+        if(mysqli_num_rows($select) > 0){
+            $message[] = 'Já existe um usuário cadastrado com este e-mail.';
+        } else {
+            // coloca os dados na tabela usuario
+            $insert_usuario = mysqli_query($mysqli, "INSERT INTO usuario(nome, email, senha) VALUES ('$nome', '$email', '$senha')") or die('Erro na inserção do usuário');
+            
+            if($insert_usuario){
+                // pega o id recem cadastrado, ja usa o auto increment ja sLK QUE TECNOLOGIA
+                $idUsuario = mysqli_insert_id($mysqli); 
+
+                // coloca no cadastroaluno
+                $insert_aluno = mysqli_query($mysqli, "INSERT INTO aluno(idUsuario, serie) VALUES ('$idUsuario', '$serie')") or die('Erro na inserção do aluno');
+
+                if ($insert_aluno) {
+                    $message[] = 'Cadastro de aluno concluído com sucesso!';
+                    header('Location: ../html/login.php');
+                    exit();
+                } else {
+                    $message[] = 'Cadastro de aluno falhou. Tente novamente.';
+                }
+            } else {
+                $message[] = 'Cadastro de usuário falhou.';
             }
         }
     }
-
 }
 ?>
 
@@ -63,8 +73,8 @@ if(isset($_POST['submit'])){
         ?>
         <div class="row mb-3">
             <div class="col-12 campo-input">
-                <label for="name">Nome:</label>
-                <input type="text" id="name" placeholder="Insira seu nome" name="name" required>
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" placeholder="Insira seu nome" name="nome" required>
             </div>
         </div>
         <div class="row mb-3">
@@ -82,8 +92,20 @@ if(isset($_POST['submit'])){
         <div class="row mb-3">
             <div class="col-12 campo-input">
                 <label for="csenha">Confirme sua senha:</label>
-                <input type="password" id="senha" placeholder="Confirme sua senha" name="csenha" required>
+                <input type="password" id="csenha" placeholder="Confirme sua senha" name="csenha" required>
             </div>
+        </div>
+        <div class="campo-input">
+            <label for="serie">Especialização:</label>
+            <select name="serie" id="serie">
+                <option value="6° Ano">6° Ano</option>
+                <option value="7° Ano">7° Ano</option>
+                <option value="8° Ano">8° Ano</option>
+                <option value="9° Ano">9° Ano</option>
+                <option value="1° Ano do Ensino Medio">1° Ano do Ensino Médio</option>
+                <option value="2° Ano do Ensino Medio">2° Ano do Ensino Médio</option>
+                <option value="3° Ano do Ensino Médio">3° Ano do Ensino Médio</option>
+            </select>
         </div>
         <div class="row mb-3 justify-content-center">
             <div class="col-12 text-center">

@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clarify</title>
     <link rel="shortcut icon" type="imagex/png" href="/images/clarifyv1.png">
-    <link rel="stylesheet" href="/css/confirmacao.css">
+    <link rel="stylesheet" href="../css/confirmacao.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body style="background-color: #4989B6;">
-    <form action="" style="flex-wrap: wrap;">
+    <form action="../php/upload_confirmacao" method="post" enctype="multipart/form-data" style="flex-wrap: wrap;">
         <div class="titulo">
             <h1>Precisamos de confirmação!</h1>
         </div>
@@ -25,7 +25,7 @@
             <label for="file">Selecione um arquivo</label>
             <input type="file" name="file" id="file">
         </div>
-        <button><a href="/html/telaprincipal.html" style="text-decoration: none; color:#EDF3F8;">CONFIRMAR</a></button>
+        <button type="submit" name="upload_confirmacao" ><a href="../html/home.html" style="text-decoration: none; color:#EDF3F8;">CONFIRMAR</a></button>
     </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
