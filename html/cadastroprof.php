@@ -1,47 +1,59 @@
 <?php
 
-//é a msm fita que o cadastro do aluno, qualquer duvida ve la q eu explico bonitinho
-include ('/xampp/htdocs/clarify/php/conexao.php');
+include '../php/conexao.php';
+session_start();
+
+$messages = [];
 
 if(isset($_POST['submit'])){
-
     $nome = mysqli_real_escape_string($mysqli, $_POST['nome']);
     $email = mysqli_real_escape_string($mysqli, $_POST['email']);
-    $senha = mysqli_real_escape_string($mysqli, md5($_POST['senha']));
-    $csenha = mysqli_real_escape_string($mysqli, md5($_POST['csenha']));
-    $especializacao = mysqli_real_escape_string($mysqli, ($_POST['especializacao'])); 
-    $escolaAtual = mysqli_real_escape_string($mysqli, ($_POST['escolaAtual'])); 
+    $senha = mysqli_real_escape_string($mysqli, md5($_POST['senha'])); 
+    $csenha = mysqli_real_escape_string($mysqli, md5($_POST['csenha'])); 
+    $especializacao = mysqli_real_escape_string($mysqli, $_POST['especializacao']);
+    
+    if($senha !== $csenha){
+        $messages[] = 'As senhas não coincidem!';
+    }
+    
+    $select = mysqli_query($mysqli, "SELECT idUsuario FROM usuario WHERE email = '$email'") or die('Erro na verificação de e-mail');
+    
+    if(mysqli_num_rows($select) > 0){
+        $messages[] = 'Já existe um usuário cadastrado com este e-mail.';
+    }
+    
+    if (empty($messages)) {
+        
+        // coloca tudo no usuario
+        $insert_usuario_query = "INSERT INTO usuario(nome, email, senha) VALUES ('$nome', '$email', '$senha')";
+        $insert_usuario = mysqli_query($mysqli, $insert_usuario_query);
+        
+        if($insert_usuario){
+            // obtem o id do usuario recem criado
+            $idUsuario = mysqli_insert_id($mysqli); 
 
-    if ($senha != $csenha) {
-        $message[] = 'Senhas não coincidem.';
-    } else {
-        $select = mysqli_query($mysqli, "SELECT * FROM `usuario` WHERE email = '$email'") or die('Erro na consulta de email');
+            // poe as especificacoes no prof 
+            $insert_professor_query = "
+                INSERT INTO professor(idUsuario, especializacao, statusConfirmacao) 
+                VALUES ('$idUsuario', '$especializacao', 'pendente')
+            ";
+            $insert_professor = mysqli_query($mysqli, $insert_professor_query);
 
-        if(mysqli_num_rows($select) > 0){
-            $message[] = 'Já existe um usuário cadastrado com este e-mail.';
-        } else {
-            $insert_usuario = mysqli_query($mysqli, "INSERT INTO usuario(nome, email, senha) VALUES ('$nome', '$email', '$senha')") or die('Erro na inserção do usuário');
-            
-            if($insert_usuario){
-                $idUsuario = mysqli_insert_id($mysqli); 
-
-                $insert_professor = mysqli_query($mysqli, "INSERT INTO professor(idUsuario, especializacao, escolaAtual) VALUES ('$idUsuario', '$especializacao', '$escolaAtual')") or die('Erro na inserção do professor');
-
-                if ($insert_professor) {
-                    $message[] = 'Cadastro de professor concluído com sucesso!';
-                    header('Location: ../html/confirmacao.php');
-                    exit(); 
-                } else {
-                    $message[] = 'Cadastro de professor falhou. Tente novamente.';
-                }
+            if($insert_professor){
+                // manda pra pagina de confirmaçao
+                header('Location: ../html/confirmacao.php');
+                exit();
             } else {
-                $message[] = 'Cadastro de usuário falhou.';
+                // apaga o cadastro do banco se deu erro
+                mysqli_query($mysqli, "DELETE FROM usuario WHERE idUsuario = '$idUsuario'");
+                $messages[] = 'Erro ao finalizar o cadastro do professor. Tente novamente: ' . mysqli_error($mysqli);
             }
+        } else {
+            $messages[] = 'Erro ao criar o usuário: ' . mysqli_error($mysqli);
         }
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,24 +70,24 @@ if(isset($_POST['submit'])){
             <h1>Faça seu cadastro</h1>
         </div>
         <div class="campo-input">
-            <label for="name">Nome:</label>
-            <input type="text" id="name" name="name">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome">
         </div>
         <div class="campo-input">
             <label for="email">Seu email:</label>
             <input type="email" id="email" name="email">
         </div>
         <div class="campo-input">
-            <label for="password">Crie uma senha:</label>
-            <input type="password" id="password" name="password">
+            <label for="senha">Crie uma senha:</label>
+            <input type="password" id="senha" name="senha">
         </div>
         <div class="campo-input">
-            <label for="password">Confirme sua senha:</label>
-            <input type="password" name="password" id="password">
+            <label for="csenha">Confirme sua senha:</label>
+            <input type="password" name="csenha" id="csenha">
         </div>
         <div class="campo-input">
-            <label for="especialização">Especialização:</label>
-            <select name="especialização" id="especialização">
+            <label for="especializacao">Especialização:</label>
+            <select name="especializacao" id="especializacao">
                 <option value="matematica">Matemática</option>
                 <option value="portugues">Português</option>
                 <option value="fisica">Física</option>

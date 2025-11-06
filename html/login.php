@@ -6,66 +6,78 @@ session_start();
 
 if(isset($_POST['submit'])){
     $email = mysqli_real_escape_string($mysqli, $_POST['email']);
-    $senha = mysqli_real_escape_string($mysqli, md5($_POST['senha']));
+    $senha = mysqli_real_escape_string($mysqli, md5($_POST['senha'])); 
 
-    // RAPAZEADA TIVE QUE USAR INNER JOIN PQP GISELE VOCE ESTARIA ORGULHOSA DE MIM
-    $select = mysqli_query($mysqli, 
-        "SELECT 
+    // procura na tabela de usuario
+    $select = mysqli_query($mysqli, "
+        SELECT 
             u.idUsuario, 
-            a.idAluno, 
-            p.idProfessor
+            u.ehAdmin 
         FROM 
-            usuario u
-        LEFT JOIN 
-            aluno a ON u.idUsuario = a.idUsuario
-        LEFT JOIN 
-            professor p ON u.idUsuario = p.idUsuario
+            usuario u 
         WHERE 
-            u.email = '$email' AND u.senha = '$senha'") or die('Erro na consulta');
+            u.email = '$email' AND u.senha = '$senha'
+    ") or die('Erro na consulta de login: ' . mysqli_error($mysqli));
 
     if(mysqli_num_rows($select) > 0){
         $row = mysqli_fetch_assoc($select);
         
-    // salva o id do usuario na sessao
-    $_SESSION['user_id'] = $row['idUsuario'];
+        $_SESSION['user_id'] = $row['idUsuario'];
+        $idUsuario = $row['idUsuario'];
 
-    // ve se é admin
-    if ($row['ehAdmin'] == 1) {
-        $_SESSION['user_type'] = 'admin';
-        header('Location: ../html/admin.php');
-        exit();
-    }
+        // ADMIN
+        if ($row['ehAdmin'] == 1) {
+            $_SESSION['user_type'] = 'admin';
+            header('Location: ../html/admin.php');
+            exit();
+        } 
         
-    // ve se é aluno ou prof e coloca na sessao especifica
-    if ($row['idAluno'] !== null) {
-        $_SESSION['user_type'] = 'aluno';
-        $_SESSION['aluno_id'] = $row['idAluno'];
-        header('Location: ../html/home.php');
-    } elseif ($row['idProfessor'] !== null) {
-        $_SESSION['user_type'] = 'professor';
-        $_SESSION['professor_id'] = $row['idProfessor']; 
-        header('Location: ../html/home.php');
+        // 3. PROF
+        $check_professor_query = mysqli_query($mysqli, "
+            SELECT 
+                cp.statusConfirmacao 
+            FROM 
+                professor cp 
+            WHERE 
+                cp.idUsuario = '$idUsuario'
+        ");
+
+        if (mysqli_num_rows($check_professor_query) > 0) {
+            $prof_row = mysqli_fetch_assoc($check_professor_query);
+            $status = $prof_row['statusConfirmacao'];
+            
+            $_SESSION['user_type'] = 'professor';
+
+            if ($status === 'pendente') {
+                // manda pra confirmaçao ate o admin aceitar
+                header('Location: ../html/aguardando_confirmacao.php'); 
+                exit();
+            } elseif ($status === 'confirmado') {
+                // pode entrar colega
+                header('Location: ../html/home.php');
+                exit();
+            }
+        }
+        
+        // ALUNO
+        $check_aluno_query = mysqli_query($mysqli, "
+            SELECT 
+                ca.idAluno 
+            FROM 
+                aluno ca 
+            WHERE 
+                ca.idUsuario = '$idUsuario'
+        ");
+
+        if (mysqli_num_rows($check_aluno_query) > 0) {
+            $_SESSION['user_type'] = 'aluno';
+            header('Location: ../html/home.php');
+            exit();
+        } 
+        
     } else {
-        // só pra ter o else ne nao faz mal nenhum
-        header('Location: ../html/home.php');
-    }
-    exit();
-    }else{
         $message[] = 'Email ou senha incorreto(s). Tente novamente.';
     }
-
-    // ve na tabela se ta pendente ou n
-    $check_status_query = "SELECT statusConfirmacao FROM professor WHERE idUsuario = '$idUsuario'";
-    $status_result = mysqli_query($mysqli, $check_status_query);
-    $status_row = mysqli_fetch_assoc($status_result);
-
-    if ($status_row && $status_row['statusConfirmacao'] === 'pendente') {
-        //nega o acesso e manda pra salinha
-        header('Location: ../html/aguardoprof.php');
-        exit();
-    } 
-    
-    
 }
 ?>
 

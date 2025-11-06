@@ -3,7 +3,11 @@
 include ('../php/conexao.php'); 
 session_start();
 
-//tenho q fazer o bglh se nao aceitar admin mas o login do admin nn ta pronto
+//ve se é admin
+if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'admin') {
+    header('Location: login.php');
+    exit();
+}
 
 // consulta o bd pra ver os professores pendentes
 $query = "

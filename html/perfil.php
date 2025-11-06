@@ -95,9 +95,9 @@ if(mysqli_num_rows($resultado) > 0){
     <form action="">
     <div class="perfil-container">
         
-        <h2>Olá, <?php echo htmlspecialchars($usuario['nome']); ?>!</h2>
+        <h2 class="titulo">Olá, <?php echo htmlspecialchars($usuario['nome']); ?>!</h2>
         
-        <p><strong>Tipo de Conta:</strong> 
+        <p class="subtitulo"><strong>Tipo de Conta:</strong> 
             <?php 
                 if ($tipoUsuario == 'aluno') {
                     echo 'Aluno';
@@ -109,17 +109,19 @@ if(mysqli_num_rows($resultado) > 0){
             ?>
         </p>
 
+        <div class="divisao">
         <div class="informacoes-gerais">
-            <h3>Dados Pessoais</h3>
-            <p><strong>Nome:</strong> <?php echo htmlspecialchars($usuario['nome']); ?></p>
-            <p><strong>Email:</strong> <?php echo htmlspecialchars($usuario['email']); ?></p>
+            <h3 class="dados">Dados Pessoais</h3>
+            <p class="nome"><strong>Nome:</strong> <?php echo htmlspecialchars($usuario['nome']); ?></p>
+            <p class="email"><strong>Email:</strong> <?php echo htmlspecialchars($usuario['email']); ?></p>
         </div>
 
         <?php if ($tipoUsuario == 'aluno'): ?>
             <div class="informacoes-aluno">
-                <h3>Dados do Aluno</h3>
-                <p><strong>Série:</strong> <?php echo htmlspecialchars($usuario['serie']); ?></p>
+                <h3 class="aluno">Dados do Aluno</h3>
+                <p class="serie"><strong>Série:</strong> <?php echo htmlspecialchars($usuario['serie']); ?></p>
                 </div>
+        </div>
         <?php endif; ?>
 
         <?php if ($tipoUsuario == 'professor'): ?>
@@ -130,8 +132,14 @@ if(mysqli_num_rows($resultado) > 0){
                 </div>
         <?php endif; ?>
 
-        <a href="editar_perfil.php" class="btn-editar">Editar Perfil</a> <br>
-        <a href="../php/logout.php">Sair</a>
+        <div class="botao">
+            <div class="editar">
+                <a href="../html/editar_perfil.php" class="btn">Editar Perfil</a>
+            </div>
+            <div class="sair">
+                <a href="../php/logout.php" class="btn">Sair</a>
+            </div>
+        </div>
     </div>
     </form>
 </body>

@@ -168,54 +168,82 @@ form{
     gap: 25px;
 }
 
-h1{
-    font-size: 50px;
+.titulo{
+    text-align: center;
+    font-size: 75px;
 }
 
-.campo-input{
-    border: none;
-    border-radius: 10px;
-    padding: 10px 20px;
-    background-color: #e8e8e8;
-    padding-left: 10px;
+.subtitulo{
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 10px;
 }
 
-.campo-input:disabled{
-    border: none;
-    border-radius: 10px;
-    padding: 10px 20px;
-    background-color: #e8e8e8;
-    padding-left: 10px;
+.divisao{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    gap: 100px;
 }
 
-button{
-    padding: 10px;
-    align-self: center;
-    width: 160px;
-    border-radius: 30px;
+.dados{
+    font-size: 40px;
+}
+
+.nome{
+    font-size :x-large;
+    background-color: #F8FBFC;
+}
+
+.email{
+    font-size: x-large;
+}
+
+.aluno{
+    font-size: 40px;
+}
+
+.serie{
+    font-size: x-large;
+}
+
+.botao{
+    display: flex;
+    justify-content: center;
+}
+
+.btn{
+    text-decoration: none;
+}
+
+.editar{
+    display: flex;
+    justify-content: center;
+    padding: 8px 50px;
+    font-size: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
     background-color: #8AB3D0;
     border: none;
-    color: white;
-    cursor: pointer;
-    text-transform: uppercase;
+    border-radius: 15px;
     box-shadow: 5px 5px #699EC3;
-}
-
-button:hover {
-    background-color: #699EC3;
-    box-shadow: 5px 5px #4989B6;
-}
-
-button:active {
-  background-color: #699EC3;
-  box-shadow: 5px 5px #4989B6;
-  transform: translateY(2px);
+    gap: 10px;
 }
 
 .sair{
-    margin-top: 20px;
     display: flex;
     justify-content: center;
-    margin-left: auto;
-    gap: 15px
+    padding: 8px 50px;
+    font-size: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #8AB3D0;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 5px 5px #699EC3;
+    gap: 10px;
 }
