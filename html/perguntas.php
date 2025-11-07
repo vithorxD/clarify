@@ -47,11 +47,33 @@ if (isset($_SESSION['erro'])) {
 </head>
 <body style="background-color: #EDF3F8;">
     <nav class="navbar">
-        <img src="/images/clarifyv1.png" alt="logo">
+        <img src="../images/clarifyv1.png" alt="logo">
         <div class="navbar-links">
+            </div>
+        
+        <div class="entrar">
+            <?php 
+            if (isset($_SESSION['user_id'])): 
+            ?>
+                <!-- criei o css dessas duas porras mas por algum motivo nao foi, tenta apagar e escrever literalmente
+                do zero sem copiar nada deus da as batalhas mais dificeis aos seus guerreiros mais fortes -->
+                <a href="../html/perfil.php" style="text-decoration: none;">
+                    <button class="perfil">Meu Per  fil</button>
+                </a>
+                <a href="../php/logout.php" style="text-decoration: none;">
+                    <button class="logout">Sair</button>
+                </a>
+            <?php 
+            else: 
+            ?>
+                <a href="../html/login.php" style="text-decoration: none;">
+                    <button class="login" >Login</button>
+                </a>
+                <a href="../html/cadastro.php" style="text-decoration: none;">
+                    <button class="cadastro" >Cadastro</button>
+                </a>
+            <?php endif; ?>
         </div>
-        <button class="cadastro"><a href="/html/cadastro.html">Primeira vez?</br>Cadastre-se aqui!</a></button>
-        <button class="login"><a href="/html/login.html">Já visitou o site?</br>Faça login aqui!</a></button>
     </nav>
     <nav class="navbar2">
         <div class="navbar-links2">
