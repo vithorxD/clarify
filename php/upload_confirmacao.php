@@ -1,71 +1,74 @@
 <?php
 
-include ('../php/conexao.php');
+include ('conexao.php'); 
 session_start();
 
-$idUsuario = $_SESSION['user_id'];
-$messages = [];
-$target_dir = "../uploads/documentos_professores/"; //onde vao ficar os arquivos
-//ve se os arquivos foram enviados
-if(isset($_POST['upload_submit']) && isset($_FILES['documento'])){
-    
-    $file = $_FILES['documento'];
-    $file_name = $file['name'];
-    $file_tmp_name = $file['tmp_name'];
-    $file_error = $file['error'];
-    $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
+$message = [];
 
-    // valida os arquivos
-    $allowed_extensions = array('pdf', 'jpg', 'jpeg', 'png');
+// 1. Verifica se o usuário é um professor logado
+if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'professor') {
+    header('Location: ../html/aguardoprof.php'); exit();
+}
+
+$idUsuario = $_SESSION['user_id'];
+
+if (isset($_POST['submit_upload']) && isset($_FILES['documento'])) {
     
-    if(!in_array($file_ext, $allowed_extensions)) {
-        $messages[] = "Tipo de arquivo não permitido. Use PDF, JPG ou PNG.";
-    } elseif ($file_error !== 0) {
-        $messages[] = "Ocorreu um erro no upload do arquivo.";
-    } else {
+    $file_name = $_FILES['documento']['name'];
+    $file_tmp = $_FILES['documento']['tmp_name'];
+    $file_error = $_FILES['documento']['error'];
+    
+    //define o diretorio onde os arquivos serao salvos
+    $diretorio_upload = '/xampp/htdocs/clarify/upload/documentosprofs/';
+    
+    //garante que o diretorio existe
+    if (!is_dir($diretorio_upload)) {
+        mkdir($diretorio_upload, 0777, true);
+    }
+
+    if ($file_error === 0) {
         
-        // poe um unico nome nos arquivos pra nao fuder tudo
-        $new_file_name = "prof_" . $idUsuario . "_" . uniqid() . "." . $file_ext;
-        $target_file = $target_dir . $new_file_name;
+        //gera um nome unico para o arquivo para evitar conflitos
+        $extensao = pathinfo($file_name, PATHINFO_EXTENSION);
+        $novo_nome_arquivo = 'prof_' . $idUsuario . '_' . time() . '.' . $extensao;
+        $caminho_destino = $diretorio_upload . $novo_nome_arquivo;
         
-        if (move_uploaded_file($file_tmp_name, $target_file)) {
+        //tenta mover o arquivo para o diretorio de upload
+        if (move_uploaded_file($file_tmp, $caminho_destino)) {
             
-            // atualiza o bd
-            $caminho_db = mysqli_real_escape_string($mysqli, $target_file);
+            //atualiza o caminho do documento no banco de dados
+            $caminho_db = mysqli_real_escape_string($mysqli, $caminho_destino);
             
             $update_query = "
-                UPDATE cadastroprofessor 
-                SET statusConfirmacao = 'pendente', 
-                    caminhoDocumento = '$caminho_db' 
+                UPDATE professor 
+                SET caminhoDocumento = '$caminho_db' 
                 WHERE idUsuario = '$idUsuario'
             ";
             
-            if(mysqli_query($mysqli, $update_query)){
-                $messages[] = "Documento enviado com sucesso! Aguarde a confirmação do administrador.";
-                // manda o prof pra uma tela de aguardo de confirmação
-                header("Location: ../html/aguardando_confirmacao.php");
+            if (mysqli_query($mysqli, $update_query)) {
+                header('Location: ../html/aguardoprof.php');
                 exit();
+                
             } else {
-                $messages[] = "Erro ao registrar o documento no banco de dados: " . mysqli_error($mysqli);
-                // remove arquivo se deu erro no banco
-                unlink($target_file);
+                $message[] = 'Erro ao atualizar o banco de dados: ' . mysqli_error($mysqli);
+                //apaga o arquivo do bd se houver falha no update
+                unlink($caminho_destino); 
             }
+            
         } else {
-            $messages[] = "Erro ao mover o arquivo para o servidor.";
+            $message[] = 'Erro ao fazer upload do arquivo. Verifique as permissões da pasta.';
         }
+        
+    } else {
+        $message[] = 'Erro no envio do arquivo: Código ' . $file_error . '. O arquivo pode ser muito grande.';
     }
-} else {
-    $messages[] = "Nenhum arquivo enviado.";
+}
+if (!empty($message)) {
+    echo "<h1>Erro no Upload</h1>";
+    foreach ($message as $msg) {
+        echo "<p style='color: red;'>$msg</p>";
+    }
+    echo "<p><a href='../html/confirmacao.html'>Tentar novamente</a></p>";
 }
 
-// mostra erros se tiver
-if (!empty($messages)) {
-    echo "<h1>Erro no Envio</h1>";
-    echo "<ul>";
-    foreach ($messages as $msg) {
-        echo "<li>$msg</li>";
-    }
-    echo "</ul>";
-    echo "<a href='../html/confirmacao.php'>Voltar ao formulário</a>";
-}
 ?>

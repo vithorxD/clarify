@@ -1,5 +1,9 @@
-<?php
-    session_start( );
+<?php 
+
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -13,13 +17,34 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body style="background-color: #EDF3F8;">
+    
     <nav class="navbar">
         <img src="../images/clarifyv1.png" alt="logo">
         <div class="navbar-links">
-        </div>
+            </div>
+        
         <div class="entrar">
-            <a href="../html/login.php" style="text-decoration: none;"><button class="login" >Login</button></a>
-            <a href="../html/cadastro.php" style="text-decoration: none;"><button class="cadastro" >Cadastro</button></a>
+            <?php 
+            if (isset($_SESSION['user_id'])): 
+            ?>
+                <!-- criei o css dessas duas porras mas por algum motivo nao foi, tenta apagar e escrever literalmente
+                do zero sem copiar nada deus da as batalhas mais dificeis aos seus guerreiros mais fortes -->
+                <a href="../html/perfil.php" style="text-decoration: none;">
+                    <button class="perfil">Meu Per  fil</button>
+                </a>
+                <a href="../php/logout.php" style="text-decoration: none;">
+                    <button class="logout">Sair</button>
+                </a>
+            <?php 
+            else: 
+            ?>
+                <a href="../html/login.php" style="text-decoration: none;">
+                    <button class="login" >Login</button>
+                </a>
+                <a href="../html/cadastro.php" style="text-decoration: none;">
+                    <button class="cadastro" >Cadastro</button>
+                </a>
+            <?php endif; ?>
         </div>
     </nav>
     <nav class="navbar2">
@@ -29,11 +54,9 @@
                 <div class="barra"></div>
                 <li><a href="/html/criar.php">Perguntas</a></li>
                 <div class="barra"></div>
-                <li><a href="/html/perguntas.html">Atividades</a></li>
+                <li><a href="/html/perguntas.php">Atividades</a></li>
                 <div class="barra"></div>
                 <li><a href="#scroll2">Contato</a></li>
-                <div class="barra"></div>
-                <li><a href="../html/perfil.php">Perfil</a></li>
             </ul>
         </div>
         <div class="form">

@@ -294,3 +294,57 @@ body {
     flex-wrap: wrap;
     font-size: 30px;
 }
+
+.perfil{
+    display: flex;
+    justify-content: center;
+    padding: 8px 50px;
+    font-size: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #8AB3D0;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 5px 5px #699EC3;
+    gap: 10px;
+    margin-right: 10px;
+}
+
+.perfil:hover {
+    background-color: #699EC3;
+    box-shadow: 5px 5px #4989B6;
+}
+
+.perfil:active {
+  background-color: #699EC3;
+  box-shadow: 5px 5px #4989B6;
+  transform: translateY(2px);
+}
+
+.logout{
+    display: flex;
+    justify-content: center;
+    padding: 8px 50px;
+    font-size: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #B6D0E2;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 5px 5px #8AB3D0;
+}
+
+.logout:hover {
+    background-color: #8AB3D0;
+    box-shadow: 5px 5px #699EC3;
+}
+
+.logout:active {
+  background-color: #8AB3D0;
+  box-shadow: 5px 5px #699EC3;
+  transform: translateY(2px);
+}

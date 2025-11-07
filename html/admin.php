@@ -55,15 +55,13 @@ $professores_pendentes = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
     <nav class="navbar2">
         <div class="navbar-links2">
             <ul>
-                <li class="right"><a href="#scroll1">Inicio</a></li>
+                <li class="right"><a href="../html/home.php">Inicio</a></li>
                 <div class="barra"></div>
-                <li><a href="/html/criar.php">Perguntas</a></li>
+                <li><a href="../html/perguntas.php">Perguntas</a></li>
                 <div class="barra"></div>
-                <li><a href="/html/perguntas.html">Atividades</a></li>
+                <li><a href="../html/exercicio.php">Atividades</a></li>
                 <div class="barra"></div>
                 <li><a href="#scroll2">Contato</a></li>
-                <div class="barra"></div>
-                <li><a href="../html/perfil.php">Perfil</a></li>
             </ul>
         </div>
         <div class="form">
@@ -71,7 +69,18 @@ $professores_pendentes = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
         </div>
     </nav>
     <h1>Painel de Administração</h1>
-    <p>Bem-vindo, Administrador. <a href="../php/logout.php">Sair</a></p>
+    <?php
+        // mensagem pra ver se deu certo
+        if (isset($_SESSION['admin_message'])):
+    ?>
+    <div style="background-color: #d4edda; color: #155724; padding: 10px; margin-bottom: 20px; border: 1px solid #c3e6cb; border-radius: 5px;">
+        <?php echo $_SESSION['admin_message']; ?>
+    </div>
+<?php
+    unset($_SESSION['admin_message']); // Limpa a mensagem após exibir
+endif;
+?>
+    <p>Bem-vindo, Administrador.</p>
     
     <h2>Professores Aguardando Confirmação</h2>
 
@@ -98,22 +107,21 @@ $professores_pendentes = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
                         <td><?php echo htmlspecialchars($professor['especializacao']); ?></td>
                         <td>
                             <?php 
-                            $caminho_doc = htmlspecialchars($professor['caminhoDocumento']);
-                            if ($caminho_doc): 
-                                // O link deve ser para o arquivo no servidor
-                                $link_documento = str_replace('../upload;documentoprofs', '/', $caminho_doc); 
-                            ?>
-                                <a href="<?php echo $link_documento; ?>" target="_blank" class="btn-ver">Ver Documento</a>
-                            <?php else: ?>
-                                Não enviado
-                            <?php endif; ?>
+                                $caminho_doc = htmlspecialchars($professor['caminhoDocumento']);
+                                if ($caminho_doc): 
+                                    $base_path_to_remove = '/xampp/htdocs/clarify/'; 
+                                    $link_documento = str_replace($base_path_to_remove, 'http://localhost/', $caminho_doc); 
+                                ?>
+                        <a href="<?php echo $link_documento; ?>" target="_blank" class="btn-ver">Ver Documento</a>
+                        <?php else: ?>
+                            Não enviado
+                        <?php endif; ?>
                         </td>
-                        <td>
-                            <form action="../php/aprovar_professor.php" method="POST" style="display:inline;">
+                            <form action="../php/aprovar_prof.php" method="POST" style="display:inline;">
                                 <input type="hidden" name="idProfessor" value="<?php echo $professor['idProfessor']; ?>">
                                 <button type="submit" name="acao" value="aprovar" class="btn-aprovar">Aprovar</button>
                             </form>
-                            <form action="../php/aprovar_professor.php" method="POST" style="display:inline;">
+                            <form action="../php/aprovar_prof.php" method="POST" style="display:inline;">
                                 <input type="hidden" name="idProfessor" value="<?php echo $professor['idProfessor']; ?>">
                                 <button type="submit" name="acao" value="rejeitar" style="background-color: #f44336; color: white; border: none; padding: 5px 10px; border-radius: 3px;">Rejeitar</button>
                             </form>
@@ -125,3 +133,4 @@ $professores_pendentes = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
     <?php endif; ?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
+</html>

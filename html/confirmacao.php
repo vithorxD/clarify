@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body style="background-color: #4989B6;">
-    <form action="../php/upload_confirmacao" method="post" enctype="multipart/form-data" style="flex-wrap: wrap;">
+    <form action="../php/upload_confirmacao.php" method="post" enctype="multipart/form-data" style="flex-wrap: wrap;">
         <div class="titulo">
             <h1>Precisamos de confirmação!</h1>
         </div>
@@ -22,10 +22,10 @@
             que estão recebendo o conhecimento com credibilidade.</p>
         </div>
         <div campo-input style="align-self: center;">
-            <label for="file">Selecione um arquivo</label>
-            <input type="file" name="file" id="file">
+            <label for="documento">Selecione um arquivo</label>
+            <input type="file" name="documento" id="documento" required>
         </div>
-        <button type="submit" name="upload_confirmacao" ><a href="../html/home.html" style="text-decoration: none; color:#EDF3F8;">CONFIRMAR</a></button>
+        <button type="submit" name="upload_confirmacao" value="CONFIRMAR">CONFIRMAR</button>
     </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>

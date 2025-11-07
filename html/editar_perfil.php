@@ -62,15 +62,13 @@ if ($usuario['serie'] !== null) {
     <nav class="navbar2">
         <div class="navbar-links2">
             <ul>
-                <li class="right"><a href="#scroll1">Inicio</a></li>
+                <li class="right"><a href="../html/home.php">Inicio</a></li>
                 <div class="barra"></div>
-                <li><a href="/html/criar.php">Perguntas</a></li>
+                <li><a href="../html/perguntas.php">Perguntas</a></li>
                 <div class="barra"></div>
-                <li><a href="/html/perguntas.html">Atividades</a></li>
+                <li><a href="../html/exercicio.php">Atividades</a></li>
                 <div class="barra"></div>
                 <li><a href="#scroll2">Contato</a></li>
-                <div class="barra"></div>
-                <li><a href="../html/perfil.php">Perfil</a></li>
             </ul>
         </div>
         <div class="form">

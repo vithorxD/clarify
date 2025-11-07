@@ -4,6 +4,8 @@ include ('/xampp/htdocs/clarify/php/conexao.php');
 
 if(isset($_POST['submit'])){
 
+    $message = [];
+
     $nome = mysqli_real_escape_string($mysqli, $_POST['nome']);
     $email = mysqli_real_escape_string($mysqli, $_POST['email']);
     $senha = mysqli_real_escape_string($mysqli, md5($_POST['senha']));
