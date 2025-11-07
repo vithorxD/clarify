@@ -47,46 +47,22 @@ if (session_status() == PHP_SESSION_NONE) {
             <?php endif; ?>
         </div>
     </nav>
-    <nav class="navbar2" **id="navbar2"**>
+    <nav class="navbar2">
         <div class="navbar-links2">
             <ul>
-                <li class="right"><a href="#introducao">Inicio</a></li>
+                <li class="right"><a href="../html/home.php">Inicio</a></li>
                 <div class="barra"></div>
                 <li><a href="../html/perguntas.php">Perguntas</a></li>
                 <div class="barra"></div>
                 <li><a href="/html/atividades.php">Atividades</a></li>
                 <div class="barra"></div>
-                <li><a href="#contato">Contato</a></li>
+                <li><a href="../html/home.php#contato">Contato</a></li>
             </ul>
         </div>
         <div class="form">
             <input type="email" class="pesquisa" placeholder="🔍 PESQUISAR">
         </div>
     </nav>
-    <div data-bs-spy="scroll" data-bs-target="#navbar2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0" **data-bs-offset="70"**>
-        <h1 id="introducao">Sane suas dúvidas!</h1>
-        <p class="texto">Um site onde professores e alunos se ajudam para clarear seus estudos.</br>Mande sua pergunta como aluno, ou ajude como professor! De graça!</p>
-        <h5 class="moira">"A sabedoria é a própria recomepensa."</h5>
-        <div class="container-fluid px-0 mt-4 mb-3"> 
-            <div class="d-flex flex-column flex-md-row gap-3 justify-content-start ms-30-md mb-2 mb-md-4">
-                <button class="criar" type="button">
-                    <a href="../html/criar.php">Faça a sua pergunta aqui!</a>
-                </button>
-                <button class="visita" type="button">
-                    <a href="#">Visite exercícios enviados por professores!</a>
-                </button>
-            </div>
-        </div>
-        <div class="divisoria"></div>
-        <h1 id="contato">Quem somos nós?</h1>
-        <p class="p1">Nós da Clarify buscamos auxiliar vocês alunos com suas dúvidas e seus estudos!</p></p>
-        <p class="p1">Sabemos como as vezes o acesso a profissionais da educação pode ser difícil e, mesmo com a internet,</br>não se pode confiar em tudo em que vê.</p>
-        <p class="p1">Por isso, nós criamos o Clarify, permitindo que você possa realizar suas pesquisas com garantia nos resultados!</p>
-        <p class="p1">Nosso sistema oferece maior acessibilidade a professores qualificados para tirar suas dúvidas</br>e ajudar a resolver questões, além de diversos exercícios criados por eles para você praticar.</p>
-        <p class="p1">Esperamos ajudar você da melhor maneira possível e contribuir no seu aprendizado!</p>
-        <p class="p2">Caso precise relatar algum problema, entre contato com a nossa empresa:</p>
-        <h3 class="email">clarify@gmail.com</h3>
-    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>
