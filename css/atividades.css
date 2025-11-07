@@ -10,10 +10,6 @@ body {
     padding: 0;
 }
 
-html {
-    scroll-padding-top: 70px;
-}
-
 .navbar {
     display: flex;
     position: relative;
@@ -181,121 +177,6 @@ html {
   background-color: #8AB3D0;
   box-shadow: 5px 5px #699EC3;
   transform: translateY(2px);
-}
-
-:target {
-    scroll-margin-top: 70px;
-}
-
-#introducao{
-    margin-top: 15px;
-    margin-left: 30px;
-    flex-wrap: wrap;
-    font-size: 70px;
-    margin-bottom: 20px;
-    scroll-margin-top: 70px;
-}
-
-.texto{
-    flex-wrap: wrap;
-    color: #373737;
-    font-size: 30px;
-    margin-left: 30px;
-    margin-bottom: 20px;
-}
-
-.moira{
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 10px;
-    padding: 0 30px;
-    font-style: italic;
-    color: #373737;
-    flex-wrap: wrap;
-    font-size: 25px;
-}
-
-@media (min-width: 768px) {
-    .ms-30-md {
-        margin-left: 30px !important; 
-    }
-}
-
-.criar{
-    padding: 15px 18px;
-    font-size: 30px;
-    cursor: pointer;
-    color: #6C6C6C;
-    background-color: #CCDEEB;
-    border: 2px solid #8AB3D0;
-    border-radius: 50px;
-}
-
-.visita {
-    padding: 15px 18px;
-    font-size: 30px;
-    cursor: pointer;
-    color: #6C6C6C;
-    background-color: #CCDEEB;
-    border: 2px solid #8AB3D0;
-    border-radius: 50px;
-}
-
-.criar a, .visita a {
-    color: #8AB3D0;
-    font-weight: bold;
-    text-decoration: none;
-}
-.criar:hover, .visita:hover {
-    background-color: #B6D0E2;
-}
-.criar:active, .visita:active {
-    transform: translateY(2px);
-}
-
-.divisoria{
-    height: 5px;
-    background-color: #B6D0E2;
-    margin-top: 40px;
-    margin-bottom: 20px;
-}
-
-#contato{
-    text-align: right;
-    flex-wrap: wrap;
-    font-size: 70px;
-    margin-right: 30px;
-    margin-bottom: 20px;
-    scroll-margin-top: 70px;
-}
-
-.p1{
-    flex-wrap: wrap;
-    color: #373737;
-    font-size: 30px;
-    text-align: right;
-    margin-right: 30px;
-}
-
-.p2{
-    flex-wrap: wrap;
-    color: #373737;
-    font-size: 30px;
-    text-align: right;
-    margin-right: 30px;
-    margin-top: 50px;
-}
-
-.email{
-    margin-top: 10px;
-    margin-right: 30px;
-    margin-bottom: 15px;
-    text-align: right;
-    font-style: italic;
-    color: #373737;
-    flex-wrap: wrap;
-    font-size: 50px;
 }
 
 .perfil{
