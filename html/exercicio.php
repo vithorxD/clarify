@@ -1,6 +1,49 @@
+<?php
+
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+include('../php/conexao.php');
+
+// busca todos os exercicios no banco
+$query_exercicios = "
+    SELECT 
+        e.idExercicio, 
+        e.titulo, 
+        e.descricao, 
+        e.materia, 
+        e.dataCriacao, 
+        u.nome AS nome_professor
+        FROM 
+        exercicio e
+    JOIN 
+        professor p ON e.idProfessor = p.idProfessor
+    JOIN 
+        usuario u ON p.idUsuario = u.idUsuario
+    ORDER BY 
+        e.dataCriacao DESC
+";
+
+$resultado_exercicios = mysqli_query($mysqli, $query_exercicios) or die('Erro ao buscar exercícios: ' . mysqli_error($mysqli));
+
+$exercicios = mysqli_fetch_all($resultado_exercicios, MYSQLI_ASSOC);
+
+// 2. Verifica mensagens de status (sucesso/erro) do processamento
+$status_msg = null;
+if (isset($_SESSION['sucesso'])) {
+    $status_msg = ['tipo' => 'success', 'mensagem' => $_SESSION['sucesso']];
+    unset($_SESSION['sucesso']);
+} elseif (isset($_SESSION['erro'])) {
+    $status_msg = ['tipo' => 'danger', 'mensagem' => $_SESSION['erro']];
+    unset($_SESSION['erro']);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
-<head >
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/exercicio.css">
@@ -8,71 +51,47 @@
     <link rel="shortcut icon" type="imagex/png" href="/images/clarifyv1.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
+
 <body style="background-color: #EDF3F8;">
-    <nav class="navbar">
-        <img src="../images/clarifyv1.png" alt="logo">
-        <div class="navbar-links">
+    <?php include '../php/navbar.php'; ?>
+    <div class="container" style="padding-top: 30px;">
+
+        <h1 class="mb-4 text-center" style="color: #28a745;">Caderno de Exercícios</h1>
+
+        <?php if ($status_msg): ?>
+            <div class="alert alert-<?php echo $status_msg['tipo']; ?>" role="alert">
+                <?php echo htmlspecialchars($status_msg['mensagem']); ?>
             </div>
-        
-        <div class="entrar">
-            <?php 
-            if (isset($_SESSION['user_id'])): 
-            ?>
-                <!-- criei o css dessas duas porras mas por algum motivo nao foi, tenta apagar e escrever literalmente
-                do zero sem copiar nada deus da as batalhas mais dificeis aos seus guerreiros mais fortes -->
-                <a href="../html/perfil.php" style="text-decoration: none;">
-                    <button class="perfil">Meu Per  fil</button>
+        <?php endif; ?>
+
+        <?php if (empty($exercicios)): ?>
+            <div class="alert alert-info text-center">
+                Ainda não há exercícios publicados.
+            </div>
+        <?php else: ?>
+
+            <?php foreach ($exercicios as $exercicio): ?>
+                <a href="visualizar_exercicio.php?id=<?php echo $exercicio['idExercicio']; ?>" style="text-decoration: none; color: inherit;">
+                    <div class="exercicio-card">
+                        <h3><?php echo htmlspecialchars($exercicio['titulo']); ?></h3>
+                        <p><?php
+                            // Exibe uma prévia da descrição/instruções
+                            echo htmlspecialchars(substr($exercicio['descricao'], 0, 150));
+                            if (strlen($exercicio['descricao']) > 150) echo '...';
+                            ?></p>
+                        <div class="exercicio-info">
+                            Criado por: <strong><?php echo htmlspecialchars($exercicio['nome_professor']); ?></strong> |
+                            Matéria: <span class="materia-tag-exercicio"><?php echo htmlspecialchars($exercicio['materia']); ?></span> |
+                            Em: <?php echo date('d/m/Y H:i', strtotime($exercicio['dataCriacao'])); ?>
+                            <br>
+                            <small class="text-primary">Clique para ver o exercício completo.</small>
+                        </div>
+                    </div>
                 </a>
-                <a href="../php/logout.php" style="text-decoration: none;">
-                    <button class="logout">Sair</button>
-                </a>
-            <?php 
-            else: 
-            ?>
-                <a href="../html/login.php" style="text-decoration: none;">
-                    <button class="login" >Login</button>
-                </a>
-                <a href="../html/cadastro.php" style="text-decoration: none;">
-                    <button class="cadastro" >Cadastro</button>
-                </a>
-            <?php endif; ?>
-        </div>
-    </nav>
-    <nav class="navbar2">
-        <div class="navbar-links2">
-            <ul>
-                <li class="right"><a href="../html/home.php">Inicio</a></li>
-                <div class="barra"></div>
-                <li><a href="../html/perguntas.php">Perguntas</a></li>
-                <div class="barra"></div>
-                <li><a href="../html/exercicio.php">Atividades</a></li>
-                <div class="barra"></div>
-                <li><a href="#scroll2">Contato</a></li>
-            </ul>
-        </div>
-        <div class="form">
-            <input type="email" class="pesquisa" placeholder="🔍 PESQUISAR">
-        </div>
-    </nav>
-    <div class="container-lg">
-        <div class="titulo">
-            <h1>O que é corpo dócil?</h1>
-        </div>
-            <p>a. É um corpo que se adapta facilmente às normas sociais porque possui baixa resistência biológica.</p>
-            <p>b. Refere-se a indivíduos que, por natureza, são submissos e não possuem autonomia moral.</p>
-            <p>c. Conceito foucaultiano que descreve um corpo disciplinado, que pode ser submetido, transformado e aperfeiçoado para ser útil e produtivo para a sociedade moderna.</p>
-            <p>d. É o corpo que internaliza valores éticos por meio da repetição de práticas religiosas.</p>
-            <button class ="resposta">Ver resposta</button>
-    </div>
-    <div class="container-lg">
-        <div class="titulo">
-            <h1>Resposta</h1>
-        </div>
-            <p>Corpo dócil é um conceito desenvolvido pelo filósofo francês Michel Foucault para descrever a maneira como os corpos são disciplinados e controlados pelas instituições sociais, como escolas, prisões e hospitais. Segundo Foucault, o corpo dócil é aquele que é treinado para obedecer às normas e regras estabelecidas pela sociedade, tornando-se assim um instrumento eficiente para a produção e reprodução do poder.</p>
-            <p>O corpo dócil é caracterizado por sua capacidade de ser moldado e controlado através de técnicas de disciplina, como a vigilância constante, a punição e a recompensa. Essas técnicas visam criar indivíduos que sejam produtivos, obedientes e conformistas, capazes de se adaptar às exigências do sistema social.</p>
-            <p>Foucault argumenta que o corpo dócil é uma forma de poder que opera de maneira sutil e invisível, penetrando nas relações sociais e influenciando o comportamento dos indivíduos. Ele destaca que o corpo dócil não é apenas um produto das instituições, mas também um agente ativo na reprodução do poder, uma vez que os indivíduos internalizam as normas e regras sociais e as aplicam a si mesmos e aos outros.</p>
-            <p>Em resumo, o conceito de corpo dócil de Foucault nos ajuda a compreender como o poder é exercido sobre os corpos e como as instituições sociais moldam o comportamento dos indivíduos, promovendo a conformidade e a obediência às normas estabelecidas.</p>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+            <?php endforeach; ?>
+
+        <?php endif; ?>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
+
 </html>

@@ -88,6 +88,7 @@ if(isset($_POST['submit'])){
         <div class="campo-input">
             <label for="especializacao">Especialização:</label>
             <select name="especializacao" id="especializacao">
+                <option value="" disable selected>Selecione sua especialização academica</option>
                 <option value="Matematica">Matemática</option>
                 <option value="Portugues">Português</option>
                 <option value="Física">Física</option>

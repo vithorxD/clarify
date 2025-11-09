@@ -43,7 +43,11 @@
     $mysqli->query("CREATE TABLE IF NOT EXISTS exercicio(
         idExercicio INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         idProfessor INT NOT NULL,
-        FOREIGN KEY (idProfessor) REFERENCES professor(idProAfessor)
+        titulo VARCHAR(255) NOT NULL,
+        descricao TEXT NOT NULL,
+        materia VARCHAR(100) NOT NULL,
+        dataCriacao DATETIME DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (idProfessor) REFERENCES professor(idProfessor)
     )");
 
     $mysqli->query("CREATE TABLE IF NOT EXISTS  perguntas(
@@ -59,12 +63,13 @@
 
     $mysqli->query("CREATE TABLE IF NOT EXISTS respostas(
         idRespostas INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-        idAluno INT NOT NULL,
+        idUsuario INT NOT NULL,
         idProfessor INT NOT NULL,
         idPerguntas INT NOT NULL,
-        status VARCHAR(50) NOT NULL,
-        FOREIGN KEY (idAluno) REFERENCES aluno(idAluno),
-        FOREIGN KEY (idProfessor) REFERENCES professor(idProfessor),
+        conteudo text NOT NULL,
+        dataResposta DATETIME DEFAULT CURRENT_TIMESTAMP,
+        ehProfessor tinyint(1) NOT NULL DEFAULT 0,
+        FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario),
         FOREIGN KEY (idPerguntas) REFERENCES perguntas(idPerguntas)
     )");
 
