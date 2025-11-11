@@ -126,20 +126,22 @@ if (isset($_SESSION['sucesso'])) {
             </div>
         <?php else: ?>
 
+            <div class="row row-cols-1 row-cols-md-2 g-4 h-50">
             <?php foreach ($exercicios as $exercicio): ?>
-                <a href="visualizar_exercicio.php?id=<?php echo $exercicio['idExercicio']; ?>" style="text-decoration: none; color: inherit;">
-                    <div class="exercicio-card">
-                        <h3><?php echo htmlspecialchars($exercicio['titulo']); ?></h3>
-                        <p><?php
-                            echo htmlspecialchars(substr($exercicio['descricao'], 0, 150));
-                            if (strlen($exercicio['descricao']) > 150) echo '...';
+                <div class="col">
+                    <div class="exercicio-card d-flex flex-column h-100">
+                        <h3 class="card-title"><?php echo htmlspecialchars($exercicio['titulo']); ?></h3>
+                        <p class="card-text"><?php
+                            echo htmlspecialchars(substr($exercicio['descricao'], 0, 100));
+                            if (strlen($exercicio['descricao']) > 100) echo '...';
                             ?></p>
                         <div class="exercicio-info">
                             Criado por: <strong><?php echo htmlspecialchars($exercicio['nome_professor']); ?></strong> |
                             Matéria: <span class="materia-tag-exercicio"><?php echo htmlspecialchars($exercicio['materia']); ?></span> |
                             Em: <?php echo date('d/m/Y H:i', strtotime($exercicio['dataCriacao'])); ?>
-                            <br>
-                            <small class="text-primary">Clique para ver o exercício completo.</small>
+                        </div>
+                        <div class="card-body mt-auto">
+                            <a href="visualizar_exercicio.php?id=<?php echo $exercicio['idExercicio']; ?>" style="text-decoration: none; color: inherit;" class="visualizar">Ver exercicio e resolução</a>
                         </div>
                     </div>
                 </a>

@@ -62,7 +62,8 @@ endif;
     <?php if (empty($professores_pendentes)): ?>
         <p>🎉 Não há professores aguardando confirmação no momento.</p>
     <?php else: ?>
-        <table>
+        <div class="table-responsive-xxl">
+        <table class="table">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -105,6 +106,7 @@ endif;
                 <?php endforeach; ?>
             </tbody>
         </table>
+        </div>
     <?php endif; ?>
     <a href="../php/logout.php">Sair</a>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
