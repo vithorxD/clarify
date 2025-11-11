@@ -22,7 +22,7 @@
                     <button class="login" >Login</button>
                 </a>
                 <a href="../html/cadastro.php" style="text-decoration: none;">
-                    <button class="cadastro" >Cadastro</button>
+                    <button class="cadastro">Cadastro</button>
                 </a>
             <?php endif; ?>
         </div>
