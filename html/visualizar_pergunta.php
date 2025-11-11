@@ -1,24 +1,19 @@
 <?php
-// Arquivo: ../html/visualizar_pergunta.php
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
 include ('../php/conexao.php'); 
-// ⚠️ Inclua o ob_start() se os erros de redirecionamento persistirem!
-// ob_start(); 
 
-// 1. Pega o ID da Pergunta da URL
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
-    // Redireciona se não houver um ID válido
     header('Location: perguntas.php');
     exit();
 }
 
 $id_pergunta = mysqli_real_escape_string($mysqli, $_GET['id']);
 
-// 2. Busca a Pergunta E o nome do usuário que a criou
+// busca a pergunta
 $query_pergunta = "
     SELECT 
         p.idPerguntas, p.titulo, p.descricao, p.materia, p.dataCriacao, 
@@ -33,13 +28,12 @@ $query_pergunta = "
 $resultado_pergunta = mysqli_query($mysqli, $query_pergunta);
 $pergunta = mysqli_fetch_assoc($resultado_pergunta);
 
-// Se a pergunta não for encontrada
 if (!$pergunta) {
     header('Location: perguntas.php');
     exit();
 }
 
-// 3. Busca as Respostas E o nome do usuário que as criou
+// busca as respostas
 $query_respostas = "
     SELECT 
         r.conteudo, r.dataResposta, 
@@ -61,7 +55,6 @@ $query_respostas = "
 $resultado_respostas = mysqli_query($mysqli, $query_respostas);
 $respostas = mysqli_fetch_all($resultado_respostas, MYSQLI_ASSOC);
 
-// Mensagem de sucesso para respostas
 $sucesso = null;
 if (isset($_SESSION['sucesso_resposta'])) {
     $sucesso = $_SESSION['sucesso_resposta'];
@@ -127,7 +120,7 @@ if (isset($_SESSION['sucesso_resposta'])) {
             <?php foreach ($respostas as $resposta): ?>
                 
                 <?php 
-                    // Determina se a resposta deve ter destaque de Professor
+                    //da destaque se for professor
                     $classe_destaque = ($resposta['is_professor_flag'] > 0) ? 'resposta-professor' : ''; 
                     $tag_professor = ($resposta['is_professor_flag'] > 0) ? 
                                      '<span class="professor-tag text-success">Professor (' . htmlspecialchars($resposta['prof_especializacao'] ?? 'Sem especialização') . ')</span>' : '';

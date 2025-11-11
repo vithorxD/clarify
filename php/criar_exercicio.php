@@ -45,8 +45,9 @@ if (isset($_POST['enviar_exercicio'])) {
     $titulo = mysqli_real_escape_string($mysqli, $_POST['titulo']);
     $descricao = mysqli_real_escape_string($mysqli, $_POST['descricao']);
     $materia = mysqli_real_escape_string($mysqli, $_POST['materia']);
+    $resolucao = mysqli_real_escape_string($mysqli, $_POST['resolucao']);
     
-    if (empty($titulo) || empty($descricao) || empty($materia)) {
+    if (empty($titulo) || empty($descricao) || empty($materia) || empty($resolucao)) {
         $_SESSION['erro'] = "Todos os campos do exercício são obrigatórios!";
         header('Location: ../html/criarE.php');
         exit();
@@ -54,8 +55,8 @@ if (isset($_POST['enviar_exercicio'])) {
     
     // monta e executa o insert
     $insert_query = "
-        INSERT INTO exercicio (idProfessor, titulo, descricao, materia)
-        VALUES ('$idProfessor', '$titulo', '$descricao', '$materia')
+        INSERT INTO exercicio (idProfessor, titulo, descricao, materia, resolucao)
+        VALUES ('$idProfessor', '$titulo', '$descricao', '$materia', '$resolucao')
     ";
     
     if (mysqli_query($mysqli, $insert_query)) {

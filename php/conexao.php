@@ -47,6 +47,7 @@
         descricao TEXT NOT NULL,
         materia VARCHAR(100) NOT NULL,
         dataCriacao DATETIME DEFAULT CURRENT_TIMESTAMP,
+        resolucao TEXT NOT NULL,
         FOREIGN KEY (idProfessor) REFERENCES professor(idProfessor)
     )");
 

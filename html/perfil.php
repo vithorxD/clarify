@@ -108,7 +108,7 @@ if(mysqli_num_rows($resultado) > 0){
 
         <div class="botao">
             <div class="editar">
-                <a href="../html/editar_perfil.php" class="btn" style="text-decoration: none;" type="button">Editar Perfil</a>
+                <a href="../html/editar_perfil.php" class="btn" style="text-decoration: none; " type="button">Editar Perfil</a>
             </div>
             <div class="sair">
                 <a href="../php/logout.php" class="btn" style="text-decoration: none;">Sair</a>

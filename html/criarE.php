@@ -26,17 +26,17 @@ session_start();
             <h1>Ajude os alunos com exercícios para treinar!</h1>
         </div>
         <div class="campo-input">
-            <input type="text" class="titulo" placeholder="Título do exercício" required>
+            <input type="text" class="titulo" name="titulo" placeholder="Título do exercício" required>
         </div>
         <div class="campo-input">
-            <input type="text" class="descricao" placeholder="Descreva a atividade aqui" required>
+            <input type="text" class="descricao" name="descricao" placeholder="Descreva a atividade aqui" required>
         </div>
         <div class="campo-input">
-            <input type="text" class="resposta" placeholder="Explique a resolução aqui" required>
+            <input type="text" class="resolucao" name="resolucao" placeholder="Explique a resolução aqui" required>
         </div>
         <div class="campo-input">
-            <label for="filtro">Materias relacionadas:</label>
-            <select name="filtro" id="filtro" required>
+            <label for="materia">Materias relacionadas:</label>
+            <select name="materia" id="materia" required>
                 <option value="" disabled selected>Selecione a matéria</option>
                 <option value="matematica">Matemática</option>
                 <option value="portugues">Português</option>
@@ -52,7 +52,7 @@ session_start();
             </select>
         </div>
         <div class="enviar">
-            <a href="#"><button>Enviar</button></a>
+            <button type="submit" name="enviar_exercicio">Enviar</button>
         </div>
     </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>

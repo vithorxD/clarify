@@ -1,0 +1,19 @@
+.exercicio-view {
+    background-color: #ffffff;
+    border-left: 6px solid #28a745; 
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.resolucao-card {
+    background-color: #e6f9ed; 
+    border: 1px solid #28a745;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+.resolucao-card h2 {
+    color: #28a745;
+    margin-bottom: 15px;
+}

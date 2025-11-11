@@ -33,17 +33,17 @@ session_start();
                 <label for="materia">Materias relacionadas:</label>
                 <select name="materia" id="materia" required>
                     <option value="" disable selected>Selecione a materia</option>
-                    <option value="matematica">Matemática</option>
-                    <option value="portugues">Português</option>
-                    <option value="fisica">Física</option>
-                    <option value="quimica">Química</option>
-                    <option value="biologia">Biologia</option>
-                    <option value="historia">História</option>
-                    <option value="filosofia">Filosofia</option>
-                    <option value="sociologia">Sociologia</option>
-                    <option value="geografia">Geografia</option>
-                    <option value="artes">Artes</option>
-                    <option value="ingles">Inglês</option>
+                    <option value="Matematica">Matemática</option>
+                    <option value="Portugues">Português</option>
+                    <option value="Fisica">Física</option>
+                    <option value="Quimica">Química</option>
+                    <option value="Biologia">Biologia</option>
+                    <option value="Historia">História</option>
+                    <option value="Filosofia">Filosofia</option>
+                    <option value="Sociologia">Sociologia</option>
+                    <option value="Geografia">Geografia</option>
+                    <option value="Artes">Artes</option>
+                    <option value="Ingles">Inglês</option>
                 </select>
             </div>
             <div class="enviar">

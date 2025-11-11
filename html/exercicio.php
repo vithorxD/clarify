@@ -6,7 +6,28 @@ if (session_status() == PHP_SESSION_NONE) {
 
 include('../php/conexao.php');
 
-// busca todos os exercicios no banco
+$condicoes = []; // array pra por cada where
+$clausula_where = "";
+
+// por materia
+if (isset($_GET['materia_filtro']) && !empty($_GET['materia_filtro'])) {
+    $materia_selecionada = mysqli_real_escape_string($mysqli, $_GET['materia_filtro']);
+    // poe no array
+    $condicoes[] = "e.materia = '$materia_selecionada'";
+}
+
+// por titulo
+if (isset($_GET['termo_pesquisa']) && !empty($_GET['termo_pesquisa'])) {
+    $termo = mysqli_real_escape_string($mysqli, $_GET['termo_pesquisa']);
+    // adiciona o like no array
+    $condicoes[] = "e.titulo LIKE '%$termo%'";
+}
+
+// se tiver os dois une
+if (!empty($condicoes)) {
+    $clausula_where = " WHERE " . implode(" AND ", $condicoes);
+}
+
 $query_exercicios = "
     SELECT 
         e.idExercicio, 
@@ -15,14 +36,15 @@ $query_exercicios = "
         e.materia, 
         e.dataCriacao, 
         u.nome AS nome_professor
-        FROM 
+    FROM 
         exercicio e
     JOIN 
-        professor p ON e.idProfessor = p.idProfessor
-    JOIN 
-        usuario u ON p.idUsuario = u.idUsuario
+        professor pr ON e.idProfessor = pr.idProfessor
+    JOIN    
+        usuario u ON pr.idUsuario = u.idUsuario
+    " . $clausula_where . "  
     ORDER BY 
-        e.dataCriacao DESC
+        e.dataCriacao DESC;
 ";
 
 $resultado_exercicios = mysqli_query($mysqli, $query_exercicios) or die('Erro ao buscar exercícios: ' . mysqli_error($mysqli));
@@ -58,6 +80,40 @@ if (isset($_SESSION['sucesso'])) {
 
         <h1 class="mb-4 text-center" style="color: #28a745;">Caderno de Exercícios</h1>
 
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <form method="GET" action="exercicio.php" class="d-flex">
+                    
+                    <input 
+                        type="text" 
+                        name="termo_pesquisa" 
+                        class="form-control me-2" 
+                        placeholder="Pesquisar por título ou palavra-chave..."
+                        value="<?php echo htmlspecialchars($_GET['termo_pesquisa'] ?? ''); ?>"
+                    >
+
+                    <select name="materia_filtro" class="form-select me-2" style="max-width: 250px;">
+                        <option value="">Todas as Matérias</option>
+                        <option value="Matematica" <?php echo (($_GET['materia_filtro'] ?? '') == 'Matematica') ? 'selected' : ''; ?>>Matemática</option>
+                        <option value="Portugues" <?php echo (($_GET['materia_filtro'] ?? '') == 'Portugues') ? 'selected' : ''; ?>>Portugues</option>
+                        <option value="Fisica" <?php echo (($_GET['materia_filtro'] ?? '') == 'Fisica') ? 'selected' : ''; ?>>Fisica</option>
+                        <option value="Quimica" <?php echo (($_GET['materia_filtro'] ?? '') == 'Quimica') ? 'selected' : ''; ?>>Quimica</option>
+                        <option value="Biologia" <?php echo (($_GET['materia_filtro'] ?? '') == 'Biologia') ? 'selected' : ''; ?>>Biologia</option>
+                        <option value="Historia" <?php echo (($_GET['materia_filtro'] ?? '') == 'Historia') ? 'selected' : ''; ?>>Historia</option>
+                        <option value="Filosofia" <?php echo (($_GET['materia_filtro'] ?? '') == 'Filosofia') ? 'selected' : ''; ?>>Filosofia</option>
+                        <option value="Sociologia" <?php echo (($_GET['materia_filtro'] ?? '') == 'Sociologia') ? 'selected' : ''; ?>>Sociologia</option>
+                        <option value="Geografia" <?php echo (($_GET['materia_filtro'] ?? '') == 'Geografia') ? 'selected' : ''; ?>>Geografia</option>
+                        <option value="Artes" <?php echo (($_GET['materia_filtro'] ?? '') == 'Artes') ? 'selected' : ''; ?>>Artes</option>
+                        <option value="Ingles" <?php echo (($_GET['materia_filtro'] ?? '') == 'Ingles') ? 'selected' : ''; ?>>Ingles</option>
+                        </select>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        Pesquisar
+                    </button>
+                </form>
+            </div>
+        </div>
+
         <?php if ($status_msg): ?>
             <div class="alert alert-<?php echo $status_msg['tipo']; ?>" role="alert">
                 <?php echo htmlspecialchars($status_msg['mensagem']); ?>
@@ -75,7 +131,6 @@ if (isset($_SESSION['sucesso'])) {
                     <div class="exercicio-card">
                         <h3><?php echo htmlspecialchars($exercicio['titulo']); ?></h3>
                         <p><?php
-                            // Exibe uma prévia da descrição/instruções
                             echo htmlspecialchars(substr($exercicio['descricao'], 0, 150));
                             if (strlen($exercicio['descricao']) > 150) echo '...';
                             ?></p>

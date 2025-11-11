@@ -186,6 +186,10 @@ h1{
     gap: 15px; 
     color: #373737;
 }
+.titulo{
+    border: none;
+    background-color: transparent;
+}
 
 .form-control {
     width: 600px;
