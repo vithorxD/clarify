@@ -10,24 +10,45 @@ body {
     padding: 0;
 }
 .pergunta-view {
-    background-color: #ffffff;
-    border-left: 6px solid #4989B6;
+    background-color: #B6D0E2;
+    border-left: 6px solid #8AB3D0;
     padding: 25px;
     margin-bottom: 25px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
+
+.btn{
+    cursor: pointer;
+    color: #6C6C6C;
+    background-color: #B6D0E2;
+    border-radius: 50px;
+    color: #373737;
+    font-weight: bold;
+}
+
+.btn:hover{
+    background-color: #8AB3D0;
+}
+
+.btn:active{
+    background-color: #8AB3D0;
+    transform: translateY(1px);
+}
+
 .resposta-card {
-    background-color: #f8f9fa;
-    border-left: 3px solid #ccc;
+    background-color: #CCDEEB;
+    border-left: 3px solid #B6D0E2;
     padding: 15px;
     margin-bottom: 10px;
     border-radius: 6px;
 }
+
 .resposta-professor {
     border-left: 3px solid #28a745;
     background-color: #e6f9ed;
 }
+
 .professor-tag {
     font-weight: bold;
     color: #28a745;

@@ -179,6 +179,13 @@ form{
     margin-bottom: 10px;
 }
 
+.divisoria{
+    height: 5px;
+    background-color: #8AB3D0;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
 .divisao{
     margin-top: 30px;
     margin-bottom: 30px;
@@ -192,7 +199,6 @@ form{
 
 .nome{
     font-size :x-large;
-    background-color: #F8FBFC;
 }
 
 .email{
