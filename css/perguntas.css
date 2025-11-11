@@ -9,58 +9,107 @@ body {
     margin: 0;
     padding: 0;
 }
-a{
+
+.sla{
+    display: flex;
+    justify-content: center;
+}
+
+.criar{
+    padding: 15px 200px;
+    font-size: 25px;
+    cursor: pointer;
+    color: #2F5775;
+    font-weight: bold;
+    background-color: #699EC3;
+    border: 2px solid #4989B6;
+    border-radius: 50px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.criar a{
+    color: #8AB3D0;
+    font-weight: bold;
     text-decoration: none;
-    color: white;
 }
-
-.card {
-    position: relative;
-    margin-top: 25px;
-    margin-left: 15px;
-    background-color: #B9D5E8;
-    transition: 0.3s;
-    width: 500px;
-    border-radius: 15px;
-    padding: 20px, 20px;
+.criar:hover{
+    background-color: #4989B6;
+    border-color: #3C7096;
 }
-
-.card:hover {
+.criar:active{
     transform: translateY(2px);
 }
 
+.row .col {
+    height: 100%;
+}
+
+.pergunta-card{
+    width: 100%;
+    min-height: 250px; 
+    height: 250px; 
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0; 
+    background-color: #B9D5E8;
+    transition: 0.3s;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.pergunta-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.row .col {
+    height: 100%;
+}
+
 .card-body{
-    padding: 20px 20px;
+    padding: 0 !important; 
+    margin-top: auto;
+    flex-shrink: 0;
+}
+
+.card-title{
+    width: fit-content;
+    font-size: 40px;
+    flex-shrink: 0;
 }
 
 .card-text{
-    margin-top: 15px;
+    font-size: 25px;
+    flex-grow: 100; 
+    flex-shrink: 1;
+    overflow: hidden; 
+    margin-top: 5px; 
+    margin-bottom: 5px;
+}
+
+.pergunta-info{
+    flex-shrink: 0;
 }
 
 .responder{
-    position: absolute;
-    right: 20px;
-    bottom: 20px;
-    padding: 8px 8px;
+    width: fit-content; 
+    display: block; 
+    padding: 8px 15px;
     background-color: #9ABFD8;
-    outline: none;
-    border: none;
-    border-radius: 25px;
-}
-
-.responder a{
     color: #373737;
     font-weight: bold;
-}
-
-.responder:hover{
-    background-color: #79A4C1;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 .responder:active{
     background-color: #79A4C1;
-    transform: translateY(2px);
-} 
+    transform: translateY(1px);
+}
 
 .pergunta {
     display: inline;

@@ -43,13 +43,18 @@ if (isset($_SESSION['erro'])) {
     <link rel="stylesheet" href="../css/perguntas.css">
     <title>Clarify</title>
     <link rel="shortcut icon" type="imagex/png" href="/images/clarifyv1.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body style="background-color: #EDF3F8;">
     <?php include '../php/navbar.php'; ?>
     <div class="container" style="padding-top: 30px;">
         
         <h1 class="mb-4 text-center" style="color: #4989B6;">Fórum de Dúvidas Recentes</h1>
+        <hr>
+        <div class="sla">
+            <a href="../html/criar.php"><button class="criar">Faça a sua própria pergunta</button></a>
+        </div>
+        
         
         <?php if ($erro): ?>
             <div class="alert alert-danger" role="alert">
@@ -64,27 +69,33 @@ if (isset($_SESSION['erro'])) {
             </div>
         <?php else: ?>
             
+            <div class="row row-cols-1 row-cols-md-2 g-4 h-50">
             <?php foreach ($perguntas as $pergunta): ?>
-                <a href="visualizar_pergunta.php?id=<?php echo $pergunta['idPerguntas']; ?>" style="text-decoration: none; color: inherit;">
-                    <div class="pergunta-card">
-                        <h3><?php echo htmlspecialchars($pergunta['titulo']); ?></h3>
-                        <p><?php 
-                            // mostra só os primeiros 150 caracteres da descrição
-                            echo htmlspecialchars(substr($pergunta['descricao'], 0, 150)); 
-                            if (strlen($pergunta['descricao']) > 150) echo '...';
-                        ?></p>
-                        <div class="pergunta-info">
-                            Postado por: <strong><?php echo htmlspecialchars($pergunta['nome_usuario']); ?></strong> | 
-                            Matéria: <span class="materia-tag"><?php echo htmlspecialchars($pergunta['materia']); ?></span> | 
-                            Em: <?php echo date('d/m/Y H:i', strtotime($pergunta['dataCriacao'])); ?>
-                            <br>
-                            <small class="text-primary">Clique para ver respostas e responder.</small>
+                <div class="col">
+                    <div class="pergunta-card d-flex flex-column h-100">
+                        <h3 class="card-title"><?php echo htmlspecialchars($pergunta['titulo']); ?></h3>
+                        <p class="card-text">
+                                    <?php
+                                        // mostra só os primeiros 150 caracteres da descrição
+                                        echo htmlspecialchars(substr($pergunta['descricao'], 0, 100));
+                                        if (strlen($pergunta['descricao']) > 100) echo '...';
+                                    ?>
+                                </p>
+            
+                            <div class="pergunta-info">
+                                Postado por: <strong><?php echo htmlspecialchars($pergunta['nome_usuario']); ?></strong> |
+                                Matéria: <span class="materia-tag"><?php echo htmlspecialchars($pergunta['materia']); ?></span> |
+                                Em: <?php echo date('d/m/Y H:i', strtotime($pergunta['dataCriacao'])); ?>
+                            </div>
+                        <div class="card-body mt-auto">
+                            <a href="visualizar_pergunta.php?id=<?php echo $pergunta['idPerguntas']; ?>" class="responder">Visualizar respostas e responder</a>
                         </div>
                     </div>
-                </a>
-            <?php endforeach; ?>
+            </div>
 
-        <?php endif; ?>
+                <?php endforeach; ?>
+
+            <?php endif; ?>
         
     </div>
     

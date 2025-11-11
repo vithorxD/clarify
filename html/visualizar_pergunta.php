@@ -73,10 +73,10 @@ if (isset($_SESSION['sucesso_resposta'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/visualizar_pergunta.css">
     <title>Clarify</title>
     <link rel="shortcut icon" type="imagex/png" href="/images/clarifyv1.png">
-    <link rel="stylesheet" href="../css/perfil.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body style="background-color: #EDF3F8;">
 
@@ -109,7 +109,7 @@ if (isset($_SESSION['sucesso_resposta'])) {
                     <div class="form-group mb-3">
                         <textarea name="conteudo_resposta" class="form-control" rows="5" placeholder="Digite sua resposta aqui..." required></textarea>
                     </div>
-                    <button type="submit" name="enviar_resposta" class="btn btn-primary">Enviar Resposta</button>
+                    <button type="submit" name="enviar_resposta" class="btn">Enviar Resposta</button>
                 </form>
             </div>
             <hr>
@@ -139,10 +139,12 @@ if (isset($_SESSION['sucesso_resposta'])) {
                         Respondido por: 
                         <strong><?php echo htmlspecialchars($resposta['nome_usuario']); ?></strong>
                         <?php echo $tag_professor; ?>
-                        Em: <?php echo date('d/m/Y H:i', strtotime($resposta['dataResposta'])); ?>
+                        | Em: <?php echo date('d/m/Y H:i', strtotime($resposta['dataResposta'])); ?>
                     </small>
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>
         
     </div>
+</body>
+</html>

@@ -82,6 +82,7 @@ if(mysqli_num_rows($resultado) > 0){
                 }
             ?>
         </p>
+        <hr>
 
         <div class="divisao">
         <div class="informacoes-gerais">
