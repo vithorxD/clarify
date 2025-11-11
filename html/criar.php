@@ -24,10 +24,10 @@ session_start();
                 <h1>Faça aqui a sua pergunta!</h1>
             </div>
             <div class="campo-input">
-                <input name= "titulo" type="text" class="titulo" placeholder="Título da pergunta" required>
+                <input name="titulo" type="text" class="titulo" placeholder="Título da pergunta" required>
             </div>
-            <div class="campo-input">
-                <input name="descricao" type="text" class="descricao" placeholder="Descreva sua dúvida aqui" required>
+            <div class="form-group mb-3">
+                <textarea name="descricao" class="form-control" rows="5" placeholder="Digite sua dúvida aqui..." required></textarea>
             </div>
             <div class="campo-input">
                 <label for="materia">Materias relacionadas:</label>
@@ -47,7 +47,7 @@ session_start();
                 </select>
             </div>
             <div class="enviar">
-                <button type="submit" name="enviar_pergunta">Enviar</button></a>
+                <button type="submit" name="enviar_pergunta">Enviar</button>
             </div>
         </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
