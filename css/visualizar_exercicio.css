@@ -1,17 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
 .exercicio-view {
-    background-color: #ffffff;
-    border-left: 6px solid #28a745; 
+    background-color: #B6D0E2;
+    border-left: 6px solid #8AB3D0;
     padding: 25px;
     margin-bottom: 25px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 .resolucao-card {
-    background-color: #e6f9ed; 
-    border: 1px solid #28a745;
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 8px;
+    background-color: #CCDEEB;
+    border-left: 3px solid #B6D0E2;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 6px;
 }
 .resolucao-card h2 {
     color: #28a745;

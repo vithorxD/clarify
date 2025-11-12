@@ -73,7 +73,7 @@ if (isset($_SESSION['erro'])) {
         
     
 
-        <h1 class="mb-4 text-center" style="color: #4989B6;">Fórum de Dúvidas Recentes</h1>
+        <h1 class="mb-4 text-center" style="color: #142633;">Fórum de Dúvidas Recentes</h1>
         <hr>
         <div class="sla">
             <a href="../html/criar.php"><button class="criar">Faça a sua própria pergunta</button></a>
@@ -106,9 +106,7 @@ if (isset($_SESSION['erro'])) {
                         <option value="Ingles" <?php echo (($_GET['materia_filtro'] ?? '') == 'Ingles') ? 'selected' : ''; ?>>Ingles</option>
                         </select>
                     
-                    <button type="submit" class="btn btn-primary">
-                        Pesquisar
-                    </button>
+                    <button type="submit" class="btn btn-primary pesquisar" style="background-color: #699EC3; border: none; border-radius: 10px;">Pesquisar</button>
                 </form>
             </div>
         </div>

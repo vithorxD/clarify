@@ -78,7 +78,11 @@ if (isset($_SESSION['sucesso'])) {
     <?php include '../php/navbar.php'; ?>
     <div class="container" style="padding-top: 30px;">
 
-        <h1 class="mb-4 text-center" style="color: #28a745;">Caderno de Exercícios</h1>
+        <h1 class="mb-4 text-center" style="color: #142633;">Caderno de Exercícios</h1>
+        <hr>
+        <div class="sla">
+            <a href="../html/criarE.php"><button class="criar">Ajude os alunos a estudarem com exercícios feitos por você!</button></a>
+        </div>
 
         <div class="row mb-4">
             <div class="col-md-12">
@@ -107,9 +111,7 @@ if (isset($_SESSION['sucesso'])) {
                         <option value="Ingles" <?php echo (($_GET['materia_filtro'] ?? '') == 'Ingles') ? 'selected' : ''; ?>>Ingles</option>
                         </select>
                     
-                    <button type="submit" class="btn btn-primary">
-                        Pesquisar
-                    </button>
+                    <button type="submit" class="btn btn-primary pesquisar" style="background-color: #699EC3; border: none; border-radius: 10px;">Pesquisar</button>
                 </form>
             </div>
         </div>
@@ -141,10 +143,10 @@ if (isset($_SESSION['sucesso'])) {
                             Em: <?php echo date('d/m/Y H:i', strtotime($exercicio['dataCriacao'])); ?>
                         </div>
                         <div class="card-body mt-auto">
-                            <a href="visualizar_exercicio.php?id=<?php echo $exercicio['idExercicio']; ?>" style="text-decoration: none; color: inherit;" class="visualizar">Ver exercicio e resolução</a>
+                            <a href="visualizar_exercicio.php?id=<?php echo $exercicio['idExercicio']; ?>" style="text-decoration: none; color: inherit;" class="visualizar">Ver exercício e resolução</a>
                         </div>
                     </div>
-                </a>
+            </div>
             <?php endforeach; ?>
 
         <?php endif; ?>
