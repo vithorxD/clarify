@@ -70,8 +70,6 @@ if (isset($_SESSION['erro'])) {
 <body style="background-color: #EDF3F8;">
     <?php include '../php/navbar.php'; ?>
     <div class="container" style="padding-top: 30px;">
-        
-    
 
         <h1 class="mb-4 text-center" style="color: #4989B6;">Fórum de Dúvidas Recentes</h1>
         <hr>

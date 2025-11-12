@@ -123,7 +123,7 @@ if (isset($_SESSION['sucesso_resposta'])) {
                     //da destaque se for professor
                     $classe_destaque = ($resposta['is_professor_flag'] > 0) ? 'resposta-professor' : ''; 
                     $tag_professor = ($resposta['is_professor_flag'] > 0) ? 
-                                     '<span class="professor-tag text-success">Professor (' . htmlspecialchars($resposta['prof_especializacao'] ?? 'Sem especialização') . ')</span>' : '';
+                                     '<span class="professor-tag text-success">Professor (' . htmlspecialchars($resposta['materia'] ?? 'Sem especialização') . ')</span>' : '';
                 ?>
                 
                 <div class="resposta-card <?php echo $classe_destaque; ?>">

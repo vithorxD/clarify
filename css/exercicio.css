@@ -10,6 +10,41 @@ body {
     padding: 0;
 }
 
+.sla{
+    display: flex;
+    justify-content: center;
+}
+
+.criar{
+    padding: 15px 200px;
+    font-size: 25px;
+    cursor: pointer;
+    color: #2F5775;
+    font-weight: bold;
+    background-color: #699EC3;
+    border: 2px solid #4989B6;
+    border-radius: 50px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.criar a{
+    color: #8AB3D0;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.criar:hover{
+    background-color: #4989B6;
+    border-color: #3C7096;
+}
+
+.criar:active{
+    transform: translateY(2px);
+}
+
+
 .exercicio-card {
             background-color: #ffffff;
             border-left: 5px solid #28a745; 

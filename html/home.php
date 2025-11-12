@@ -23,14 +23,14 @@ if (session_status() == PHP_SESSION_NONE) {
     <div data-bs-spy="scroll" data-bs-target="#navbar2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0" **data-bs-offset="70"**>
         <h1 id="introducao">Sane suas dúvidas!</h1>
         <p class="texto">Um site onde professores e alunos se ajudam para clarear seus estudos.</br>Mande sua pergunta como aluno, ou ajude como professor! De graça!</p>
-        <h5 class="moira">"A sabedoria é a própria recomepensa."</h5>
+        <h5 class="moira">"A sabedoria é a própria recompensa."</h5>
         <div class="container-fluid px-0 mt-4 mb-3"> 
             <div class="d-flex flex-column flex-md-row gap-3 justify-content-start ms-30-md mb-2 mb-md-4">
                 <button class="criar" type="button">
                     <a href="../html/criar.php">Faça a sua pergunta aqui!</a>
                 </button>
                 <button class="visita" type="button">
-                    <a href="#">Visite exercícios enviados por professores!</a>
+                    <a href="../html/exercicio.php">Visite exercícios enviados por professores!</a>
                 </button>
             </div>
         </div>

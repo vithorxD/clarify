@@ -53,17 +53,7 @@ if (!$exercicio) {
 // A permissão é TRUE se:
 // a) O usuário logado é o mesmo que criou o exercício.
 // b) O usuário logado é um Administrador (ehAdmin = 1).
-$pode_ver_resolucao = false;
-if ($idUsuarioLogado) {
-    // Verifica se o ID do professor é o mesmo ID do usuário logado
-    if ($idUsuarioLogado == $exercicio['idUsuarioProfessor']) {
-        $pode_ver_resolucao = true;
-    }
-    // Verifica se é administrador
-    if ($ehAdmin == 1) {
-        $pode_ver_resolucao = true;
-    }
-}
+
 ?>
 
 <!DOCTYPE html>
@@ -99,7 +89,7 @@ if ($idUsuarioLogado) {
         
         <h2 class="mt-5">Resolução Oficial</h2>
 
-        <?php if ($pode_ver_resolucao): ?>
+        <?php if ($exercicio['resolucao']): ?>
             <div class="resolucao-card">
                 <h2>Conteúdo da Resolução</h2>
                 <p><?php echo nl2br(htmlspecialchars($exercicio['resolucao'])); ?></p>

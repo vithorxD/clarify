@@ -74,11 +74,51 @@ if (isset($_SESSION['sucesso'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 
+    <style>
+        .sla{
+            display: flex;
+            justify-content: center;
+        }
+
+        .criar{
+            padding: 15px 200px;
+            font-size: 25px;
+            cursor: pointer;
+            color: #2F5775;
+            font-weight: bold;
+            background-color: #699EC3;
+            border: 2px solid #4989B6;
+            border-radius: 50px;
+            margin-bottom: 20px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .criar a{
+            color: #8AB3D0;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .criar:hover{
+            background-color: #4989B6;
+            border-color: #3C7096;
+        }
+
+        .criar:active{
+            transform: translateY(2px);
+        }
+    </style>
+
 <body style="background-color: #EDF3F8;">
     <?php include '../php/navbar.php'; ?>
     <div class="container" style="padding-top: 30px;">
 
         <h1 class="mb-4 text-center" style="color: #28a745;">Caderno de Exercícios</h1>
+        <hr>
+        <div class="sla">
+            <a href="../html/criarE.php"><button class="criar">Faça a sua própria pergunta</button></a>
+        </div>
 
         <div class="row mb-4">
             <div class="col-md-12">

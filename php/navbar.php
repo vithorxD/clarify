@@ -1,8 +1,5 @@
 <nav class="navbar">
         <img src="../images/clarifyv1.png" alt="logo">
-        <div class="navbar-links">
-            </div>
-        
         <div class="entrar">
             <?php 
             if (isset($_SESSION['user_id'])): 
@@ -49,6 +46,7 @@
             border-bottom-color: #2F5775;
             border-bottom-style: solid;
             border-bottom-width: 5px;
+            width: 100%;
         }
 
         .navbar img {
@@ -124,24 +122,6 @@
             background-color: #4989B6;
         }
 
-        .pesquisa{
-            width: 250px;
-            padding: 12px 20px;
-            display: flex;
-            align-items: right;
-            justify-content: right;
-            margin-right: 15px;
-            border-radius: 25px;
-            box-sizing: border-box;
-            background-color: #CCDEEB;
-            color: #373737;
-            border: none;
-        }
-
-        .pesquisa, input:hover, input:active, input:focus {
-        outline: 0;
-        }
-
         .barra{
             background-color: white;
             height: 30px;
@@ -152,114 +132,47 @@
 
         .entrar{
             display: flex;
-            align-items: right;
+            align-items: center;
+            margin-left: auto;
             margin-right: 15px;
+            gap: 10px;
         }
 
-        .login{
+        .perfil, .logout, .login, .cadastro {
             display: flex;
             justify-content: center;
-            padding: 8px 50px;
+            min-width: 140px; /* Garante tamanho consistente */
+            max-width: 170px;
+            width: 100%;
+            padding: 8px 50px; /* Padding ajustado */
             font-size: 15px;
             cursor: pointer;
             text-decoration: none;
             outline: none;
             color: #fff;
-            background-color: #8AB3D0;
             border: none;
             border-radius: 15px;
-            box-shadow: 5px 5px #699EC3;
-            gap: 10px;
-            margin-right: 10px;
+            /* Aqui definimos apenas os estilos comuns para todos os botões */
         }
 
-        .login:hover {
+        /* Estilos de cor e sombra específicos para a primeira coluna de botões (Perfil/Login) */
+        .perfil, .login {
+            background-color: #8AB3D0;
+            box-shadow: 5px 5px #699EC3;
+            margin-right: 10px; /* Mantém o espaçamento entre eles */
+        }
+        .perfil:hover, .login:hover {
             background-color: #699EC3;
             box-shadow: 5px 5px #4989B6;
         }
 
-        .login:active {
-        background-color: #699EC3;
-        box-shadow: 5px 5px #4989B6;
-        transform: translateY(2px);
-        }
-
-        .cadastro{
-            display: flex;
-            justify-content: center;
-            padding: 8px 50px;
-            font-size: 15px;
-            cursor: pointer;
-            text-decoration: none;
-            outline: none;
-            color: #fff;
+        /* Estilos de cor e sombra específicos para a segunda coluna de botões (Sair/Cadastro) */
+        .logout, .cadastro {
             background-color: #B6D0E2;
-            border: none;
-            border-radius: 15px;
             box-shadow: 5px 5px #8AB3D0;
         }
-
-        .cadastro:hover {
+        .logout:hover, .cadastro:hover {
             background-color: #8AB3D0;
             box-shadow: 5px 5px #699EC3;
-        }
-
-        .cadastro:active {
-            background-color: #8AB3D0;
-            box-shadow: 5px 5px #699EC3;
-            transform: translateY(2px);
-        }
-        .perfil{
-            display: flex;
-            justify-content: center;
-            padding: 8px 50px;
-            font-size: 15px;
-            cursor: pointer;
-            text-decoration: none;
-            outline: none;
-            color: #fff;
-            background-color: #8AB3D0;
-            border: none;
-            border-radius: 15px;
-            box-shadow: 5px 5px #699EC3;
-            gap: 10px;
-            margin-right: 10px;
-        }
-
-        .perfil:hover {
-            background-color: #699EC3;
-            box-shadow: 5px 5px #4989B6;
-        }
-
-        .perfil:active {
-            background-color: #699EC3;
-            box-shadow: 5px 5px #4989B6;
-            transform: translateY(2px);
-        }
-
-        .logout{
-            display: flex;
-            justify-content: center;
-            padding: 8px 50px;
-            font-size: 15px;
-            cursor: pointer;
-            text-decoration: none;
-            outline: none;
-            color: #fff;
-            background-color: #B6D0E2;
-            border: none;
-            border-radius: 15px;
-            box-shadow: 5px 5px #8AB3D0;
-        }
-
-        .logout:hover {
-            background-color: #8AB3D0;
-            box-shadow: 5px 5px #699EC3;
-        }
-
-        .logout:active {
-            background-color: #8AB3D0;
-            box-shadow: 5px 5px #699EC3;
-            transform: translateY(2px);
         }
     </style>
