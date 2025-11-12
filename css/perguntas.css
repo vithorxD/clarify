@@ -17,7 +17,7 @@ body {
 
 .criar{
     padding: 15px 200px;
-    font-size: 25px;
+    font-size: 20px;
     cursor: pointer;
     color: #2F5775;
     font-weight: bold;
@@ -48,8 +48,8 @@ body {
 
 .pergunta-card{
     width: 100%;
-    min-height: 250px; 
-    height: 250px; 
+    min-height: 200px; 
+    height: 200px; 
     display: flex;
     flex-direction: column;
     margin-bottom: 0; 
@@ -75,17 +75,22 @@ body {
 }
 
 .card-title{
-    width: fit-content;
     font-size: 40px;
     flex-shrink: 0;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    width: 100%;
 }
 
 .card-text{
     font-size: 25px;
-    flex-grow: 100; 
-    flex-shrink: 1;
+    flex-shrink: 0;
+    white-space: nowrap; 
     overflow: hidden; 
-    margin-top: 5px; 
+    text-overflow: ellipsis; 
+    width: 100%;
+    margin-top: 5px;
     margin-bottom: 5px;
 }
 

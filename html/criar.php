@@ -27,12 +27,12 @@ session_start();
                 <input name="titulo" type="text" class="titulo" placeholder="Título da pergunta" required>
             </div>
             <div class="form-group mb-3">
-                <textarea name="descricao" class="form-control" rows="5" placeholder="Digite sua dúvida aqui..." required></textarea>
+                <textarea name="descricao" class="form-control" id="descricao-pergunta" rows="8" placeholder="Digite sua dúvida aqui..." required></textarea>
             </div>
             <div class="campo-input">
                 <label for="materia">Materias relacionadas:</label>
-                <select name="materia" id="materia" required>
-                    <option value="" disable selected>Selecione a materia</option>
+                <select name="materia" id="materia" class="form-select me-2" style="max-width: 250px;" scalerequired>
+                    <option value="" disable selected>Selecione a matéria</option>
                     <option value="Matematica">Matemática</option>
                     <option value="Portugues">Português</option>
                     <option value="Fisica">Física</option>
