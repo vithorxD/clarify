@@ -35,7 +35,7 @@ if (isset($_POST['enviar_pergunta'])) {
         exit();
     } else {
         $_SESSION['erro'] = 'Erro ao publicar a pergunta: ' . mysqli_error($mysqli);
-        header('Location: ../html/criar.php');
+        header('Location: ../html/perguntas.php');
         exit();
     }
 } else {

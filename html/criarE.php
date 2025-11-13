@@ -26,17 +26,17 @@ session_start();
             <h1>Ajude os alunos com exercícios para treinar!</h1>
         </div>
         <div class="campo-input">
-            <input type="text" class="titulo" name="titulo" placeholder="Título do exercício" required>
+            <input name="titulo" type="text" class="titulo" name="titulo" placeholder="Título do exercício" style="border: none; background-color:transparent; width: 300px;" required>
+        </div>
+        <div class="form-group mb-3">
+            <textarea type="text" class="form-control" rows="5" cols="90" name="descricao" placeholder="Descreva a atividade aqui" required></textarea>
+        </div>
+        <div class="form-group mb-3">
+            <textarea type="text" class="form-control" rows="5" cols="90" name="resolucao" placeholder="Explique a resolução aqui" required></textarea>
         </div>
         <div class="campo-input">
-            <input type="text" class="descricao" name="descricao" placeholder="Descreva a atividade aqui" required>
-        </div>
-        <div class="campo-input">
-            <input type="text" class="resolucao" name="resolucao" placeholder="Explique a resolução aqui" required>
-        </div>
-        <div class="campo-input">
-            <label for="materia">Materias relacionadas:</label>
-            <select name="materia" id="materia" required>
+            <label for="materia">Materia relacionada:</label>
+            <select name="materia" id="materia" class="form-select me-2" style="max-width: 250px;" required>
                 <option value="" disabled selected>Selecione a matéria</option>
                 <option value="matematica">Matemática</option>
                 <option value="portugues">Português</option>
@@ -52,7 +52,7 @@ session_start();
             </select>
         </div>
         <div class="enviar">
-            <button type="submit" name="enviar_exercicio">Enviar</button>
+            <button type="submit" name="enviar_exercicio" style="border-radius: 15px">Enviar</button>
         </div>
     </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>

@@ -58,15 +58,18 @@ button {
     cursor: pointer;
     text-transform: uppercase;
     box-shadow: 5px 5px #3e7aa5;
+    border-radius: 25px;
 }
 
 button:hover {
     background-color: #3C7096;
     box-shadow: 5px 5px #2F5775;
+    border-radius: 25px;
 }
 
 button:active {
   background-color: #3C7096;
   box-shadow: 5px 5px #2F5775;
   transform: translateY(2px);
+  border-radius: 25px;
 }

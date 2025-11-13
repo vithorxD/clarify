@@ -32,7 +32,7 @@ $dados_professor = mysqli_fetch_assoc($resultado_prof);
 if (!$dados_professor) {
     // se o user nn for prof ou n for aprovado
     $_SESSION['erro'] = "Apenas professores aprovados podem criar exercícios.";
-    header('Location: ../html/home.php');
+    header('Location: ../html/exercicio.php');
     exit();
 }
 

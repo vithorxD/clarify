@@ -16,8 +16,8 @@ body {
 }
 
 .criar{
-    padding: 15px 200px;
-    font-size: 25px;
+    padding: 15px 100px;
+    font-size: 20px;
     cursor: pointer;
     color: #2F5775;
     font-weight: bold;
@@ -29,46 +29,76 @@ body {
     margin-right: auto;
 }
 
-.criar a{
-    color: #8AB3D0;
+.row .col {
+    height: 100%;
+}
+
+.exercicio-card{
+    width: 100%;
+    min-height: 200px; 
+    height: 200px; 
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0; 
+    background-color: #B9D5E8;
+    transition: 0.3s;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.exercicio-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.row .col {
+    height: 100%;
+}
+
+.card-body{
+    padding: 0 !important; 
+    margin-top: auto;
+    flex-shrink: 0;
+}
+
+.card-title{
+    font-size: 40px;
+    flex-shrink: 0;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    width: 100%;
+}
+
+.card-text{
+    font-size: 25px;
+    flex-shrink: 0;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.exercicio-info{
+    flex-shrink: 0;
+}
+
+.visualizar{
+    width: fit-content; 
+    display: block; 
+    padding: 8px 15px;
+    background-color: #9ABFD8;
+    color: #373737;
     font-weight: bold;
+    text-align: center;
     text-decoration: none;
+    border-radius: 25px;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
-.criar:hover{
-    background-color: #4989B6;
-    border-color: #3C7096;
+.visualizar:active{
+    background-color: #79A4C1;
+    transform: translateY(1px);
 }
-
-.criar:active{
-    transform: translateY(2px);
-}
-
-
-.exercicio-card {
-            background-color: #ffffff;
-            border-left: 5px solid #28a745; 
-            padding: 20px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            transition: transform 0.2s;
-        }
-        .exercicio-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        .exercicio-card h3 {
-            color: #28a745; 
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-        .materia-tag-exercicio {
-            display: inline-block;
-            background-color: #8AB3D0;
-            color: white;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-weight: bold;
-            text-transform: capitalize;
-        }

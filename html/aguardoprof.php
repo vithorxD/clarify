@@ -20,7 +20,7 @@
              profissional docente. Será enviado um email da nossa equipe avisando a sua ativação.
             </p>
         </div>
-        <button><a href="../html/login.php" style="text-decoration: none; color:#EDF3F8;">Entendido</a></button>
+        <button style="border-radius: 15px;"><a href="../html/login.php" style="text-decoration: none; color:#EDF3F8;">Entendido</a></button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>

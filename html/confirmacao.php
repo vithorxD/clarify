@@ -1,3 +1,11 @@
+<?php 
+
+include ('../php/conexao.php'); 
+session_start();
+
+$idUsuario_upload = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : '';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +17,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body style="background-color: #4989B6;">
-    <form action="../php/upload_confirmacao.php" method="post" enctype="multipart/form-data" style="flex-wrap: wrap;">
+    <form action="../php/upload_confirmacao.php" method="POST" enctype="multipart/form-data" style="flex-wrap: wrap;">
+        <input type="hidden" name="id_usuario_form" value="<?php echo htmlspecialchars($idUsuario_upload); ?>">
         <div class="titulo">
             <h1>Precisamos de confirmação!</h1>
         </div>
@@ -25,7 +34,7 @@
             <label for="documento">Selecione um arquivo</label>
             <input type="file" name="documento" id="documento" required>
         </div>
-        <button type="submit" name="upload_confirmacao" value="CONFIRMAR">CONFIRMAR</button>
+        <button type="submit" name="submit_upload" value="CONFIRMAR" style="border-radius: 15px;">CONFIRMAR</button>
     </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>

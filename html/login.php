@@ -50,7 +50,7 @@ if(isset($_POST['submit'])){
 
             if ($status === 'pendente') {
                 // manda pra confirmaçao ate o admin aceitar
-                header('Location: ../html/aguardando_confirmacao.php'); 
+                header('Location: ../html/confirmacao.php'); 
                 exit();
             } elseif ($status === 'confirmado') {
                 // pode entrar colega

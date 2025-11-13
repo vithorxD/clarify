@@ -51,7 +51,7 @@ $resultado_exercicios = mysqli_query($mysqli, $query_exercicios) or die('Erro ao
 
 $exercicios = mysqli_fetch_all($resultado_exercicios, MYSQLI_ASSOC);
 
-// 2. Verifica mensagens de status (sucesso/erro) do processamento
+//ve se sim ou nao
 $status_msg = null;
 if (isset($_SESSION['sucesso'])) {
     $status_msg = ['tipo' => 'success', 'mensagem' => $_SESSION['sucesso']];
@@ -74,56 +74,19 @@ if (isset($_SESSION['sucesso'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 
-    <style>
-        .sla{
-            display: flex;
-            justify-content: center;
-        }
-
-        .criar{
-            padding: 15px 200px;
-            font-size: 25px;
-            cursor: pointer;
-            color: #2F5775;
-            font-weight: bold;
-            background-color: #699EC3;
-            border: 2px solid #4989B6;
-            border-radius: 50px;
-            margin-bottom: 20px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .criar a{
-            color: #8AB3D0;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .criar:hover{
-            background-color: #4989B6;
-            border-color: #3C7096;
-        }
-
-        .criar:active{
-            transform: translateY(2px);
-        }
-    </style>
-
 <body style="background-color: #EDF3F8;">
     <?php include '../php/navbar.php'; ?>
     <div class="container" style="padding-top: 30px;">
 
-        <h1 class="mb-4 text-center" style="color: #28a745;">Caderno de Exercícios</h1>
+        <h1 class="mb-4 text-center" style="color: #142633;">Caderno de Exercícios</h1>
         <hr>
         <div class="sla">
-            <a href="../html/criarE.php"><button class="criar">Faça a sua própria pergunta</button></a>
+            <a href="../html/criarE.php"><button class="criar">Ajude os alunos a estudarem com exercícios feitos por você!</button></a>
         </div>
 
         <div class="row mb-4">
             <div class="col-md-12">
-                <form method="GET" action="exercicio.php" class="d-flex">
-                    
+                <form  method="GET" action="exercicio.php" class="d-flex">
                     <input 
                         type="text" 
                         name="termo_pesquisa" 
@@ -147,9 +110,7 @@ if (isset($_SESSION['sucesso'])) {
                         <option value="Ingles" <?php echo (($_GET['materia_filtro'] ?? '') == 'Ingles') ? 'selected' : ''; ?>>Ingles</option>
                         </select>
                     
-                    <button type="submit" class="btn btn-primary">
-                        Pesquisar
-                    </button>
+                    <button type="submit" class="btn btn-primary pesquisar" style="background-color: #699EC3; border: none; border-radius: 10px;">Pesquisar</button>
                 </form>
             </div>
         </div>
@@ -166,23 +127,25 @@ if (isset($_SESSION['sucesso'])) {
             </div>
         <?php else: ?>
 
+            <div class="row row-cols-1 row-cols-md-2 g-4 h-50">
             <?php foreach ($exercicios as $exercicio): ?>
-                <a href="visualizar_exercicio.php?id=<?php echo $exercicio['idExercicio']; ?>" style="text-decoration: none; color: inherit;">
-                    <div class="exercicio-card">
-                        <h3><?php echo htmlspecialchars($exercicio['titulo']); ?></h3>
-                        <p><?php
-                            echo htmlspecialchars(substr($exercicio['descricao'], 0, 150));
-                            if (strlen($exercicio['descricao']) > 150) echo '...';
+                <div class="col">
+                    <div class="exercicio-card d-flex flex-column h-100">
+                        <h3 class="card-title"><?php echo htmlspecialchars($exercicio['titulo']); ?></h3>
+                        <p class="card-text"><?php
+                            echo htmlspecialchars(substr($exercicio['descricao'], 0, 100));
+                            if (strlen($exercicio['descricao']) > 100) echo '...';
                             ?></p>
                         <div class="exercicio-info">
                             Criado por: <strong><?php echo htmlspecialchars($exercicio['nome_professor']); ?></strong> |
                             Matéria: <span class="materia-tag-exercicio"><?php echo htmlspecialchars($exercicio['materia']); ?></span> |
                             Em: <?php echo date('d/m/Y H:i', strtotime($exercicio['dataCriacao'])); ?>
-                            <br>
-                            <small class="text-primary">Clique para ver o exercício completo.</small>
+                        </div>
+                        <div class="card-body mt-auto">
+                            <a style="margin-top: 10px;" href="visualizar_exercicio.php?id=<?php echo $exercicio['idExercicio']; ?>" style="text-decoration: none; color: inherit;" class="visualizar">Ver exercício e resolução</a>
                         </div>
                     </div>
-                </a>
+            </div>
             <?php endforeach; ?>
 
         <?php endif; ?>

@@ -13,6 +13,8 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     exit();
 }
 
+$idUsuarioLogado = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+$ehAdminLogado = isset($_SESSION['ehAdmin']) ? $_SESSION['ehAdmin'] : 0;
 $id_exercicio = mysqli_real_escape_string($mysqli, $_GET['id']);
 
 // Verifica o ID do usuário logado (se houver)
@@ -28,7 +30,7 @@ $query_exercicio = "
         e.materia, 
         e.resolucao, 
         e.dataCriacao, 
-        p.idUsuario AS idUsuarioProfessor,  -- ID do USUARIO que criou o exercício
+        p.idUsuario AS idUsuarioProfessor, 
         u.nome AS nome_professor
     FROM 
         exercicio e
@@ -42,6 +44,18 @@ $query_exercicio = "
 
 $resultado_exercicio = mysqli_query($mysqli, $query_exercicio);
 $exercicio = mysqli_fetch_assoc($resultado_exercicio);
+
+$idProfessorAutor = $exercicio['idUsuarioProfessor']; 
+$podeDeletar = false;
+
+if ($idUsuarioLogado) {
+    // Condição 1: Usuário logado é o professor autor?
+    $isAutor = ($idUsuarioLogado == $idProfessorAutor);
+    // Condição 2: Usuário logado é administrador?
+    $isAdmin = ($ehAdminLogado == 1); 
+    
+    $podeDeletar = $isAutor || $isAdmin;
+}
 
 // Se o exercício não for encontrado
 if (!$exercicio) {
@@ -77,10 +91,26 @@ if (!$exercicio) {
             <p class="lead">Matéria: <span class="badge bg-success"><?php echo htmlspecialchars($exercicio['materia']); ?></span></p>
             <hr>
             
+
             <h2>Enunciado e Instruções</h2>
             <p><?php echo nl2br(htmlspecialchars($exercicio['descricao'])); ?></p>
             
             <hr>
+
+            <?php if ($podeDeletar): ?>
+            <div class="my-3">
+            <a 
+                href="../php/deletar_exercicio.php?id=<?php echo $exercicio['idExercicio']; ?>" 
+                class="btn btn-danger btn-sm" 
+                onclick="return confirm('ATENÇÃO: Tem certeza que deseja excluir este exercício? Esta ação é irreversível.');"
+            >
+                Excluir Exercício
+            </a>
+            </div>
+            <hr>
+            <?php endif; ?>
+            
+            
             <small class="text-muted">
                 Criado por: <strong><?php echo htmlspecialchars($exercicio['nome_professor']); ?></strong> 
                 Em: <?php echo date('d/m/Y H:i', strtotime($exercicio['dataCriacao'])); ?>

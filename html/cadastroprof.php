@@ -34,6 +34,9 @@ if(isset($_POST['submit'])){
                 ") or die('Erro na inserção do professor: ' . mysqli_error($mysqli));
 
                 if ($insert_professor) {
+                    session_start();
+                    $_SESSION['user_id'] = $idUsuario;
+                    $_SESSION['user_type'] = 'professor';
                     header('Location: ../html/confirmacao.php');
                     exit();
                 } else {

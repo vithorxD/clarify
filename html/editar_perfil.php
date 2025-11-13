@@ -38,6 +38,9 @@ if ($usuario['serie'] !== null) {
     $tipoUsuario = 'professor';
 }
 
+$opcoes_series = [ "6° Ano", "7° Ano", "8° Ano", "9° Ano", "1° Ano do Ensino Medio", "2° Ano do Ensino Medio", "3° Ano do Ensino Medio" ];
+$opcoes_especializacoes = [ "Matemática", "Português", "Física", "Química", "Biologia", "História", "Filosofia", "Sociologia", "Geografia", "Artes", "Inglês" ];
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -53,43 +56,63 @@ if ($usuario['serie'] !== null) {
     
     <?php include '../php/navbar.php'; ?>
 
-    <h2>Editar Perfil de <?php echo htmlspecialchars($usuario['nome']); ?></h2>
-
     <form action="../php/salvar.php" method="POST">
         
-        <h3>Dados Gerais</h3>
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" value="<?php echo htmlspecialchars($usuario['nome']); ?>" required>
+        <h2 class="titulo" style="font-size: 60px;">Editar Perfil de <?php echo htmlspecialchars($usuario['nome']); ?></h2>
+        <h3 style="font-size: 40px;">Dados Gerais</h3>
+        <label style="font-size: 20px;" for="nome">Nome:</label>
+        <div style="background-color: #e8e8e8; padding: 5px; border-radius: 10px; max-width: 300px;">
+        <input style="border: none; background-color: transparent; width: 360px; align-items: center; align-self: center; font-size: 17px;" type="text" id="nome" name="nome" value="<?php echo htmlspecialchars($usuario['nome']); ?>" required>
+        </div>
         <br>
         
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($usuario['email']); ?>" required>
+        <label style="font-size: 20px;" for="email">Email:</label>
+        <div style="background-color: #e8e8e8; padding: 5px; border-radius: 10px; max-width: 300px;">
+        <input style="border: none; background-color: transparent; width: 360px; align-items: center; align-self: center; font-size: 17px;" type="email" id="email" name="email" value="<?php echo htmlspecialchars($usuario['email']); ?>" required>
+        </div>
         <br>
-
         <?php if ($tipoUsuario == 'aluno'): ?>
-            <h3>Dados do Aluno</h3>
+            <h3 style="font-size: 40px;">Dados do Aluno</h3>
             <label for="serie">Série:</label>
-            <input type="text" id="serie" name="serie" value="<?php echo htmlspecialchars($usuario['serie']); ?>" required>
-            <br>
+            <div style="background-color: #e8e8e8; padding: 5px; border-radius: 10px; max-width: 300px;">
+            <select style="background-color: transparent; outline: none;" id="serie" name="serie" required>
+                <?php foreach ($opcoes_series as $serie): ?>
+                    <option 
+                        value="<?php echo htmlspecialchars($serie); ?>" 
+                        <?php echo ($usuario['serie'] === $serie) ? 'selected' : ''; ?>>
+                    <?php echo htmlspecialchars($serie); ?>
+                </option>
+            <?php endforeach; ?>
+            </select>
+            </div>
+        <br>
         <?php elseif ($tipoUsuario == 'professor'): ?>
-            <h3>Dados do Professor</h3>
-            <label for="especializacao">Especialização:</label>
-            <input type="text" id="especializacao" name="especializacao" value="<?php echo htmlspecialchars($usuario['especializacao']); ?>" required>
-            <br>
-            <label for="escolaAtual">Escola Atual:</label>
-            <input type="text" id="escolaAtual" name="escolaAtual" value="<?php echo htmlspecialchars($usuario['escolaAtual']); ?>" required>
+            <h3 style="font-size: 40px;">Dados do Professor</h3>
+            <label style="font-size: 20px;" for="especializacao">Especialização:</label>
+            <select id="especializacao" name="especializacao" required>
+                <?php foreach ($opcoes_especializacoes as $especializacao): ?>
+                    <option 
+                        value="<?php echo htmlspecialchars($especializacao); ?>" 
+                        <?php echo ($usuario['especializacao'] === $especializacao) ? 'selected' : ''; ?>>
+                        <?php echo htmlspecialchars($especializacao); ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
             <br>
         <?php endif; ?>
-
         <h3>Alterar Senha (Opcional)</h3>
-        <label for="nova_senha">Nova Senha:</label>
-        <input type="password" id="nova_senha" name="nova_senha">
+        <label style="font-size: 20px;" for="nova_senha">Nova Senha:</label>
+        <div style="background-color: #e8e8e8; padding: 5px; border-radius: 10px; max-width: 300px;">
+        <input style="border: none; background-color: transparent; width: 360px; align-items: center; align-self: center; font-size: 17px;" type="password" id="nova_senha" name="nova_senha">
+        </div>
         <br>
-        <label for="confirma_senha">Confirme a Nova Senha:</label>
-        <input type="password" id="confirma_senha" name="confirma_senha">
+        <label style="font-size: 20px;" for="confirma_senha">Confirme a Nova Senha:</label>
+        <div style="background-color: #e8e8e8; padding: 5px; border-radius: 10px; max-width: 300px;">
+        <input style="border: none; background-color: transparent; width: 360px; align-items: center; align-self: center; font-size: 17px;" type="password" id="confirma_senha" name="confirma_senha">
+        </div>
         <br>
 
-        <button type="submit" name="submit">Salvar Alterações</button>
+        <button type="submit" name="submit" style="border-radius: 15px;">Salvar Alterações</button>
     </form>
     
     <a href="perfil.php">Cancelar e Voltar</a>

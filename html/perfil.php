@@ -95,26 +95,26 @@ if(mysqli_num_rows($resultado) > 0){
             <div class="informacoes-aluno">
                 <h3 class="aluno">Dados do Aluno</h3>
                 <p class="serie"><strong>Série:</strong> <?php echo htmlspecialchars($usuario['serie']); ?></p>
-                </div>
-        </div>
+            </div>
         <?php endif; ?>
 
         <?php if ($tipoUsuario == 'professor'): ?>
             <div class="informacoes-professor">
                 <h3>Dados do Professor</h3>
                 <p><strong>Especialização:</strong> <?php echo htmlspecialchars($usuario['especializacao']); ?></p>
-                </div>
+            </div>
         <?php endif; ?>
+        </div>
 
         <div class="botao">
-            <div class="editar">
-                <a href="../html/editar_perfil.php" class="btn" style="text-decoration: none; " type="button">Editar Perfil</a>
+            <div class="editar" style="margin-right: 5px;">
+                <a href="../html/editar_perfil.php" class="btn" style="text-decoration: none; color: white;" type="button">Editar Perfil</a>
             </div>
-            <div class="sair">
-                <a href="../php/logout.php" class="btn" style="text-decoration: none;">Sair</a>
+            <div class="sair" style="margin-left: 5px;">
+                <a href="../php/deletar.php" class="btn" style="text-decoration: none; color: white;">Deletar Conta</a>
             </div>
         </div>
-    </div>
+    </div>  
     </form>
 </body>
 </html>

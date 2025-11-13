@@ -5,21 +5,24 @@ session_start();
 
 $message = [];
 
-// 1. Verifica se o usuário é um professor logado
-if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'professor') {
-    header('Location: ../html/aguardoprof.php'); exit();
+if (isset($_POST['id_usuario_form']) && !empty($_POST['id_usuario_form'])) {
+    $idUsuario = $_POST['id_usuario_form'];
+} else {
+    $idUsuario = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 }
 
-$idUsuario = $_SESSION['user_id'];
+if (empty($idUsuario)) {
+    $message[] = 'Erro crítico: ID do usuário não encontrado. Faça o login novamente.';
+}
 
 if (isset($_POST['submit_upload']) && isset($_FILES['documento'])) {
-    
+
     $file_name = $_FILES['documento']['name'];
     $file_tmp = $_FILES['documento']['tmp_name'];
     $file_error = $_FILES['documento']['error'];
     
     //define o diretorio onde os arquivos serao salvos
-    $diretorio_upload = '/xampp/htdocs/clarify/upload/documentosprofs/';
+    $diretorio_upload = '/xampp/htdocs/clarify/uploads/documentoprofs/';
     
     //garante que o diretorio existe
     if (!is_dir($diretorio_upload)) {
@@ -35,7 +38,6 @@ if (isset($_POST['submit_upload']) && isset($_FILES['documento'])) {
         
         //tenta mover o arquivo para o diretorio de upload
         if (move_uploaded_file($file_tmp, $caminho_destino)) {
-            
             //atualiza o caminho do documento no banco de dados
             $caminho_db = mysqli_real_escape_string($mysqli, $caminho_destino);
             
@@ -48,9 +50,9 @@ if (isset($_POST['submit_upload']) && isset($_FILES['documento'])) {
             if (mysqli_query($mysqli, $update_query)) {
                 header('Location: ../html/aguardoprof.php');
                 exit();
-                
             } else {
-                $message[] = 'Erro ao atualizar o banco de dados: ' . mysqli_error($mysqli);
+                $message[] = 'ERRO SQL CRÍTICO: ' . mysqli_error($mysqli);
+                $message[] = 'ID de Usuário na Query: ' . $idUsuario;
                 //apaga o arquivo do bd se houver falha no update
                 unlink($caminho_destino); 
             }
@@ -68,7 +70,7 @@ if (!empty($message)) {
     foreach ($message as $msg) {
         echo "<p style='color: red;'>$msg</p>";
     }
-    echo "<p><a href='../html/confirmacao.html'>Tentar novamente</a></p>";
+    echo "<p><a href='../html/confirmacao.php'>Tentar novamente</a></p>";
 }
 
 ?>
