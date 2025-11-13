@@ -56,66 +56,96 @@ $opcoes_especializacoes = [ "Matemática", "Português", "Física", "Química", 
     
     <?php include '../php/navbar.php'; ?>
 
-    <form action="../php/salvar.php" method="POST">
+    <form action="../php/salvar.php" method="POST" class="text-center" style="margin-bottom: 10px;">
         
         <h2 class="titulo" style="font-size: 60px;">Editar Perfil de <?php echo htmlspecialchars($usuario['nome']); ?></h2>
-        <h3 style="font-size: 40px;">Dados Gerais</h3>
-        <label style="font-size: 20px;" for="nome">Nome:</label>
-        <div style="background-color: #e8e8e8; padding: 5px; border-radius: 10px; max-width: 300px;">
-        <input style="border: none; background-color: transparent; width: 360px; align-items: center; align-self: center; font-size: 17px;" type="text" id="nome" name="nome" value="<?php echo htmlspecialchars($usuario['nome']); ?>" required>
-        </div>
-        <br>
-        
-        <label style="font-size: 20px;" for="email">Email:</label>
-        <div style="background-color: #e8e8e8; padding: 5px; border-radius: 10px; max-width: 300px;">
-        <input style="border: none; background-color: transparent; width: 360px; align-items: center; align-self: center; font-size: 17px;" type="email" id="email" name="email" value="<?php echo htmlspecialchars($usuario['email']); ?>" required>
-        </div>
-        <br>
-        <?php if ($tipoUsuario == 'aluno'): ?>
-            <h3 style="font-size: 40px;">Dados do Aluno</h3>
-            <label for="serie">Série:</label>
-            <div style="background-color: #e8e8e8; padding: 5px; border-radius: 10px; max-width: 300px;">
-            <select style="background-color: transparent; outline: none;" id="serie" name="serie" required>
-                <?php foreach ($opcoes_series as $serie): ?>
-                    <option 
-                        value="<?php echo htmlspecialchars($serie); ?>" 
-                        <?php echo ($usuario['serie'] === $serie) ? 'selected' : ''; ?>>
-                    <?php echo htmlspecialchars($serie); ?>
-                </option>
-            <?php endforeach; ?>
-            </select>
+        <h3 style="font-size: 40px; margin-bottom: 0px;">Dados Gerais</h3>
+    <div class="d-flex flex-column align-items-center">
+        <div class="mb-3" style="width: 500px; max-width: 90%;"> 
+            <div class="text-start">
+                <label class="col-form-label" style="font-size: 20px;" for="nome">Nome:</label>
+                <div style="padding: 5px; border-radius: 10px;">
+                    <input class="form-control me-2 w-100" style="border: none; background-color: #ffffffff; font-size: 17px;" type="text" id="nome" name="nome" value="<?php echo htmlspecialchars($usuario['nome']); ?>" required>
+                </div>
             </div>
+            <br>
+
+        <div class="text-start">
+                <label class="col-form-label" style="font-size: 20px;" for="email">Email:</label>
+                <div style="padding: 5px; border-radius: 10px;">
+                    <input class="form-control me-2 w-100" style="border: none; background-color: #ffffffff; font-size: 17px;" type="email" id="email" name="email" value="<?php echo htmlspecialchars($usuario['email']); ?>" required>
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+        <?php if ($tipoUsuario == 'aluno'): ?>
+        <h3 style="font-size: 40px;">Dados do Aluno</h3>
+        <div class="d-flex flex-column align-items-center">
+            <div class="mb-3" style="width: 500px; max-width: 90%;"> 
+                <div class="text-start">
+                    <label class="col-form-label" style="font-size: 20px;" for="serie">Série:</label>
+                    <div style="padding: 5px; border-radius: 10px;">
+                        <select class="form-select form-select-md me-2 w-100" style="background-color: #ffffffff; outline: none;" id="serie" name="serie" required>
+                            <?php foreach ($opcoes_series as $serie): ?>
+                                <option 
+                                    value="<?php echo htmlspecialchars($serie); ?>" 
+                                    <?php echo ($usuario['serie'] === $serie) ? 'selected' : ''; ?>>
+                                    <?php echo htmlspecialchars($serie); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
         <br>
         <?php elseif ($tipoUsuario == 'professor'): ?>
-            <h3 style="font-size: 40px;">Dados do Professor</h3>
-            <label style="font-size: 20px;" for="especializacao">Especialização:</label>
-            <select id="especializacao" name="especializacao" required>
-                <?php foreach ($opcoes_especializacoes as $especializacao): ?>
-                    <option 
-                        value="<?php echo htmlspecialchars($especializacao); ?>" 
-                        <?php echo ($usuario['especializacao'] === $especializacao) ? 'selected' : ''; ?>>
-                        <?php echo htmlspecialchars($especializacao); ?>
-                    </option>
-                <?php endforeach; ?>
-            </select>
-            <br>
+        <h3 style="font-size: 40px;">Dados do Professor</h3>
+        <div class="d-flex flex-column align-items-center">
+            <div class="mb-3" style="width: 500px; max-width: 90%;">
+                <div class="text-start">
+                    <label class="col-form-label" style="font-size: 20px;" for="especializacao">Especialização:</label>
+                    <div style="padding: 5px; border-radius: 10px;">
+                        <select class="form-select form-select-md me-2 w-100" id="especializacao" name="especializacao" required>
+                            <?php foreach ($opcoes_especializacoes as $especializacao): ?>
+                                <option 
+                                    value="<?php echo htmlspecialchars($especializacao); ?>" 
+                                    <?php echo ($usuario['especializacao'] === $especializacao) ? 'selected' : ''; ?>>
+                                    <?php echo htmlspecialchars($especializacao); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
         <?php endif; ?>
-        <h3>Alterar Senha (Opcional)</h3>
-        <label style="font-size: 20px;" for="nova_senha">Nova Senha:</label>
-        <div style="background-color: #e8e8e8; padding: 5px; border-radius: 10px; max-width: 300px;">
-        <input style="border: none; background-color: transparent; width: 360px; align-items: center; align-self: center; font-size: 17px;" type="password" id="nova_senha" name="nova_senha">
+        <h3 style="font-size: 40px;">Alterar Senha (Opcional)</h3>
+    <div class="d-flex flex-column align-items-center">
+        <div class="mb-3" style="width: 500px; max-width: 90%;">
+            <div class="text-start">
+                <label class="col-form-label" style="font-size: 20px;" for="nova_senha">Nova Senha:</label>
+                <div style="padding: 5px; border-radius: 10px;">
+                    <input class="form-control me-2 w-100" style="border: none; background-color: #ffffffff; font-size: 17px;" type="password" id="nova_senha" name="nova_senha">
+                </div>
+                <br>
+                <label class="col-form-label" style="font-size: 20px;" for="confirma_senha">Confirme a Nova Senha:</label>
+                <div style="padding: 5px; border-radius: 10px;">
+                    <input class="form-control me-2 w-100" style="border: none; background-color: #ffffffff; font-size: 17px;" type="password" id="confirma_senha" name="confirma_senha">
+                </div>
+                <br>
+            </div>
         </div>
-        <br>
-        <label style="font-size: 20px;" for="confirma_senha">Confirme a Nova Senha:</label>
-        <div style="background-color: #e8e8e8; padding: 5px; border-radius: 10px; max-width: 300px;">
-        <input style="border: none; background-color: transparent; width: 360px; align-items: center; align-self: center; font-size: 17px;" type="password" id="confirma_senha" name="confirma_senha">
-        </div>
-        <br>
-
-        <button type="submit" name="submit" style="border-radius: 15px;">Salvar Alterações</button>
+    </div>
+    <div class="gap">
+        <button class="salvar" type="submit" name="submit" style="border-radius: 15px;">Salvar Alterações</button>
+        <a href="perfil.php" style="text-decoration: none;"><button class="voltar" style="border-radius: 15px;">Cancelar e Voltar</button></a>
+    </div>
     </form>
     
-    <a href="perfil.php">Cancelar e Voltar</a>
+    
 
 </body>
 </html>

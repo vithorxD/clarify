@@ -39,23 +39,7 @@ h1{
     font-size: 50px;
 }
 
-.campo-input{
-    border: none;
-    border-radius: 10px;
-    padding: 10px 20px;
-    background-color: #e8e8e8;
-    padding-left: 10px;
-}
-
-.campo-input:disabled{
-    border: none;
-    border-radius: 10px;
-    padding: 10px 20px;
-    background-color: #e8e8e8;
-    padding-left: 10px;
-}
-
-button{
+.salvar{
     padding: 10px;
     align-self: center;
     width: 160px;
@@ -64,25 +48,45 @@ button{
     border: none;
     color: white;
     cursor: pointer;
-    text-transform: uppercase;
     box-shadow: 5px 5px #699EC3;
 }
 
-button:hover {
+.salvar:hover {
     background-color: #699EC3;
     box-shadow: 5px 5px #4989B6;
 }
 
-button:active {
+.salvar:active {
   background-color: #699EC3;
   box-shadow: 5px 5px #4989B6;
   transform: translateY(2px);
 }
 
-.sair{
-    margin-top: 20px;
+.voltar{
+    padding: 10px;
+    align-self: center;
+    width: 160px;
+    border-radius: 30px;
+    background-color: #8AB3D0;
+    border: none;
+    color: white;
+    cursor: pointer;
+    box-shadow: 5px 5px #699EC3;
+}
+
+.voltar:hover {
+    background-color: #699EC3;
+    box-shadow: 5px 5px #4989B6;
+}
+
+.voltar:active {
+  background-color: #699EC3;
+  box-shadow: 5px 5px #4989B6;
+  transform: translateY(2px);
+}
+
+.gap{
     display: flex;
     justify-content: center;
-    margin-left: auto;
-    gap: 15px
+    gap: 10px;
 }
