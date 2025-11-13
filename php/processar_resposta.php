@@ -18,13 +18,13 @@ if (isset($_POST['enviar_resposta'])) {
     $conteudo = mysqli_real_escape_string($mysqli, $_POST['conteudo_resposta']);
     
     if (empty($conteudo) || empty($id_pergunta)) {
-        // Redireciona para a pergunta com um erro na sessão
+        // redireciona para a pergunta com um erro na sessão
         $_SESSION['erro'] = "A resposta não pode estar vazia.";
         header('Location: ../html/visualizar_pergunta.php?id=' . $id_pergunta);
         exit();
     }
     
-    // Insere a resposta
+    // insere a resposta
     $insert_query = "
         INSERT INTO respostas (idUsuario, idPerguntas, conteudo)
         VALUES ('$idUsuario', '$id_pergunta', '$conteudo')
@@ -40,7 +40,6 @@ if (isset($_POST['enviar_resposta'])) {
         exit();
     }
 } else {
-    // Acesso direto, redireciona para a lista de perguntas
     header('Location: ../html/perguntas.php');
     exit();
 }

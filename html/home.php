@@ -3,6 +3,38 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+include ('../php/conexao.php'); 
+
+$idUsuario = $_SESSION['user_id'] ?? null;
+
+if (!$idUsuario) {
+    $tipoUsuario = '';
+} else {
+    $query = "
+        SELECT 
+            a.serie,
+            p.especializacao
+        FROM 
+            usuario u
+        LEFT JOIN 
+            aluno a ON u.idUsuario = a.idUsuario
+        LEFT JOIN 
+            professor p ON u.idUsuario = p.idUsuario
+        WHERE 
+            u.idUsuario = '$idUsuario'
+    ";
+    
+    $resultado = mysqli_query($mysqli, $query);
+    $usuario = mysqli_fetch_assoc($resultado);
+
+    $tipoUsuario = ''; 
+    if ($usuario && $usuario['serie'] !== null) {
+        $tipoUsuario = 'aluno';
+    } elseif ($usuario && $usuario['especializacao'] !== null) {
+        $tipoUsuario = 'professor';
+    }
+}
+    $_SESSION['user_type'] = $tipoUsuario; 
 
 ?>
 
@@ -26,12 +58,23 @@ if (session_status() == PHP_SESSION_NONE) {
         <h5 class="moira">"A sabedoria é a própria recompensa."</h5>
         <div class="container-fluid px-0 mt-4 mb-3"> 
             <div class="d-flex flex-column flex-md-row gap-3 justify-content-start ms-30-md mb-2 mb-md-4">
+
+            <?php if ($tipoUsuario == 'aluno'): ?>   
                 <button class="criar" type="button">
-                    <a href="../html/criar.php">Faça a sua pergunta aqui!</a>
-                </button>
-                <button class="visita" type="button">
-                    <a href="../html/exercicio.php">Visite exercícios enviados por professores!</a>
-                </button>
+                        <a href="../html/criar.php">Faça a sua pergunta aqui!</a>
+                    </button>
+                    <button class="visita" type="button">
+                        <a href="../html/exercicio.php">Visite exercícios enviados por professores!</a>
+                    </button>
+            <?php elseif ($tipoUsuario == 'professor'): ?>
+                <button class="criar" type="button">
+                        <a href="../html/criarE.php">Crie um exercicio aqui!</a>
+                    </button>
+                    <button class="visita" type="button">
+                        <a href="../html/perguntas.php">Visite perguntas enviados por alunos!</a>
+                    </button>
+            <?php endif; ?>
+                    
             </div>
         </div>
         <div class="divisoria"></div>

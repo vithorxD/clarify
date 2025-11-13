@@ -69,6 +69,12 @@ form{
     font-size: x-large;
 }
 
+.professor{
+    font-size: 40px;
+}
+.especializacao{
+    font-size: x-large;
+}
 .botao{
     display: flex;
     justify-content: center;

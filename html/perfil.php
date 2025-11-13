@@ -1,10 +1,8 @@
 <?php
-// perfil.php
 
-include ('../php/conexao.php'); // Sua conexão com o BD
+include ('../php/conexao.php');
 session_start();
 
-// 1. Verificação de segurança: Redireciona se o usuário não estiver logado
 if(!isset($_SESSION['user_id'])){
     header('Location: login.php');
     exit();
@@ -12,8 +10,7 @@ if(!isset($_SESSION['user_id'])){
 
 $idUsuario = $_SESSION['user_id'];
 
-// 2. Consulta SQL unificada (LEFT JOIN)
-// Esta consulta traz os dados gerais do usuário E as especificações de aluno/professor, se existirem.
+// busca os dados do usuário, seja ele aluno ou professor
 $query = "
     SELECT 
         u.nome, 
@@ -36,7 +33,7 @@ $resultado = mysqli_query($mysqli, $query) or die('Erro ao buscar dados do usuá
 if(mysqli_num_rows($resultado) > 0){
     $usuario = mysqli_fetch_assoc($resultado);
     
-    // 3. Determinar o tipo de usuário para facilitar a visualização
+    // determina o tipo do usuario
     $tipoUsuario = '';
     if ($usuario['serie'] !== null) {
         $tipoUsuario = 'aluno';
@@ -44,11 +41,9 @@ if(mysqli_num_rows($resultado) > 0){
         $tipoUsuario = 'professor';
     }
     
-    // Você pode armazenar o tipo na sessão aqui, caso o login não tenha feito.
     $_SESSION['user_type'] = $tipoUsuario; 
     
 } else {
-    // Caso o usuário esteja logado, mas o registro não exista (erro grave)
     $mensagemErro = "Dados do perfil não encontrados.";
 }
 ?>
@@ -100,8 +95,8 @@ if(mysqli_num_rows($resultado) > 0){
 
         <?php if ($tipoUsuario == 'professor'): ?>
             <div class="informacoes-professor">
-                <h3>Dados do Professor</h3>
-                <p><strong>Especialização:</strong> <?php echo htmlspecialchars($usuario['especializacao']); ?></p>
+                <h3 class="professor">Dados do Professor</h3>
+                <p class="especializacao"><strong>Especialização:</strong> <?php echo htmlspecialchars($usuario['especializacao']); ?></p>
             </div>
         <?php endif; ?>
         </div>

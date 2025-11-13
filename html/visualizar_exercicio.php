@@ -1,5 +1,4 @@
 <?php
-// Arquivo: ../html/visualizar_exercicio.php
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -7,7 +6,6 @@ if (session_status() == PHP_SESSION_NONE) {
 
 include ('../php/conexao.php'); 
 
-// 1. Verifica se o ID do Exercício foi passado na URL
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     header('Location: exercicios.php');
     exit();
@@ -17,11 +15,9 @@ $idUsuarioLogado = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 $ehAdminLogado = isset($_SESSION['ehAdmin']) ? $_SESSION['ehAdmin'] : 0;
 $id_exercicio = mysqli_real_escape_string($mysqli, $_GET['id']);
 
-// Verifica o ID do usuário logado (se houver)
 $idUsuarioLogado = $_SESSION['user_id'] ?? null;
 $ehAdmin = $_SESSION['ehAdmin'] ?? 0;
 
-// 2. Busca o Exercício Completo, o Professor que o criou e seu idUsuario
 $query_exercicio = "
     SELECT 
         e.idExercicio, 
@@ -49,24 +45,17 @@ $idProfessorAutor = $exercicio['idUsuarioProfessor'];
 $podeDeletar = false;
 
 if ($idUsuarioLogado) {
-    // Condição 1: Usuário logado é o professor autor?
     $isAutor = ($idUsuarioLogado == $idProfessorAutor);
-    // Condição 2: Usuário logado é administrador?
     $isAdmin = ($ehAdminLogado == 1); 
     
     $podeDeletar = $isAutor || $isAdmin;
 }
 
-// Se o exercício não for encontrado
 if (!$exercicio) {
     header('Location: exercicios.php');
     exit();
 }
 
-// 3. Define a Permissão de Visualização da Resolução
-// A permissão é TRUE se:
-// a) O usuário logado é o mesmo que criou o exercício.
-// b) O usuário logado é um Administrador (ehAdmin = 1).
 
 ?>
 

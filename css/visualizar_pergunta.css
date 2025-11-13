@@ -10,19 +10,13 @@ body {
     padding: 0;
 }
 
-.pergunta-view {
+.pergunta-view{
     background-color: #B6D0E2;
     border-left: 6px solid #8AB3D0;
     padding: 25px;
     margin-bottom: 25px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.pergunta-view.lead {
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    overflow: hidden;
 }
 
 .btn{

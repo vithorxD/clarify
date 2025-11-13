@@ -98,14 +98,11 @@ if (isset($_SESSION['sucesso_resposta'])) {
             <hr>
 
             <?php 
-        // Verifica se o usuário logado é o autor OU se é Admin
             $idAutorPergunta = $pergunta['id_autor_pergunta'];
             $podeDeletar = false;
         
             if ($idUsuarioLogado) {
-            // Condição 1: O usuário logado é o autor da pergunta?
                 $isAutor = ($idUsuarioLogado == $idAutorPergunta);
-            // Condição 2: O usuário logado é administrador?
                 $isAdmin = ($ehAdminLogado == 1); 
             
                 $podeDeletar = $isAutor || $isAdmin;
