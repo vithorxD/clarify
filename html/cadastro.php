@@ -55,11 +55,11 @@ if(isset($_POST['submit'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
     <title>Clarify</title>
-    <link rel="shortcut icon" type="imagex/png" href="/images/clarifyv1.png">
+    <link rel="icon" type="imagex/png" href="../images/clarifyFinal.png">
     <link rel="stylesheet" href="../css/cadastro.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
-<body style="background-color: #4989B6;">
+<body style="background-color: #4989B6;" style="flex-wrap: wrap;">
     <form method="POST" action="cadastro.php" class="container" style="max-width: 500px; width: 100%;">
         <div class="row mb-4 justify-content-center">
             <div class="col-12 text-center titulo">

@@ -118,3 +118,13 @@ html {
     border: none;
     cursor: pointer;
 }
+
+.home{
+    background-color: #699ec3;
+    color: #fff;
+    font-size: 20px;
+    padding: 5px 40px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}

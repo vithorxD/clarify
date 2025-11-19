@@ -39,7 +39,7 @@ $professores_pendentes = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/admin1.css">
     <title>Clarify</title>
-    <link rel="shortcut icon" type="imagex/png" href="/images/clarifyv1.png">
+    <link rel="icon" type="imagex/png" href="../images/clarifyFinal.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body style="background-color: #8AB3D0;">
@@ -111,7 +111,17 @@ endif;
         </div>
     <?php endif; ?>
     <div class="botao">
-        <a href="../php/logout.php" style="text-decoration: none;"><button class="sair">Sair</button></a>
+        <a href="../html/home.php" style="text-decoration: none;"><button style="
+            background-color: #699ec3;
+            color: #fff;
+            font-size: 20px;
+            padding: 5px 40px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            margin-right: 5px;
+        ">Home</button></a>
+        <a href="../php/logout.php" style="text-decoration: none;"><button style="margin-left: 5px;" class="sair">Sair</button></a>
     </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>

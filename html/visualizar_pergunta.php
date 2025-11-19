@@ -81,10 +81,9 @@ if (isset($_SESSION['sucesso_resposta'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
     <link rel="stylesheet" href="../css/visualizar_pergunta.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-
+    <link rel="icon" type="imagex/png" href="../images/clarifyFinal.png">
     <title>Clarify</title>
-    <link rel="shortcut icon" type="imagex/png" href="/images/clarifyv1.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body style="background-color: #EDF3F8;">
 
@@ -112,6 +111,7 @@ if (isset($_SESSION['sucesso_resposta'])) {
             ?> 
             <div class="mb-3">
             <a 
+                style="background-color: #B64952;"
                 href="../php/deletar_pergunta.php?id=<?php echo $pergunta['idPerguntas']; ?>" 
                 class="btn btn-danger btn-sm" 
                 onclick="return confirm('ATENÇÃO: Tem certeza que deseja excluir esta pergunta? Esta ação é irreversível.');"
@@ -122,7 +122,6 @@ if (isset($_SESSION['sucesso_resposta'])) {
         </div>
     <?php endif; ?>
     <small class="text-muted">
-        Postado por: <strong><?php echo htmlspecialchars($pergunta['nome_usuario']); ?></strong> |
 
             <small class="text-muted">
                 Postado por: <strong><?php echo htmlspecialchars($pergunta['nome_usuario']); ?></strong> | 
@@ -146,7 +145,7 @@ if (isset($_SESSION['sucesso_resposta'])) {
                     <div class="form-group mb-3">
                         <textarea name="conteudo_resposta" class="form-control" rows="5" placeholder="Digite sua resposta aqui..." required></textarea>
                     </div>
-                    <button type="submit" name="enviar_resposta" class="btn">Enviar Resposta</button>
+                    <button type="submit" name="enviar_resposta" class="btn" style="background-color: #B6D0E2;">Enviar Resposta</button>
                 </form>
             </div>
             <hr>

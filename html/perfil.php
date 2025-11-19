@@ -54,7 +54,7 @@ if(mysqli_num_rows($resultado) > 0){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
     <title>Clarify</title>
-    <link rel="shortcut icon" type="imagex/png" href="/images/clarifyv1.png">
+    <link rel="icon" type="imagex/png" href="../images/clarifyFinal.png">
     <link rel="stylesheet" href="../css/perfil.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>

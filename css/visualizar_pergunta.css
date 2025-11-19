@@ -21,8 +21,8 @@ body {
 
 .btn{
     cursor: pointer;
-    color: #6C6C6C;
-    background-color: #B6D0E2;
+    background-color: #8AB3D0;
+    box-shadow: 5px 5px #699EC3;
     border-radius: 50px;
     color: #373737;
     font-weight: bold;

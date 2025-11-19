@@ -66,7 +66,7 @@ if (!$exercicio) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($exercicio['titulo']); ?> - Exercício</title>
     <link rel="stylesheet" href="../css/visualizar_exercicio.css">
-    <link rel="shortcut icon" type="imagex/png" href="/images/clarifyv1.png">
+    <link rel="icon" type="imagex/png" href="../images/clarifyFinal.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body style="background-color: #EDF3F8;">
@@ -77,7 +77,7 @@ if (!$exercicio) {
 
         <div class="exercicio-view">
             <h1><?php echo htmlspecialchars($exercicio['titulo']); ?></h1>
-            <p class="lead">Matéria: <span class="badge bg-success"><?php echo htmlspecialchars($exercicio['materia']); ?></span></p>
+            <p class="lead">Matéria: <strong><span><?php echo htmlspecialchars($exercicio['materia']); ?></span></strong></p>
             <hr>
             
 
@@ -88,7 +88,8 @@ if (!$exercicio) {
 
             <?php if ($podeDeletar): ?>
             <div class="my-3">
-            <a 
+            <a
+                style="background-color: #B64952;"
                 href="../php/deletar_exercicio.php?id=<?php echo $exercicio['idExercicio']; ?>" 
                 class="btn btn-danger btn-sm" 
                 onclick="return confirm('ATENÇÃO: Tem certeza que deseja excluir este exercício? Esta ação é irreversível.');"
@@ -110,7 +111,7 @@ if (!$exercicio) {
 
         <?php if ($exercicio['resolucao']): ?>
             <div class="resolucao-card">
-                <h2>Conteúdo da Resolução</h2>
+                <h2 style="color: #373737;">Conteúdo da Resolução</h2>
                 <p><?php echo nl2br(htmlspecialchars($exercicio['resolucao'])); ?></p>
             </div>
         <?php else: ?>

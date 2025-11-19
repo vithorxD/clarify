@@ -1,11 +1,9 @@
 <nav class="navbar">
-        <img src="../images/clarifyv1.png" alt="logo">
+        <img style="align-items: center;" src="../images/clarifyFinal.png" alt="logo">
         <div class="entrar">
             <?php 
             if (isset($_SESSION['user_id'])): 
             ?>
-                <!-- criei o css dessas duas porras mas por algum motivo nao foi, tenta apagar e escrever literalmente
-                do zero sem copiar nada deus da as batalhas mais dificeis aos seus guerreiros mais fortes -->
                 <a href="../html/perfil.php" style="text-decoration: none;">
                     <button class="perfil">Meu Perfil</button>
                 </a>
@@ -32,8 +30,6 @@
                 <li><a href="../html/perguntas.php">Perguntas</a></li>
                 <div class="barra"></div>
                 <li><a href="../html/exercicio.php">Atividades</a></li>
-                <div class="barra"></div>
-                <li><a href="#scroll2">Contato</a></li>
             </ul>
         </div>
     </nav>
@@ -166,7 +162,6 @@
             box-shadow: 5px 5px #4989B6;
         }
 
-        /* Estilos de cor e sombra específicos para a segunda coluna de botões (Sair/Cadastro) */
         .logout, .cadastro {
             background-color: #B6D0E2;
             box-shadow: 5px 5px #8AB3D0;
@@ -174,5 +169,11 @@
         .logout:hover, .cadastro:hover {
             background-color: #8AB3D0;
             box-shadow: 5px 5px #699EC3;
+        }
+        @media (max-width: 360px) {
+            nav{
+                display: flex;
+                flex-direction: column;
+            }
         }
     </style>

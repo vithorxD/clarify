@@ -12,11 +12,11 @@ $idUsuario_upload = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : '';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clarify</title>
-    <link rel="shortcut icon" type="imagex/png" href="/images/clarifyv1.png">
+    <link rel="icon" type="imagex/png" href="../images/clarifyFinal.png">
     <link rel="stylesheet" href="../css/confirmacao.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
-<body style="background-color: #4989B6;">
+<body style="background-color: #4989B6;" style="flex-wrap: wrap;">
     <form action="../php/upload_confirmacao.php" method="POST" enctype="multipart/form-data" style="flex-wrap: wrap;">
         <input type="hidden" name="id_usuario_form" value="<?php echo htmlspecialchars($idUsuario_upload); ?>">
         <div class="titulo">
