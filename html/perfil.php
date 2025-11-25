@@ -12,19 +12,19 @@ $idUsuario = $_SESSION['user_id'];
 
 // busca os dados do usuário, seja ele aluno ou professor
 $query = "
-    SELECT 
+    SELECT
         u.nome, 
         u.email,
         u.idUsuario,
         a.serie,
         p.especializacao
-    FROM 
+    FROM
         usuario u
-    LEFT JOIN 
+    LEFT JOIN
         aluno a ON u.idUsuario = a.idUsuario
-    LEFT JOIN 
+    LEFT JOIN
         professor p ON u.idUsuario = p.idUsuario
-    WHERE 
+    WHERE
         u.idUsuario = '$idUsuario'
 ";
 

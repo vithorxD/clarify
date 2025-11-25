@@ -144,8 +144,5 @@ $opcoes_especializacoes = [ "Matemática", "Português", "Física", "Química", 
         <a href="perfil.php" style="text-decoration: none;"><button class="voltar" style="border-radius: 15px;">Cancelar e Voltar</button></a>
     </div>
     </form>
-    
-    
-
 </body>
 </html>
