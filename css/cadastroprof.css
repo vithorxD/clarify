@@ -50,7 +50,7 @@ input:hover, input:active, input:focus {
   outline: 0;
 }
 
-button {
+.button {
     padding: 10px;
     align-self: center;
     width: 160px;
@@ -63,17 +63,20 @@ button {
     box-shadow: 5px 5px #3e7aa5;
 }
 
-button:hover {
+.button:hover {
     background-color: #3C7096;
     box-shadow: 5px 5px #2F5775;
 }
 
-button:active {
+.button:active {
   background-color: #3C7096;
   box-shadow: 5px 5px #2F5775;
   transform: translateY(2px);
 }
 
+p {
+    align-self: center;
+}
 message {
     color: red;
     text-align: center;

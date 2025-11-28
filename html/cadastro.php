@@ -59,8 +59,32 @@ if(isset($_POST['submit'])){
     <link rel="stylesheet" href="../css/cadastro.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
+<style>
+form {
+    padding: 50px;
+    background-color: #699EC3;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    box-shadow: 5px 5px 5px;
+    max-width: 450px;
+    width: 90%;
+}
+
+body {
+    display: flex;
+    min-height: 100vh; 
+    justify-content: center;
+    align-items: flex-start;
+    padding: 30px 0; 
+    background-color: var(--clarify-blue) !important;
+    overflow-y: auto; 
+}
+
+</style>
 <body style="background-color: #4989B6;" style="flex-wrap: wrap;">
-    <form method="POST" action="cadastro.php" class="container" style="max-width: 500px; width: 100%;">
+    <form method="POST" action="cadastro.php">
         <div class="row mb-4 justify-content-center">
             <div class="col-12 text-center titulo">
                 <h1>Faça seu cadastro</h1>
@@ -100,6 +124,7 @@ if(isset($_POST['submit'])){
         <div class="campo-input">
             <label for="serie">Especialização:</label>
             <select name="serie" id="serie">
+                <option value="" disable selected>Selecione sua série</option>
                 <option value="6° Ano">6° Ano</option>
                 <option value="7° Ano">7° Ano</option>
                 <option value="8° Ano">8° Ano</option>

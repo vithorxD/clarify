@@ -17,6 +17,7 @@ body {
     margin-bottom: 25px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    word-break: break-word;
 }
 
 .btn{
@@ -43,15 +44,16 @@ body {
     padding: 15px;
     margin-bottom: 10px;
     border-radius: 6px;
+    word-break: break-word;
 }
 
 .resposta-professor {
-    border-left: 3px solid #28a745;
-    background-color: #e6f9ed;
+    border-left: 3px solid #699EC3;
+    background-color: #8AB3D0;
 }
 
 .professor-tag {
     font-weight: bold;
-    color: #28a745;
+    color: #4989B6;
     margin-left: 10px;
 }

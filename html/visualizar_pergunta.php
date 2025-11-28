@@ -52,14 +52,14 @@ $query_respostas = "
     SELECT 
         r.conteudo, r.dataResposta, 
         u.nome AS nome_usuario, u.ehAdmin, 
-        p.especializacao AS prof_especializacao, -- Tenta pegar a especialização
+        p.especializacao AS prof_especializacao,
         (SELECT COUNT(idProfessor) FROM professor WHERE idUsuario = u.idUsuario) AS is_professor_flag 
     FROM 
         respostas r
     JOIN 
         usuario u ON r.idUsuario = u.idUsuario
     LEFT JOIN
-        professor p ON u.idUsuario = p.idUsuario AND p.statusConfirmacao = 'aprovado' -- Junta professor, se for um
+        professor p ON u.idUsuario = p.idUsuario 
     WHERE 
         r.idPerguntas = '$id_pergunta'
     ORDER BY 
@@ -163,10 +163,18 @@ if (isset($_SESSION['sucesso_resposta'])) {
             <?php foreach ($respostas as $resposta): ?>
                 
                 <?php 
-                    //da destaque se for professor
-                    $classe_destaque = ($resposta['is_professor_flag'] > 0) ? 'resposta-professor' : ''; 
-                    $tag_professor = ($resposta['is_professor_flag'] > 0) ? 
-                                     '<span class="professor-tag text-success">Professor (' . htmlspecialchars($resposta['materia'] ?? 'Sem especialização') . ')</span>' : '';
+                    $eh_professor = ($resposta['is_professor_flag'] > 0);
+                    $classe_destaque = $eh_professor ? 'resposta-professor' : ''; 
+                    
+                    $tag_professor = '';
+                    
+                    if ($eh_professor) {
+                        $especializacao_texto = empty($resposta['prof_especializacao']) 
+                            ? 'Não informada' 
+                            : htmlspecialchars($resposta['prof_especializacao']);
+                        
+                        $tag_professor = '<span class="professor-tag text-success">Especialização: ' . $especializacao_texto . '</span>';
+                    }
                 ?>
                 
                 <div class="resposta-card <?php echo $classe_destaque; ?>">

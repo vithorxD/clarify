@@ -57,7 +57,7 @@ if(isset($_POST['submit'])){
     <meta name="viewport" content="width=, initial-scale=1.0">
     <title>Clarify</title>
     <link rel="icon" type="imagex/png" href="../images/clarifyFinal.png">
-    <link rel="stylesheet" href="../css/cadastro.css">
+    <link rel="stylesheet" href="../css/cadastroprof.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body style="background-color: #4989B6;" style="flex-wrap: wrap;">
@@ -107,9 +107,10 @@ if(isset($_POST['submit'])){
         </div>
         <div class="row mb-3 justify-content-center">
             <div class="col-12 text-center">
-                <input type="submit" name="submit" value="CADASTRAR" class="button">
+                <input class="button" type="submit" name="submit" value="CADASTRAR" class="button">
             </div>
         </div>
+        
         <!--coloquei o style aqui por que no css nao tava funcionando, nao sei pq :p-->
     </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>

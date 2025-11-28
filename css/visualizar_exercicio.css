@@ -17,6 +17,7 @@ body {
     margin-bottom: 25px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    word-break: break-word;
 }
 .resolucao-card {
     background-color: #CCDEEB;
@@ -24,6 +25,7 @@ body {
     padding: 15px;
     margin-bottom: 10px;
     border-radius: 6px;
+    word-break: break-word;
 }
 .resolucao-card h2 {
     margin-bottom: 15px;

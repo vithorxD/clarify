@@ -3,27 +3,11 @@
     padding: 0;
     box-sizing: border-box;
 }
-body {
-    font-family: "Montserrat";
-    display: flex;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-}
-
-form {
-    padding: 50px;
-    background-color: #699EC3;
-    border-radius: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-    box-shadow: 5px 5px 5px ;
-    width: 30%;
-}
 
 h1 {
-    font-size: 24px;
+    color: #333;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
 }
 
 .campo-input {
@@ -89,3 +73,33 @@ p {
     color: white;
     font-size: 20px;
 }
+
+:root {
+    --clarify-blue: #4989B6;
+}
+
+.form-container {
+    background-color: #EDF3F8;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 90%; 
+}
+
+.form-label {
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+.form-control, .form-select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    width: 100%;
+    box-sizing: border-box;
+}
+
